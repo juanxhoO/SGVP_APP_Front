@@ -22,12 +22,25 @@ import Vehicle from './layouts/vehicles';
 import Vehicles from './layouts/vehicles';
 import NotFound from './layouts/components/NotFound';
 
+import Reports from './layouts/reports';
+import Report from './layouts/reports';
+
+
+import Stocks from './layouts/stocks';
+import Stock from './layouts/stocks';
+
+
+
+
+
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<AppLayout />}>
-          <Route path='/admin' element={<MainDashboard />}></Route>
+          <Route path='/admin' element={<MainDashboard />}>
+
+          </Route>
 
           <Route path='profile' element={<Profile />}></Route>
 
@@ -38,6 +51,15 @@ function App() {
           <Route path='/orders' element={<Orders />}>
             <Route path=':id' element={<Order />}></Route>
           </Route>
+
+          <Route path='/reports' element={<Reports />}>
+            <Route path=':id' element={<Report />}></Route>
+          </Route>
+
+          <Route path='/stocks' element={<Stocks />}>
+            <Route path=':id' element={<Stock />}></Route>
+          </Route>
+
 
           <Route path='/mecanics' element={<Mecanics />}>
             <Route path=':id' element={<Mecanic />}></Route>

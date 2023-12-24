@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CustomizedTables from '../components/DataTable/Table';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -20,6 +21,8 @@ export default function Vehicles() {
 
     return (
             <Container component="main" maxWidth="xs">
+                                <CustomizedTables></CustomizedTables>
+
             </Container>
     );
 }

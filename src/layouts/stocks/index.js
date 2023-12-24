@@ -14,13 +14,15 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CustomizedTables from '../components/DataTable/Table';
 
+
 // TODO remove, this demo shouldn't need to reset the theme.
 
-export default function Orders() {
+export default function Stock() {
 
     return (
-            <Container component="main" >
-                <CustomizedTables></CustomizedTables>
+            <Container component="main" maxWidth="xs">
+                                <CustomizedTables></CustomizedTables>
+
             </Container>
     );
 }
