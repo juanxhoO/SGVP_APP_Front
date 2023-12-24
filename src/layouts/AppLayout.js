@@ -3,10 +3,10 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 
-function AppLayout()  {
+function AppLayout() {
     return (
         <div className="App">
-            <Header/>
+            <Header />
             <Outlet />
             <Footer />
         </div>
