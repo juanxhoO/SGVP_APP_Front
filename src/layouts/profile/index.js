@@ -66,14 +66,10 @@ function Profile() {
                             shadow={false}
                         />
                     </Grid>
-
-
                 </Paper>
 
                 <Grid container spacing={2}>
-
                     <Grid item xs={6}>
-
                         <Paper elevation={5} sx={{
                             mt: 8,
                             display: 'flex',
@@ -83,11 +79,8 @@ function Profile() {
                         }}>
 
                             <VehicleInormation />
-
                         </Paper>
-
                     </Grid>
-
 
                     <Grid item xs={6}>
 

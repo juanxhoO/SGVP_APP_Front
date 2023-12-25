@@ -20,9 +20,9 @@ import CustomizedTables from '../components/DataTable/Table';
 export default function Users() {
 
     return (
-            <Container component="main" maxWidth="xs">
-                                <CustomizedTables></CustomizedTables>
+        <Container component="main">
+            <CustomizedTables></CustomizedTables>
 
-            </Container>
+        </Container>
     );
 }

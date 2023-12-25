@@ -10,28 +10,23 @@ import MainDashboard from './layouts/dashboard/Dashboard';
 import User from './layouts/users/User';
 import Users from './layouts/users';
 import Orders from './layouts/orders';
-import Order from './layouts/orders';
+import Order from './layouts/orders/Order';
 
 import Mecanics from './layouts/mecanics';
-import Mecanic from './layouts/mecanics';
+import Mecanic from './layouts/mecanics/Mecanic';
 
 import Dependencies from './layouts/dependencies';
-import Dependency from './layouts/dependencies';
+import Dependency from './layouts/dependencies/Dependency';
 
 import Vehicle from './layouts/vehicles';
-import Vehicles from './layouts/vehicles';
+import Vehicles from './layouts/vehicles/Vehicle';
 import NotFound from './layouts/components/NotFound';
 
 import Reports from './layouts/reports';
-import Report from './layouts/reports';
-
+import Report from './layouts/reports/Report';
 
 import Stocks from './layouts/stocks';
-import Stock from './layouts/stocks';
-
-
-
-
+import Stock from './layouts/stocks/Stock';
 
 function App() {
   return (
@@ -39,39 +34,37 @@ function App() {
       <Routes>
         <Route path='/' element={<AppLayout />}>
           <Route path='/admin' element={<MainDashboard />}>
-
           </Route>
-
           <Route path='profile' element={<Profile />}></Route>
 
           <Route path='/users' element={< Users />}>
-            <Route path=':id' element={< User />}></Route>
           </Route>
+          <Route path='/users/:id' element={< User />}></Route>
 
           <Route path='/orders' element={<Orders />}>
-            <Route path=':id' element={<Order />}></Route>
           </Route>
+
+          <Route path='/orders/:id' element={<Order />}></Route>
 
           <Route path='/reports' element={<Reports />}>
-            <Route path=':id' element={<Report />}></Route>
           </Route>
+          <Route path='/reports/:id' element={<Report />}></Route>
 
           <Route path='/stocks' element={<Stocks />}>
-            <Route path=':id' element={<Stock />}></Route>
+
           </Route>
-
-
+          <Route path='/stocks/:id' element={<Stock />}></Route>
           <Route path='/mecanics' element={<Mecanics />}>
-            <Route path=':id' element={<Mecanic />}></Route>
           </Route>
+          <Route path='/mecanics/:id' element={<Mecanic />}></Route>
 
           <Route path='/dependencies' element={<Dependencies />}>
-            <Route path=':id' element={<Dependency />}></Route>
           </Route>
+          <Route path='/dependencies/:id' element={<Dependency />}></Route>
 
           <Route path='/vehicles' element={<Vehicles />}>
-            <Route path=':id' element={<Vehicle />}></Route>
           </Route>
+          <Route path='/vehicles/:id' element={<Vehicle />}></Route>
 
           <Route path='/authentication'>
             <Route path='sign-in' element={<SignIn />}></Route>
