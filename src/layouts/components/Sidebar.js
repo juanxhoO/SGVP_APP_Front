@@ -131,6 +131,8 @@ export default function Sidebar() {
             <IconButton color="inherit">
               Logout
 
+              Logout
+
             </IconButton>
           </Toolbar>
         </AppBar>

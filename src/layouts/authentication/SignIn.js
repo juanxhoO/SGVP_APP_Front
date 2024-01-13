@@ -45,11 +45,9 @@ export default function SignIn() {
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box
+            className="signContainer"
             sx={{
-              marginTop: 8,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
