@@ -5,7 +5,7 @@ import { Box, Paper } from '@mui/material';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-export default function Report() {
+export default function CreateReport() {
 
     return (
         <Container component="main">
@@ -20,7 +20,7 @@ export default function Report() {
             >
                 <Paper elevation={5} sx={{ p: 5 }}>
 
-                    Report
+                    Create
                 </Paper>
 
 

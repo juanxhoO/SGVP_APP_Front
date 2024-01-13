@@ -3,6 +3,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 
 import Typography from '@mui/material/Typography';
 
@@ -40,7 +41,7 @@ export default function VehicleInormation() {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button variant="contained" size="small">Detalles Vehiculo</Button>
+                                <Button component={Link} to="/vehicles/1" variant="contained" size="small">Detalles Vehiculo</Button>
                             </CardActions>
                         </Card>
 
@@ -60,8 +61,8 @@ export default function VehicleInormation() {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button variant="contained" size="small">Solicitar Mantenimiento</Button>
-                                <Button variant="contained" size="small">historial de Mantenimientos</Button>
+                                <Button  component={Link} to="/orders/create" variant="contained" size="small">Solicitar Mantenimiento</Button>
+                                <Button component={Link} to="/vehicles/1" variant="contained" size="small">historial de Mantenimientos</Button>
                             </CardActions>
                         </Card>
                     </Box>

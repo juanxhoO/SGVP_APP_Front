@@ -14,8 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from '../components/ListItems';
-
-
+import { Link } from 'react-router-dom';
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -108,8 +107,10 @@ export default function Sidebar() {
                 color: 'inherit',
                 textDecoration: 'none',
               }}
-            >
-              LOGO
+            ><Link to="/">
+            Home
+            </Link>
+            
             </Typography>
 
             <Typography
@@ -128,8 +129,8 @@ export default function Sidebar() {
             </IconButton>
 
             <IconButton color="inherit">
-                Logout
-            
+              Logout
+
             </IconButton>
           </Toolbar>
         </AppBar>
@@ -149,8 +150,6 @@ export default function Sidebar() {
           <Divider />
           <List component="nav">
             {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
           </List>
         </Drawer>
       </Box>

@@ -64,11 +64,7 @@ function ProfileInfoCard({ title, description, info, social, action, shadow }) {
         <Typography variant="h6" fontWeight="medium" textTransform="capitalize">
           {title}
         </Typography>
-        <Typography component={Link} to={action.route} variant="body2" color="secondary">
-          <Tooltip title={action.tooltip} placement="top">
-            <Icon>edit</Icon>
-          </Tooltip>
-        </Typography>
+
       </Box>
       <Box p={2}>
         <Box mb={2} lineHeight={1}>

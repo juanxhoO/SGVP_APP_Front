@@ -91,17 +91,12 @@ function Profile() {
                             alignItems: 'center',
                             mb: 8
                         }}>
-
                             <Grid>
                                 <DependencyInformation />
                             </Grid>
-
                         </Paper>
-
                     </Grid>
-
                 </Grid>
-
             </Box>
         </Container>
     );

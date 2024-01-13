@@ -11,15 +11,15 @@ import User from './layouts/users/User';
 import Users from './layouts/users';
 import Orders from './layouts/orders';
 import Order from './layouts/orders/Order';
-
+import CreateOrder from './layouts/orders/CreateOrder';
 import Mecanics from './layouts/mecanics';
 import Mecanic from './layouts/mecanics/Mecanic';
 
 import Dependencies from './layouts/dependencies';
 import Dependency from './layouts/dependencies/Dependency';
-
-import Vehicle from './layouts/vehicles';
-import Vehicles from './layouts/vehicles/Vehicle';
+import CreateReport from './layouts/reports/CreateReport';
+import Vehicles from './layouts/vehicles';
+import Vehicle from './layouts/vehicles/Vehicle';
 import NotFound from './layouts/components/NotFound';
 
 import Reports from './layouts/reports';
@@ -44,9 +44,14 @@ function App() {
           <Route path='/orders' element={<Orders />}>
           </Route>
 
+          <Route path='/orders/create' element={<CreateOrder />}>
+          </Route>
+
           <Route path='/orders/:id' element={<Order />}></Route>
 
           <Route path='/reports' element={<Reports />}>
+          </Route>
+          <Route path='/reports/create' element={<CreateReport />}>
           </Route>
           <Route path='/reports/:id' element={<Report />}></Route>
 

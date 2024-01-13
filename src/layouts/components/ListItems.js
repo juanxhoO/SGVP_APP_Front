@@ -4,116 +4,81 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
-import AssignmentIcon from '@mui/icons-material/Assignment';
 import { Link } from 'react-router-dom';
 import { ListItem } from '@mui/material';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import RoomPreferencesIcon from '@mui/icons-material/RoomPreferences';
+import ContentPasteIcon from '@mui/icons-material/ContentPaste';
+import AddRoadIcon from '@mui/icons-material/AddRoad';
+import BuildIcon from '@mui/icons-material/Build';
+import InventoryIcon from '@mui/icons-material/Inventory';
+
 export const mainListItems = (
     <React.Fragment>
         <ListItemButton component={Link} to="/profile">
             <ListItemIcon>
                 <ShoppingCartIcon />
             </ListItemIcon>
-            <ListItem component={Link} to="/profile">
-                <ListItemText primary="Mi Perfil"><Link to="dsds">dsd</Link></ListItemText>
+            <ListItem>
+                <ListItemText primary="Mi Perfil"></ListItemText>
             </ListItem>
         </ListItemButton>
-
         <ListItemButton component={Link} to="/orders">
             <ListItemIcon>
-                <ShoppingCartIcon />
+                <RoomPreferencesIcon />
             </ListItemIcon>
             <ListItem component={Link} to="/orders">
-
-                <ListItemText primary="Mantenimientos"><Link to="dsds">dsd</Link></ListItemText>
-
+                <ListItemText primary="Mantenimientos"/>
             </ListItem>
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton component={Link} to="/users">
             <ListItemIcon>
                 <PeopleIcon />
             </ListItemIcon>
-            <ListItem component={Link} to="/users">
+            <ListItem >
                 <ListItemText primary="Usuarios" />
             </ListItem>
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton component={Link} to="/reports">
             <ListItemIcon>
-                <BarChartIcon />
+                <ContentPasteIcon />
             </ListItemIcon>
-            <ListItem component={Link} to="/reports">
+            <ListItem >
                 <ListItemText primary="Reportes" />
-
-
             </ListItem>
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton component={Link} to="/stocks">
             <ListItemIcon>
-                <LayersIcon />
+                <InventoryIcon />
             </ListItemIcon>
-
-            <ListItem component={Link} to="/stocks">
-
+            <ListItem >
                 <ListItemText primary="Repuestos" />
-
             </ListItem>
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton component={Link} to="/mecanics">
             <ListItemIcon>
-                <LayersIcon />
+                <BuildIcon />
             </ListItemIcon>
-            <ListItem component={Link} to="/mecanics">
+            <ListItem >
                 <ListItemText primary="Mecanicos" />
             </ListItem>
         </ListItemButton>
-
-        <ListItemButton>
+        <ListItemButton component={Link} to="/vehicles">
             <ListItemIcon>
-                <LayersIcon />
+                <DirectionsCarIcon />
             </ListItemIcon>
-
-            <ListItem component={Link} to="/vehicles">
-
+            <ListItem >
                 <ListItemText primary="Vehiculos" />
-
             </ListItem>
         </ListItemButton>
-
-        <ListItemButton>
+        <ListItemButton component={Link} to="/dependencies">
             <ListItemIcon>
-                <LayersIcon />
+                <AddRoadIcon />
             </ListItemIcon>
-
-            <ListItem component={Link} to="/dependencies">
-
+            <ListItem >
                 <ListItemText primary="Circuitos" />
-
             </ListItem>
         </ListItemButton>
     </React.Fragment>
 );
 
-export const secondaryListItems = (
-    <React.Fragment>
-
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Current month" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Last quarter" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Year-end sale" />
-        </ListItemButton>
-    </React.Fragment>
-);
