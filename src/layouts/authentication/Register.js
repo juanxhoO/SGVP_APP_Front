@@ -59,70 +59,68 @@ export default function Register() {
             Registrarse
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+
             <TextField
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
+              name="Nombres"
+              label="Nombres"
+              type="text"
+              id="names"
             />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
+
 
 <TextField
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
+              name="Apellidos"
+              label="Apellidos"
+              type="text"
+              id="lastname"
               autoComplete="current-password"
             />
-              <TextField
+            <TextField
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              id="email"
+              label="Correo"
+              name="correo"
+              autoComplete="email"
+              autoFocus
             />
-              <TextField
+
+            <TextField
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
+              name="Telefono"
+              label="Telefono"
+              type="number"
+              id="phone"
               autoComplete="current-password"
             />
-              <TextField
+            <TextField
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Password"
+              name="Rango"
+              label="Rango"
               type="password"
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="Dependencia"
+              label="Dependencia"
+              type="text"
+              id="password"
+              autoComplete="current-password"
             />
             <Button
               type="submit"
@@ -133,11 +131,6 @@ export default function Register() {
               Registrarse
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="/authentication/forgot-password" variant="body2">
-                  Olvidaste tu Contrasenia?
-                </Link>
-              </Grid>
               <Grid item>
                 <Link href="/authentication/sign-in" variant="body2">
                   {"Tienes una Cuenta? Ingresa"}
@@ -146,7 +139,6 @@ export default function Register() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

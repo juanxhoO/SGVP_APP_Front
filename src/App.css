@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+/* Sign In Page Styles */
+.signContainer{
+  margin-top: 10rem;
+  display: 'flex';
+  /* flexDirection: 'column';
+  alignItems: 'center'; */
+}
+
+
+

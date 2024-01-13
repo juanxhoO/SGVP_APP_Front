@@ -7,8 +7,13 @@ import ForgotPassword from './layouts/authentication/ForgotPassword';
 import AppLayout from './layouts/AppLayout';
 import Profile from './layouts/profile';
 import MainDashboard from './layouts/dashboard/Dashboard';
-import User from './layouts/users/User';
+
+
+
 import Users from './layouts/users';
+import User from './layouts/users/User';
+
+
 import Orders from './layouts/orders';
 import Order from './layouts/orders/Order';
 
@@ -18,8 +23,9 @@ import Mecanic from './layouts/mecanics/Mecanic';
 import Dependencies from './layouts/dependencies';
 import Dependency from './layouts/dependencies/Dependency';
 
-import Vehicle from './layouts/vehicles';
-import Vehicles from './layouts/vehicles/Vehicle';
+import Vehicles from './layouts/vehicles';
+import Vehicle from './layouts/vehicles/Vehicle';
+
 import NotFound from './layouts/components/NotFound';
 
 import Reports from './layouts/reports';
@@ -33,6 +39,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<AppLayout />}>
+          
           <Route path='/admin' element={<MainDashboard />}>
           </Route>
           <Route path='profile' element={<Profile />}></Route>
@@ -43,7 +50,6 @@ function App() {
 
           <Route path='/orders' element={<Orders />}>
           </Route>
-
           <Route path='/orders/:id' element={<Order />}></Route>
 
           <Route path='/reports' element={<Reports />}>
