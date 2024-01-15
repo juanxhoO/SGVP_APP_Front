@@ -21,7 +21,6 @@ import Mecanics from './layouts/mecanics';
 import Mecanic from './layouts/mecanics/Mecanic';
 
 import Dependencies from './layouts/dependencies';
-import Dependency from './layouts/dependencies/Dependency';
 import CreateReport from './layouts/reports/CreateReport';
 import Vehicles from './layouts/vehicles';
 import Vehicle from './layouts/vehicles/Vehicle';
@@ -71,8 +70,6 @@ function App() {
 
           <Route path='/dependencies' element={<Dependencies />}>
           </Route>
-          <Route path='/dependencies/:id' element={<Dependency />}></Route>
-
           <Route path='/vehicles' element={<Vehicles />}>
           </Route>
           <Route path='/vehicles/:id' element={<Vehicle />}></Route>

@@ -175,6 +175,8 @@ export default function Vehicle() {
             </Grid>
         </Grid>
         <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
+        <Button sx={{ minWidth: '200px' }} color="error" type="submit" variant='contained'>Borrar</Button>
+
     </Stack>
 
     );
