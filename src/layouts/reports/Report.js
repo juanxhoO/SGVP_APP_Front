@@ -6,6 +6,7 @@ import ReactQuill from 'react-quill';
 import { useState } from 'react';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import DropFile from '../components/DropFile';
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function Report() {
@@ -19,15 +20,13 @@ export default function Report() {
                 mb: 8
             }}
         >
-
-
-            <Grid container>
-
-
+            <Grid container spacing={2}>
                 <Grid item xs={8}>
                     <Paper elevation={5} sx={{ p: 5 }}>
-
                         <ReactQuill theme="snow" value={value} onChange={setValue} />
+                        
+                        
+                        <DropFile/>
                         <Card sx={{ maxWidth: 345 }}>
                             <CardMedia
                                 component="img"
@@ -49,14 +48,12 @@ export default function Report() {
                         <Stack direction="column"
                             sx={{
                                 padding: '30px',
-                                marginTop: 8,
                             }} component="form">
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
                                     <Typography sx={{ fontWeight: 'bold' }}>Apellidos</Typography>
                                     <TextField
                                         fullWidth
-                                        sx={{ minWidth: "400px" }}
                                         margin="normal"
                                         required
                                         name="email"
@@ -114,6 +111,7 @@ export default function Report() {
                                         defaultValue="Hello World"
                                     />
                                 </Grid>
+                                <Button size="large" variant='contained'>Crear Reporte</Button>
                             </Grid>
                         </Stack>
                     </Paper>

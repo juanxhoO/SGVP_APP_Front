@@ -41,7 +41,7 @@ export default function VehicleInormation() {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button component={Link} to="/vehicles/1" variant="contained" size="small">Detalles Vehiculo</Button>
+                                <Button component={Link} to="/vehicles/1" variant="contained" size="large">Detalles Vehiculo</Button>
                             </CardActions>
                         </Card>
 

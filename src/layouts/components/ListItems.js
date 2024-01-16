@@ -12,7 +12,7 @@ import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 import AddRoadIcon from '@mui/icons-material/AddRoad';
 import BuildIcon from '@mui/icons-material/Build';
 import InventoryIcon from '@mui/icons-material/Inventory';
-
+import LogoutIcon from '@mui/icons-material/Logout';
 export const mainListItems = (
     <React.Fragment>
         <ListItemButton component={Link} to="/profile">
@@ -77,6 +77,15 @@ export const mainListItems = (
             </ListItemIcon>
             <ListItem >
                 <ListItemText primary="Circuitos" />
+            </ListItem>
+        </ListItemButton>
+
+        <ListItemButton component={Link}>
+            <ListItemIcon>
+                <LogoutIcon />
+            </ListItemIcon>
+            <ListItem >
+                <ListItemText primary="Logout" />
             </ListItem>
         </ListItemButton>
     </React.Fragment>

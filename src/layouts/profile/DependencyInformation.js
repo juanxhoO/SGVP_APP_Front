@@ -37,7 +37,7 @@ export default function DependencyInormation() {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button component={Link} to="/dependencies/1" variant="contained" size="small">Ver Dependecia</Button>
+                                <Button component={Link} to="/dependencies/1" variant="contained" size="large">Ver Dependecia</Button>
                             </CardActions>
                         </Card>
                     </Box>

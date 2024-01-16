@@ -10,6 +10,7 @@ import Badge from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Link } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -36,8 +37,8 @@ function Header() {
         setOpen(!open);
     };
     return (
-        <div>
-            <AppBar position="absolute" open={open}>
+        <>
+            <AppBar open={open}>
                 <Toolbar               >
                     <IconButton
                         edge="start"
@@ -88,11 +89,13 @@ function Header() {
                     </IconButton>
 
                     <IconButton color="inherit">
+
                         Logout
+                        <LogoutIcon />
                     </IconButton>
                 </Toolbar>
             </AppBar>
-        </div>
+        </>
     );
 }
 

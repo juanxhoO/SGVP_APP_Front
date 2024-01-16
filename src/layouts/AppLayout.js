@@ -6,17 +6,14 @@ import Sidebar from "./components/Sidebar";
 
 function AppLayout() {
     return (
-        <div className="App">
+        <>
             <Header />
-
-            <div style={{ display: 'flex' }}>
-
+            <div style={{ minHeight:'100vh', marginTop:'68px',display: 'flex' }}>
                 <Sidebar />
                 <Outlet />
-
             </div>
             <Footer />
-        </div>
+        </>
     )
 }
 export default AppLayout

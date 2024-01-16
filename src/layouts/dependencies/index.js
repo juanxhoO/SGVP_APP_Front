@@ -8,13 +8,13 @@ export default function Dependencies() {
     const Parroquias = ["VILCABAMBA(VICTORIA)", "QUINARA", "MALACATOS(VALLADOLID)", "CHUQUIRIBAMBA", "TAQUIL(MIGUELRIOFRIO", "Loja", "EL TAMBO", "CATAMAYO (LATOMA)", "ZAMBI", "SANPEDRODE LABENDITA", "CHAGUARPAMBA"];
 
     return (
-        <Grid container spacing={2}>
+        <Grid p={4} container spacing={2}>
             <Grid item xs={4}>
 
                 <Paper>
                     <MenuList>
                         {Parroquias.map((parroquia, index) => (
-                            <MenuItem>
+                            <MenuItem sx={{padding:'10px'}}>
                                 <Typography variant="body2" color="text.secondary">
                                     {parroquia}
                                 </Typography>
