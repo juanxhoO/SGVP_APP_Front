@@ -1,22 +1,67 @@
 // Footer.js
 import React from 'react';
-import { Container, Typography, Link } from '@mui/material';
+import { Container, Box, Typography, Link, IconButton } from '@mui/material';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import XIcon from '@mui/icons-material/X';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 const Footer = () => {
+  const facebookUrl = "https://www.facebook.com/policia.ecuador";
+  const instagramUrl = "https://www.instagram.com/policiaecuadoroficial/";
+  const youtubeUrl = "https://www.youtube.com/c/PoliciaNacionalDelEcuador";
+  const twitterUrl = "https://twitter.com/policiaecuador";
+  const ecu911Url = "https://twitter.com/ecu911quito";
 
   return (
-      <Container className='Footer' style={{backgroundColor:'#1976d2'}} maxWidth="full">
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Your footer content goes here.
-        </Typography>
-        <Typography variant="body2" color="textSecondary" align="center">
-          {'© '}
-          <Link color="inherit" href="#">
-            Your Website Name
-          </Link>{' '}
-          {new Date().getFullYear()}
-        </Typography>
-      </Container>
+    <Container className='Footer' style={{ backgroundColor: '#1976d2', alignItems: "center", minHeight: "120px" }} maxWidth="full" >
+      <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+        Policia Nacional del Ecuador
+      </Typography>
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'© '}
+        <Link color="inherit" href="#">
+          SGVP - Loja
+        </Link>{' '}
+        {new Date().getFullYear()}
+      </Typography>
+
+      <Box sx={{ display: "flex" }} alignItems="center">
+        <IconButton
+          component="a"
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram">
+          <InstagramIcon />
+        </IconButton>
+        <IconButton
+          component="a"
+          href={facebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <FacebookIcon />
+        </IconButton>
+        <IconButton
+          component="a"
+          href={twitterUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Twitter">
+          <XIcon />
+        </IconButton>
+        <IconButton
+          component="a"
+          href={youtubeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Youtube">
+          <YouTubeIcon />
+        </IconButton>
+      </Box>
+    </Container>
   );
 };
 

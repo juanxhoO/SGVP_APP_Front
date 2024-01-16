@@ -89,8 +89,6 @@ function Header() {
                     </IconButton>
 
                     <IconButton color="inherit">
-
-                        Logout
                         <LogoutIcon />
                     </IconButton>
                 </Toolbar>
