@@ -36,7 +36,7 @@ export default function DependencyInormation() {
                                     species, ranging across all continents except Antarctica
                                 </Typography>
                             </CardContent>
-                            <CardActions>
+                            <CardActions sx={{ justifyContent: 'center' }}>
                                 <Button component={Link} to="/dependencies/1" variant="contained" size="large">Ver Dependecia</Button>
                             </CardActions>
                         </Card>

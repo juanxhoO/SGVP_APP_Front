@@ -25,7 +25,7 @@ export default function VehicleInormation() {
                         CEO / Co-Founder
                     </Typography>
                     <Box>
-                        <Card >
+                        <Card>
                             <CardMedia
                                 sx={{ height: 140 }}
                                 image="/static/images/cards/contemplative-reptile.jpg"
@@ -40,7 +40,7 @@ export default function VehicleInormation() {
                                     species, ranging across all continents except Antarctica
                                 </Typography>
                             </CardContent>
-                            <CardActions>
+                            <CardActions sx={{justifyContent:'center'}}>
                                 <Button component={Link} to="/vehicles/1" variant="contained" size="large">Detalles Vehiculo</Button>
                             </CardActions>
                         </Card>
@@ -60,7 +60,7 @@ export default function VehicleInormation() {
                                     species, ranging across all continents except Antarctica
                                 </Typography>
                             </CardContent>
-                            <CardActions>
+                            <CardActions sx={{justifyContent:'center'}}> 
                                 <Button  component={Link} to="/orders/create" variant="contained" size="small">Solicitar Mantenimiento</Button>
                                 <Button component={Link} to="/vehicles/1" variant="contained" size="small">historial de Mantenimientos</Button>
                             </CardActions>

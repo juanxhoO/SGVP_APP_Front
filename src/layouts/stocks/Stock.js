@@ -32,7 +32,6 @@ export default function Stock() {
                     <Stack direction="column"
                         sx={{
                             padding: '30px',
-                            marginTop: 8,
                         }} component="form">
                         <Grid container spacing={2}>
                             <Grid item xs={12}>

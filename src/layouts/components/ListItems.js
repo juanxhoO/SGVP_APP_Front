@@ -14,8 +14,19 @@ import BuildIcon from '@mui/icons-material/Build';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import LogoutIcon from '@mui/icons-material/Logout';
 import EmailIcon from '@mui/icons-material/Email';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 export const mainListItems = (
     <React.Fragment>
+
+
+        <ListItemButton component={Link} to="/admin/dashboard">
+            <ListItemIcon>
+                <DashboardIcon />
+            </ListItemIcon>
+            <ListItem>
+                <ListItemText primary="Dashboard"></ListItemText>
+            </ListItem>
+        </ListItemButton>
         <ListItemButton component={Link} to="/profile">
             <ListItemIcon>
                 <ShoppingCartIcon />
@@ -24,12 +35,13 @@ export const mainListItems = (
                 <ListItemText primary="Mi Perfil"></ListItemText>
             </ListItem>
         </ListItemButton>
+
         <ListItemButton component={Link} to="/orders">
             <ListItemIcon>
                 <RoomPreferencesIcon />
             </ListItemIcon>
             <ListItem component={Link} to="/orders">
-                <ListItemText primary="Mantenimientos"/>
+                <ListItemText primary="Mantenimientos" />
             </ListItem>
         </ListItemButton>
         <ListItemButton component={Link} to="/users">
@@ -80,7 +92,7 @@ export const mainListItems = (
                 <ListItemText primary="Circuitos" />
             </ListItem>
         </ListItemButton>
-        <ListItemButton component={Link}>
+        <ListItemButton component={Link} to="/messages">
             <ListItemIcon>
                 <EmailIcon />
             </ListItemIcon>
@@ -96,7 +108,7 @@ export const mainListItems = (
                 <ListItemText primary="Logout" />
             </ListItem>
         </ListItemButton>
-     
+
     </React.Fragment>
 );
 

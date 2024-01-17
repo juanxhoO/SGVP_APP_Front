@@ -13,19 +13,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
@@ -63,10 +50,20 @@ export default function ForgotPassword() {
                             margin="normal"
                             required
                             fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
+                            name="Correo"
+                            label="Correo"
+                            type="email"
                             id="password"
+                            autoComplete="current-password"
+                        />
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="cedula"
+                            label="Numero Cedula"
+                            type="number"
+                            id="cedula"
                             autoComplete="current-password"
                         />
                         <Button
@@ -77,21 +74,8 @@ export default function ForgotPassword() {
                         >
                             Reestablecer Contrasenia
                         </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="/authentication/forgot-password" variant="body2">
-                                    Olvidaste Contrasenia?
-                                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link href="/authentication/register" variant="body2">
-                                    {"No tienes una Cuenta? Registrate"}
-                                </Link>
-                            </Grid>
-                        </Grid>
                     </Box>
                 </Box>
-                <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
         </ThemeProvider>
     );

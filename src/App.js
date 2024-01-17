@@ -31,15 +31,17 @@ import Report from './layouts/reports/Report';
 
 import Stocks from './layouts/stocks';
 import Stock from './layouts/stocks/Stock';
+import Messages from './layouts/messages';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<AppLayout />}>
-          
-          <Route path='/admin' element={<MainDashboard />}>
+
+          <Route path='/admin/dashboard' element={<MainDashboard />}>
           </Route>
+          
           <Route path='profile' element={<Profile />}></Route>
 
           <Route path='/users' element={< Users />}>
@@ -73,6 +75,9 @@ function App() {
           <Route path='/vehicles' element={<Vehicles />}>
           </Route>
           <Route path='/vehicles/:id' element={<Vehicle />}></Route>
+
+          <Route path='/messages' element={<Messages />}></Route>
+
 
           <Route path='/authentication'>
             <Route path='sign-in' element={<SignIn />}></Route>

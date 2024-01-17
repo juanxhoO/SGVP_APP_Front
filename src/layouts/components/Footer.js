@@ -14,19 +14,18 @@ const Footer = () => {
   const ecu911Url = "https://twitter.com/ecu911quito";
 
   return (
-    <Container className='Footer' style={{ backgroundColor: '#1976d2', alignItems: "center", minHeight: "120px" }} maxWidth="full" >
-      <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-        Policia Nacional del Ecuador
-      </Typography>
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'© '}
-        <Link color="inherit" href="#">
-          SGVP - Loja
-        </Link>{' '}
-        {new Date().getFullYear()}
-      </Typography>
-
-      <Box sx={{ display: "flex" }} alignItems="center">
+    <Container className='Footer' style={{display:'flex', backgroundColor: '#1976d2', justifyContent: "space-around", alignItems: "center", minHeight: "120px" }} maxWidth="full" >
+      <Box sx={{ display: "block" }} alignItems="center">
+        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+          Policia Nacional del Ecuador
+        </Typography>
+        <Typography variant="body2" color="textSecondary" align="center">
+          {'© '}
+          <Link color="inherit" href="#">
+            SGVP - Loja
+          </Link>{' '}
+          {new Date().getFullYear()}
+        </Typography>
         <IconButton
           component="a"
           href={instagramUrl}
