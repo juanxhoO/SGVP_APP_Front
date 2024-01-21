@@ -7,8 +7,8 @@ import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardC
 export default function Vehicle() {
 
     return (
-        <Box sx={{p:4}}>
-            <Box sx={{display:"flex", justifyContent:"center"}}>
+        <Box sx={{ p: 4 }}>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
                         sx={{ height: 140 }}
@@ -28,6 +28,7 @@ export default function Vehicle() {
 
             </Box>
 
+            <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Ver historial de Mantenimientos</Button>
 
             <Stack
                 sx={{
@@ -194,13 +195,12 @@ export default function Vehicle() {
                             defaultValue="Hello World"
                         />
                     </Grid>
-
-                    <Stack direction="row" alignItems="center">
-
-                        <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
-                        <Button sx={{ minWidth: '200px' }} color="error" type="submit" variant='contained'>Borrar</Button>
-                    </Stack>
                 </Grid>
+
+                <Box direction="row" alignItems="center">
+                    <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
+                    <Button sx={{ minWidth: '200px' }} color="error" type="submit" variant='contained'>Borrar</Button>
+                </Box>
             </Stack>
         </Box>
 

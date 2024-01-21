@@ -6,6 +6,9 @@ import ReactQuill from 'react-quill';
 import { useState } from 'react';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileCsv } from '@fortawesome/free-solid-svg-icons'
+
 import DropFile from '../components/DropFile';
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -13,39 +16,61 @@ export default function Report() {
     const [value, setValue] = useState('');
 
     return (
-        <Box
-            sx={{
-                mt: 8,
-                display: 'flex',
-                mb: 8
-            }}
-        >
+        <Box>
             <Grid container spacing={2}>
-                <Grid item xs={8}>
+                <Grid item sm={12} md={8}>
                     <Paper elevation={5} sx={{ p: 5 }}>
                         <ReactQuill theme="snow" value={value} onChange={setValue} />
-                        
-                        
-                        <DropFile/>
-                        <Card sx={{ maxWidth: 345 }}>
-                            <CardMedia
-                                component="img"
-                                alt="green iguana"
-                                height="140"
-                                image="/static/images/cards/contemplative-reptile.jpg"
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h6" component="div">
-                                    Lizard
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                        <DropFile />
+                        <Box direction="row">
+                            <Card>
+                                <CardMedia
+                                    component="img"
+                                    alt="green iguana"
+                                    height="140"
+                                    image="/static/images/cards/contemplative-reptile.jpg"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h6" component="div">
+                                        Lizard
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                            <Card >
+                                <CardMedia
+                                    component="img"
+                                    alt="green iguana"
+                                    height="140"
+                                    image="/static/images/cards/contemplative-reptile.jpg"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h6" component="div">
+                                        Lizard
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                            <Card >
+                                <CardMedia
+                                    component="img"
+                                    alt="green iguana"
+                                    height="140"
+                                    image="/static/images/cards/contemplative-reptile.jpg"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h6" component="div">
+                                        Lizard
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Box>
+
                     </Paper>
                 </Grid>
 
-                <Grid item xs={4}>
+                <Grid item sm={12} md={4}>
                     <Paper>
                         <Stack direction="column"
+                            alignItems="center"
                             sx={{
                                 padding: '30px',
                             }} component="form">
@@ -97,31 +122,17 @@ export default function Report() {
                                 </Grid>
 
 
-                                <Grid item xs={12} >
-                                    <Typography sx={{ fontWeight: 'bold' }}>Tipo de Sangre:</Typography>
-                                    <TextField
-                                        fullWidth
-                                        margin="normal"
-                                        required
-                                        name="email"
-                                        autoComplete="email"
-                                        autoFocusrequired
-                                        id="outlined-required"
-                                        label="Required"
-                                        defaultValue="Hello World"
-                                    />
-                                </Grid>
-                                <Button size="large" variant='contained'>Crear Reporte</Button>
+                                {/* <FontAwesomeIcon icon={faFileCsv} /> */}
+                                <Stack direction="row" justifyContent="space-around" >
+                                    <Button size="large" variant='contained'>Editar Reporte</Button>
+                                    <Button size="large" variant='contained' color="error">Borrar Reporte</Button>
+
+                                </Stack>
                             </Grid>
                         </Stack>
                     </Paper>
-
                 </Grid>
-
             </Grid>
-
-
-
         </Box>
     );
 }

@@ -5,7 +5,7 @@ import { Grid, Box, Paper, List, ListItem, ListItemAvatar, Avatar, ListItemText,
 export default function Messages() {
     return (
 
-        <Grid container sx={{ p: 2 }}>
+        <Grid container spacing={2} sx={{ p: 2 }}>
             <Grid item xs={4}>
                 <Paper>
                     <List sx={{ width: '100%', bgcolor: 'background.paper' }}>

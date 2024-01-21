@@ -7,8 +7,7 @@ import { RadarDash } from './RadarDash';
 import { AreaDash } from './AreaDash';
 import { LineDash } from './LineDash';
 import { DonutDash } from './DonutDash';
-import { Grid } from '@mui/material';
-
+import { Grid, Paper } from '@mui/material';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -18,24 +17,48 @@ export default function MainDashboard() {
     <Box
 
     >
+
+
       <Grid container sx={{ display: 'flex', alignItems: 'center', p: 4 }}>
         <Grid item xs={4}>
-          <RadarDash />
+
+          <Paper>
+            <RadarDash />
+
+          </Paper>
         </Grid>
         <Grid item xs={4}>
-          <PieDash />
+
+
+          <Paper>
+            <PieDash />
+
+          </Paper>
         </Grid>
         <Grid item xs={4}>
-          <VehicleDash />
+          <Paper>
+            <VehicleDash />
+
+          </Paper>
         </Grid>
         <Grid item xs={4}>
-          <AreaDash />
+          <Paper>
+            <AreaDash />
+
+          </Paper>
         </Grid>
         <Grid item xs={4}>
-          <LineDash />
+
+          <Paper>
+            <LineDash />
+
+          </Paper>
         </Grid>
         <Grid item xs={4}>
-          <DonutDash />
+          <Paper>
+            <DonutDash />
+
+          </Paper>
         </Grid>
       </Grid>
     </Box>

@@ -22,7 +22,7 @@ export default function CreateReport() {
     const [value, setValue] = useState('');
 
     return (
-        <Grid container>
+        <Grid container spacing={2}>
             <Grid item xs={6}
                 sx={{
                     mt: 4,
@@ -83,22 +83,6 @@ export default function CreateReport() {
                                     defaultValue="Hello World"
                                 />
                             </Grid>
-
-
-                            <Grid item xs={12} >
-                                <Typography sx={{ fontWeight: 'bold' }}>Tipo de Sangre:</Typography>
-                                <TextField
-                                    fullWidth
-                                    margin="normal"
-                                    required
-                                    name="email"
-                                    autoComplete="email"
-                                    autoFocusrequired
-                                    id="outlined-required"
-                                    label="Required"
-                                    defaultValue="Hello World"
-                                />
-                            </Grid>
                         </Grid>
                     </Stack>
 
@@ -107,7 +91,7 @@ export default function CreateReport() {
             <Grid item
                 xs={6}
                 sx={{
-                    mt: 8,
+                    mt: 4,
                     mb: 8
                 }}
             >
@@ -121,23 +105,15 @@ export default function CreateReport() {
                                 'StaticDatePicker',
                             ]}
                         >
-                            <DemoItem label="Desktop variant">
-                                <DesktopDatePicker defaultValue={dayjs('2022-04-17')} />
-                            </DemoItem>
-                            <DemoItem label="Mobile variant">
-                                <MobileDatePicker defaultValue={dayjs('2022-04-17')} />
-                            </DemoItem>
                             <DemoItem label="Responsive variant">
                                 <DatePicker defaultValue={dayjs('2022-04-17')} />
                             </DemoItem>
-                            <DemoItem label="Static variant">
-                                <StaticDatePicker defaultValue={dayjs('2022-04-17')} />
-                            </DemoItem>
                         </DemoContainer>
                     </LocalizationProvider>
-                    <DropFile/>
+                    <DropFile />
+                    <Button variant="contained" size="large">Generar Reporte</Button>
+
                 </Paper>
-                <Button variant="contained" size="large">Generar Reporte</Button>
             </Grid>
 
 

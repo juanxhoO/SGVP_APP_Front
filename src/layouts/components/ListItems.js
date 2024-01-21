@@ -100,6 +100,15 @@ export const mainListItems = (
                 <ListItemText primary="Messages" />
             </ListItem>
         </ListItemButton>
+
+        <ListItemButton component={Link}>
+            <ListItemIcon>
+                <LogoutIcon />
+            </ListItemIcon>
+            <ListItem >
+                <ListItemText primary="Tipos de Mantenimiento" />
+            </ListItem>
+        </ListItemButton>
         <ListItemButton component={Link}>
             <ListItemIcon>
                 <LogoutIcon />
@@ -108,7 +117,6 @@ export const mainListItems = (
                 <ListItemText primary="Logout" />
             </ListItem>
         </ListItemButton>
-
     </React.Fragment>
 );
 

@@ -32,6 +32,7 @@ import Report from './layouts/reports/Report';
 import Stocks from './layouts/stocks';
 import Stock from './layouts/stocks/Stock';
 import Messages from './layouts/messages';
+import Dependency from './layouts/dependencies/Dependency';
 
 function App() {
   return (
@@ -71,6 +72,10 @@ function App() {
           <Route path='/mecanics/:id' element={<Mecanic />}></Route>
 
           <Route path='/dependencies' element={<Dependencies />}>
+          </Route>
+
+
+          <Route path='/dependencies/:id' element={<Dependency />}>
           </Route>
           <Route path='/vehicles' element={<Vehicles />}>
           </Route>
