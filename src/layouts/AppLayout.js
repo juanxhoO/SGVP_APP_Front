@@ -8,7 +8,7 @@ function AppLayout() {
     return (
         <>
             <Header />
-            <div style={{ minHeight:'80vh', marginTop:'68px',display: 'flex' }}>
+            <div style={{ minHeight: '80vh', display: 'flex' }}>
                 <Sidebar />
                 <Outlet />
             </div>

@@ -77,12 +77,6 @@ function ProfileInfoCard({ title, description, info, social, action, shadow }) {
         </Box>
         <Box>
           {renderItems}
-          <Box display="flex" py={1} pr={2}>
-            <Typography variant="button" fontWeight="bold" textTransform="capitalize">
-              social: &nbsp;
-            </Typography>
-            {renderSocial}
-          </Box>
         </Box>
       </Box>
     </Card>

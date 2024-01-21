@@ -1,6 +1,8 @@
 import * as React from 'react';
+import Container from '@mui/material/Container';
+import { Stack, Grid, Typography, TextField, Button, Box, Card, CardMedia, CardContent } from '@mui/material';
 
-import { Grid, Typography, Paper, MenuList, MenuItem, Card, CardContent, CardMedia } from '@mui/material';
+
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function Dependency() {
