@@ -21,25 +21,23 @@ export default function DependencyInormation() {
                         CEO / Co-Founder
                     </Typography>
                     <Box>
-                        <Card>
-                            <CardMedia
-                                sx={{ height: 140 }}
-                                image="/static/images/cards/contemplative-reptile.jpg"
-                                title="green iguana"
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    Mazda x1
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                                    species, ranging across all continents except Antarctica
-                                </Typography>
-                            </CardContent>
-                            <CardActions sx={{ justifyContent: 'center' }}>
-                                <Button component={Link} to="/dependencies/1" variant="contained" size="large">Ver Dependecia</Button>
-                            </CardActions>
-                        </Card>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image="/static/images/cards/contemplative-reptile.jpg"
+                            title="green iguana"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                Mazda x1
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Lizards are a widespread group of squamate reptiles, with over 6,000
+                                species, ranging across all continents except Antarctica
+                            </Typography>
+                        </CardContent>
+                        <CardActions sx={{ justifyContent: 'center' }}>
+                            <Button component={Link} to="/dependencies/1" variant="contained" size="large">Ver Dependecia</Button>
+                        </CardActions>
                     </Box>
                 </Box>
             </Grid>

@@ -11,8 +11,6 @@ const NotFound = () => {
                 Not Found
             </Typography>
 
-
-
         </Container>
     );
 };
