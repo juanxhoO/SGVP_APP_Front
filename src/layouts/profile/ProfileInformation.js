@@ -1,5 +1,4 @@
 // react-routers components
-import { Link } from "react-router-dom";
 
 // prop-types is library for typechecking of props
 import PropTypes from "prop-types";
@@ -7,9 +6,7 @@ import PropTypes from "prop-types";
 // @mui material components
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
-import Tooltip from "@mui/material/Tooltip";
-import Icon from "@mui/material/Icon";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 
 
 function ProfileInfoCard({ title, description, info, social, action, shadow }) {
@@ -42,29 +39,12 @@ function ProfileInfoCard({ title, description, info, social, action, shadow }) {
     </Box>
   ));
 
-  // Render the card social media icons
-  const renderSocial = social.map(({ link, icon, color }) => (
-    <Box
-      key={color}
-      component="a"
-      href={link}
-      target="_blank"
-      rel="noreferrer"
-      pr={1}
-      pl={0.5}
-      lineHeight={1}
-    >
-      {icon}
-    </Box>
-  ));
-
   return (
     <Card sx={{ height: "100%", boxShadow: !shadow && "none" }}>
       <Box display="flex" justifyContent="space-between" alignItems="center" pt={2} px={2}>
         <Typography variant="h6" fontWeight="medium" textTransform="capitalize">
           {title}
         </Typography>
-
       </Box>
       <Box p={2}>
         <Box mb={2} lineHeight={1}>
@@ -78,6 +58,7 @@ function ProfileInfoCard({ title, description, info, social, action, shadow }) {
         <Box>
           {renderItems}
         </Box>
+        <Button variant="contained" size="large">Editar Perfil</Button>
       </Box>
     </Card>
   );

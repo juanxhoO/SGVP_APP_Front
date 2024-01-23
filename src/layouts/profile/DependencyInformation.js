@@ -12,14 +12,10 @@ const defaultTheme = createTheme();
 
 export default function DependencyInormation() {
     return (
-        <Grid sx={{ p: 5 }} container spacing={3} alignItems="center">
-            <Grid item>
+
                 <Box height="100%" mt={0.5} lineHeight={1}>
                     <Typography variant="h5" fontWeight="medium">
-                        Dependency                 </Typography>
-                    <Typography variant="button" color="text" fontWeight="regular">
-                        CEO / Co-Founder
-                    </Typography>
+                        Dependencias                 </Typography>
                     <Box>
                         <CardMedia
                             sx={{ height: 140 }}
@@ -28,7 +24,7 @@ export default function DependencyInormation() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                Mazda x1
+                                Vilcabamba
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
                                 Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -40,7 +36,6 @@ export default function DependencyInormation() {
                         </CardActions>
                     </Box>
                 </Box>
-            </Grid>
-        </Grid>
+        
     );
 }

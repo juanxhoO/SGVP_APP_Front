@@ -1,15 +1,15 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
-import { Stack, Grid, Typography, TextField, Button, Box, Card, CardMedia, CardContent,Paper } from '@mui/material';
+import { Stack, Grid, Typography, TextField, Button, Box, Card, CardMedia, CardContent, Paper } from '@mui/material';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-export default function Dependency() {
-
+export default function CreateDependency() {
     return (
         <Grid p={4} container spacing={2}>
-            <Grid sx={{display:"flex", justifyContent:"center"}}  item xs={12}>
+            <Typography>Crear Dependencia</Typography>
+            <Grid sx={{ display: "flex", justifyContent: "center" }} item xs={12}>
                 <Paper  >
                     <Card sx={{ maxWidth: 345 }}>
                         <CardMedia

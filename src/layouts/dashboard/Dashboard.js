@@ -14,22 +14,9 @@ import { Grid, Paper } from '@mui/material';
 
 export default function MainDashboard() {
   return (
-    <Box
-
-    >
-
-
+    <Box>
       <Grid container sx={{ display: 'flex', alignItems: 'center', p: 4 }}>
         <Grid item xs={4}>
-
-          <Paper>
-            <RadarDash />
-
-          </Paper>
-        </Grid>
-        <Grid item xs={4}>
-
-
           <Paper>
             <PieDash />
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Typography, TextField, Box, Stack, Button, Card, Paper, CardContent, CardActions } from '@mui/material';
+import { Grid, Typography, TextField, Box, Stack, Button, Card, Paper, CardContent, CardActions, MenuItem, FormControl, Select, InputLabel } from '@mui/material';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -14,13 +14,12 @@ export default function CreateOrder() {
             }} component="form">
 
 
-            <Typography>
+            <Typography variant='h2'>
                 Crear Orden de Mantenimiento
             </Typography>
 
 
-            <Stack spacing={2} direction="row">
-
+            <Box  display="flex" direction="row">
                 <Paper>
                     <Card sx={{ minWidth: 275 }}>
                         <CardContent>
@@ -85,41 +84,45 @@ export default function CreateOrder() {
                     </Card>
 
                 </Paper>
-            </Stack>
+            </Box>
 
             <Grid container spacing={2}>
+
                 <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Input2:</Typography>
-                    <TextField
-                        fullWidth
-                        sx={{ minWidth: "400px" }}
-                        margin="normal"
-                        required
-                        name="email"
-                        autoComplete="email"
-                        autoFocusrequired
-                        id="outlined-required"
-                        label="Required"
-                        defaultValue="Hello World"
-                    />
+                    <Typography sx={{ fontWeight: 'bold' }}>Seleccionar Vehiculo</Typography>
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Vehiculo</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value="test"
+                            label="Age"
+                        >
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                    <Typography sx={{ fontWeight: 'bold' }}>Seleccionar Usuario</Typography>
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Usuario</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value="test"
+                            label="Age"
+                        >
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                        </Select>
+                    </FormControl>
                 </Grid>
 
 
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Input2:</Typography>
-                    <TextField
-                        fullWidth
-                        sx={{ minWidth: "400px" }}
-                        margin="normal"
-                        required
-                        name="email"
-                        autoComplete="email"
-                        autoFocusrequired
-                        id="outlined-required"
-                        label="Required"
-                        defaultValue="Hello World"
-                    />
-                </Grid>
 
                 <Grid item xs={12} sm={6}>
                     <Typography sx={{ fontWeight: 'bold' }}>Input2:</Typography>

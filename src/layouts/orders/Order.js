@@ -18,7 +18,6 @@ export default function Order() {
                     <Typography sx={{ fontWeight: 'bold' }}>Input2:</Typography>
                     <TextField
                         fullWidth
-                        sx={{ minWidth: "400px" }}
                         margin="normal"
                         required
                         name="email"
@@ -35,7 +34,6 @@ export default function Order() {
                     <Typography sx={{ fontWeight: 'bold' }}>Input2:</Typography>
                     <TextField
                         fullWidth
-                        sx={{ minWidth: "400px" }}
                         margin="normal"
                         required
                         name="email"

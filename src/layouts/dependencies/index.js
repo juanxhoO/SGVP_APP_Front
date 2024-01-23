@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Grid, Typography, Paper, MenuList, MenuItem, Card, CardContent } from '@mui/material';
 // TODO remove, this demo shouldn't need to reset the theme.
-
+import {Button, Box} from '@mui/material';
 export default function Dependencies() {
 
     const Parroquias = ["VILCABAMBA(VICTORIA)", "QUINARA", "MALACATOS(VALLADOLID)", "CHUQUIRIBAMBA", "TAQUIL(MIGUELRIOFRIO", "Loja", "EL TAMBO", "CATAMAYO (LATOMA)", "ZAMBI", "SANPEDRODE LABENDITA", "CHAGUARPAMBA"];
@@ -14,7 +14,7 @@ export default function Dependencies() {
                 <Paper>
                     <MenuList>
                         {Parroquias.map((parroquia, index) => (
-                            <MenuItem sx={{padding:'10px'}}>
+                            <MenuItem sx={{ padding: '10px' }}>
                                 <Typography variant="body2" color="text.secondary">
                                     {parroquia}
                                 </Typography>
@@ -46,6 +46,9 @@ export default function Dependencies() {
                     </Card>
                 </Paper>
             </Grid>
+            <Box sx={{ justifyContent: "end", display: "flex" }}>
+                <Button size="large" variant="contained">Crear Circuito</Button>
+            </Box>
         </Grid>
 
     );

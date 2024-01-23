@@ -1,21 +1,17 @@
 import { Paper, Box, Container, Grid, Avatar, Typography } from '@mui/material';
 import ProfileInfoCard from './ProfileInformation';
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import VehicleInormation from './VehicleInormation';
 import DependencyInformation from './DependencyInformation';
+import MaintanneanceInfo from './MaintanneanceInfo';
 function Profile() {
     return (
-
         <Container component="main" maxWidth="lg">
             <Box
                 sx={{
-                    mt: 8,
+                    mt: 4,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    mb: 8
                 }}
             >
                 <Paper elevation={5} sx={{ p: 5 }}>
@@ -45,23 +41,6 @@ function Profile() {
                                 email: "alecthompson@mail.com",
                                 location: "USA",
                             }}
-                            social={[
-                                {
-                                    link: "https://www.facebook.com/CreativeTim/",
-                                    icon: <FacebookIcon />,
-                                    color: "facebook",
-                                },
-                                {
-                                    link: "https://twitter.com/creativetim",
-                                    icon: <TwitterIcon />,
-                                    color: "twitter",
-                                },
-                                {
-                                    link: "https://www.instagram.com/creativetimofficial/",
-                                    icon: <InstagramIcon />,
-                                    color: "instagram",
-                                },
-                            ]}
                             action={{ route: "", tooltip: "Edit Profile" }}
                             shadow={false}
                         />
@@ -69,30 +48,41 @@ function Profile() {
                 </Paper>
 
                 <Grid container spacing={2}>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} md={6}>
                         <Paper elevation={5} sx={{
                             mt: 8,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
-                            mb: 8
                         }}>
 
                             <VehicleInormation />
                         </Paper>
                     </Grid>
 
-                    <Grid item xs={6}>
-
+                    <Grid item xs={12} md={6}>
                         <Paper elevation={5} sx={{
                             mt: 8,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
-                            mb: 8
                         }}>
                             <Grid>
                                 <DependencyInformation />
+                            </Grid>
+                        </Paper>
+                    </Grid>
+                    <Grid item xs={12}>
+
+                        <Paper elevation={5} sx={{
+                            mt: 4,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            mb: 4
+                        }}>
+                            <Grid>
+                                <MaintanneanceInfo />
                             </Grid>
                         </Paper>
                     </Grid>
@@ -101,5 +91,4 @@ function Profile() {
         </Container>
     );
 }
-
 export default Profile;

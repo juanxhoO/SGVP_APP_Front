@@ -4,12 +4,12 @@ import { Grid, Box, Paper, Card, CardMedia, Typography, CardActions, CardContent
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-export default function Stock() {
+export default function CreateStock() {
 
     return (
-
         <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
+
                 <Paper>
                     <Card sx={{ maxWidth: 345 }}>
                         <CardMedia
@@ -26,7 +26,7 @@ export default function Stock() {
                 </Paper>
             </Grid>
 
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={6}>
                 <Paper>
                     <Stack direction="column"
                         sx={{
@@ -138,9 +138,7 @@ export default function Stock() {
                             </Grid>
                         </Grid>
 
-                        <Button variant="contained" size='large' >Editar</Button>
-                        <Button color="error" variant="contained" size='large' >Borrar</Button>
-
+                        <Button variant="contained" size='large' >Crear</Button>
                     </Stack>
                 </Paper>
             </Grid>

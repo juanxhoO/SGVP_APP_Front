@@ -5,7 +5,7 @@ import { Stack, Grid, Typography, TextField, Button, Box, Card, CardMedia, CardC
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-export default function Mecanic() {
+export default function CreateMecanic() {
 
     return (
 
@@ -59,7 +59,7 @@ export default function Mecanic() {
                 }} component="form">
 
                 <Grid container spacing={2}>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Nombre</Typography>
                         <TextField
                             fullWidth
@@ -75,7 +75,7 @@ export default function Mecanic() {
                     </Grid>
 
 
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Direccion</Typography>
                         <TextField
                             fullWidth
@@ -91,7 +91,7 @@ export default function Mecanic() {
                     </Grid>
 
 
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>correo</Typography>
                         <TextField
                             fullWidth
@@ -107,7 +107,7 @@ export default function Mecanic() {
                     </Grid>
 
 
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Telefono</Typography>
                         <TextField
                             fullWidth
@@ -124,7 +124,7 @@ export default function Mecanic() {
 
 
 
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Ciudad</Typography>
                         <TextField
                             fullWidth
@@ -139,8 +139,7 @@ export default function Mecanic() {
                         />
                     </Grid>
                 </Grid>
-                <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
-                <Button sx={{ minWidth: '200px' }} color="error" type="submit" variant='contained'>Borrar</Button>
+                <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Crear Mecanica</Button>
 
             </Stack>
 

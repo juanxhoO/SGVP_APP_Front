@@ -19,8 +19,14 @@ import CustomizedTables from '../components/DataTable/Table';
 export default function Orders() {
 
     return (
-            <Container component="main" >
-                <CustomizedTables></CustomizedTables>
-            </Container>
+        <Container component="main" >
+            <CustomizedTables></CustomizedTables>
+            <Box sx={{ justifyContent: "end", display: "flex" }}>
+                <Button size="large" variant="contained">Crear Orden de Mantenimiento</Button>
+            </Box>
+        </Container>
+
+
+
     );
 }

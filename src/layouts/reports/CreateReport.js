@@ -23,7 +23,8 @@ export default function CreateReport() {
 
     return (
         <Grid container spacing={2}>
-            <Grid item xs={6}
+            <Grid item xs={12}
+            md={6}
                 sx={{
                     mt: 4,
                     mb: 8
@@ -41,7 +42,6 @@ export default function CreateReport() {
                                 <Typography sx={{ fontWeight: 'bold' }}>Apellidos</Typography>
                                 <TextField
                                     fullWidth
-                                    sx={{ minWidth: "400px" }}
                                     margin="normal"
                                     required
                                     name="email"
@@ -69,7 +69,7 @@ export default function CreateReport() {
                             </Grid>
 
 
-                            <Grid item xs={12}>
+                            <Grid item xs={12} md={6}>
                                 <Typography sx={{ fontWeight: 'bold' }}>Telefono</Typography>
                                 <TextField
                                     fullWidth
@@ -89,7 +89,8 @@ export default function CreateReport() {
                 </Paper>
             </Grid>
             <Grid item
-                xs={6}
+                xs={12}
+                md={6}
                 sx={{
                     mt: 4,
                     mb: 8

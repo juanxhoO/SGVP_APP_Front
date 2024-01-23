@@ -5,7 +5,7 @@ import { Paper, List, ListItem, Avatar, Divider, Typography, ListItemText, ListI
 function Notification() {
 
     return (
-        <Paper sx={{ position: 'absolute',inset:'0px 0px auto auto',margin:'0',transform:'translate(-70px, 65px)' }}>
+        <Paper sx={{ position: 'absolute', inset: '0px 0px auto auto', margin: '0', transform: 'translate(-70px, 65px)' }}>
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>

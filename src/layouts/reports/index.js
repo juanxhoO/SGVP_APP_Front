@@ -22,7 +22,9 @@ export default function Reports() {
     return (
         <Container component="main">
             <CustomizedTables></CustomizedTables>
-
+            <Box sx={{justifyContent:"end", display:"flex"}}>
+                <Button size="large" variant="contained">Crear Reporte</Button>
+            </Box>
         </Container>
     );
 }

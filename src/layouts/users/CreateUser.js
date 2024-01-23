@@ -3,17 +3,20 @@ import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardC
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-export default function User() {
+export default function CreateUser() {
     return (
         <Stack
             sx={{
                 padding: '30px',
                 alignItems: 'center',
                 marginTop: 8,
+                display: 'flex',
             }} component="form">
+
+
             <Box>
 
-                <Typography variant='h2'>User 1</Typography>
+                <Typography>User 1</Typography>
                 <Card>
                     <CardMedia
                         component="img"
@@ -29,6 +32,8 @@ export default function User() {
                 </Card>
             </Box>
             <Grid container spacing={2}>
+
+
                 <Grid item xs={12} sm={6}>
 
                     <Typography sx={{ fontWeight: 'bold' }}>Nombres</Typography>
@@ -153,8 +158,7 @@ export default function User() {
                     />
                 </Grid>
             </Grid>
-            <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
-            <Button sx={{ minWidth: '200px' }} color="error" type="submit" variant='contained'>Borrar</Button>
+            <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Crear</Button>
 
         </Stack>
 

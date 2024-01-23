@@ -15,6 +15,8 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import LogoutIcon from '@mui/icons-material/Logout';
 import EmailIcon from '@mui/icons-material/Email';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import SettingsInputCompositeIcon from '@mui/icons-material/SettingsInputComposite';
 export const mainListItems = (
     <React.Fragment>
 
@@ -101,12 +103,21 @@ export const mainListItems = (
             </ListItem>
         </ListItemButton>
 
-        <ListItemButton component={Link}>
+        <ListItemButton component={Link} to="/ordertypes">
             <ListItemIcon>
-                <LogoutIcon />
+                <SettingsInputCompositeIcon />
             </ListItemIcon>
             <ListItem >
                 <ListItemText primary="Tipos de Mantenimiento" />
+            </ListItem>
+        </ListItemButton>
+
+        <ListItemButton component={Link} to="/admins">
+            <ListItemIcon>
+                <AdminPanelSettingsIcon />
+            </ListItemIcon>
+            <ListItem >
+                <ListItemText primary="Administradores" />
             </ListItem>
         </ListItemButton>
         <ListItemButton component={Link}>

@@ -4,7 +4,7 @@ import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardC
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-export default function Vehicle() {
+export default function CreateVehicle() {
 
     return (
         <Box sx={{ p: 4 }}>
@@ -28,7 +28,6 @@ export default function Vehicle() {
 
             </Box>
 
-            <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Ver historial de Mantenimientos</Button>
 
             <Stack
                 sx={{
@@ -39,7 +38,7 @@ export default function Vehicle() {
                 }} component="form">
 
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Tipo de Vehiculo</Typography>
                         <TextField
                             fullWidth
@@ -56,7 +55,7 @@ export default function Vehicle() {
                     </Grid>
 
 
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Placa</Typography>
                         <TextField
                             fullWidth
@@ -71,7 +70,7 @@ export default function Vehicle() {
                         />
                     </Grid>
 
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Chasis</Typography>
                         <TextField
                             fullWidth
@@ -86,7 +85,7 @@ export default function Vehicle() {
                         />
                     </Grid>
 
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Marca</Typography>
                         <TextField
                             fullWidth
@@ -102,7 +101,7 @@ export default function Vehicle() {
                     </Grid>
 
 
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Modelo</Typography>
                         <TextField
                             fullWidth
@@ -118,7 +117,7 @@ export default function Vehicle() {
                     </Grid>
 
 
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Motor</Typography>
                         <TextField
                             fullWidth
@@ -133,7 +132,7 @@ export default function Vehicle() {
                         />
                     </Grid>
 
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Kilometraje</Typography>
                         <TextField
                             fullWidth
@@ -149,7 +148,7 @@ export default function Vehicle() {
                     </Grid>
 
 
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Cilindraje</Typography>
                         <TextField
                             fullWidth
@@ -164,7 +163,7 @@ export default function Vehicle() {
                         />
                     </Grid>
 
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Capacidad de Carga</Typography>
                         <TextField
                             fullWidth
@@ -179,7 +178,7 @@ export default function Vehicle() {
                         />
                     </Grid>
 
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Capacidad de Pasajeros</Typography>
                         <TextField
                             fullWidth
@@ -196,8 +195,7 @@ export default function Vehicle() {
                 </Grid>
 
                 <Box direction="row" alignItems="center">
-                    <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
-                    <Button sx={{ minWidth: '200px' }} color="error" type="submit" variant='contained'>Borrar</Button>
+                    <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Crear Vehiculo</Button>
                 </Box>
             </Stack>
         </Box>
