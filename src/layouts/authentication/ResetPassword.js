@@ -48,7 +48,7 @@ export default function ResetPassword() {
               required
               fullWidth
               id="email"
-              label="Nueva COntrasenia"
+              label="Nueva Contrasenia"
               name="email"
               autoComplete="email"
               autoFocus

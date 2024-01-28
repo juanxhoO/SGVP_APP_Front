@@ -4,6 +4,23 @@ import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardC
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function User() {
+
+    const user = {
+        "email": "example@email.com",
+        "name": "John",
+        "lastname": "Doe",
+        "phone": "1234567890",
+        "idCard": "AB123456",
+        "password": "securePassword",
+        "id_card": "987654321",
+        "birthday": "1990-01-01T00:00:00Z",
+        "bloodType": "O+",
+        "vehicle": [],
+        "role": "USER",
+        "isEmailVerified": false
+      }
+       
+
     return (
         <Stack
             sx={{

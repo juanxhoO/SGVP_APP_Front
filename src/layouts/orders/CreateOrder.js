@@ -5,21 +5,17 @@ import { Grid, Typography, TextField, Box, Stack, Button, Card, Paper, CardConte
 
 export default function CreateOrder() {
     return (
-        <Stack
+        <Box
             sx={{
                 padding: '30px',
                 alignItems: 'center',
                 marginTop: 8,
-                display: 'flex',
-            }} component="form">
-
+            }}>
 
             <Typography variant='h2'>
                 Crear Orden de Mantenimiento
             </Typography>
-
-
-            <Box  display="flex" direction="row">
+            <Box display="flex" direction="row">
                 <Paper>
                     <Card sx={{ minWidth: 275 }}>
                         <CardContent>
@@ -155,6 +151,6 @@ export default function CreateOrder() {
                 </Grid>
             </Grid>
             <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Generar Orden de Mantenimiento</Button>
-        </Stack>
+        </Box>
     );
 }

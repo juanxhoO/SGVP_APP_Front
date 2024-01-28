@@ -1,13 +1,27 @@
 import * as React from 'react';
 import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardContent } from '@mui/material';
-
-
+import { Link } from 'react-router-dom';
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function Vehicle() {
+    const vehicle = {
+        "id": "1",
+        "image": "",
+        "name": "Car123",
+        "chasis": "ABC123XYZ456",
+        "model": "Sportage",
+        "plate": "ABC-123",
+        'brand': 'Kia',
+        "engine_cc": 2000,
+        "engine_type": "Gasolina",
+        "chargeCapacity": 50,
+        "occupants": 5,
+        "mileage": 50000,
+        "type": "Sedan"
+    }
 
     return (
-        <Box sx={{ p: 4 }}>
+        <Box sx={{ p: 2 }}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
@@ -17,18 +31,14 @@ export default function Vehicle() {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Lizard
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
+                            {vehicle.name}
                         </Typography>
                     </CardContent>
                 </Card>
 
             </Box>
 
-            <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Ver historial de Mantenimientos</Button>
+            <Button sx={{ minWidth: '200px' }} type="submit" component={Link} to='/vehicles/1/history/' variant='contained'>Ver historial de Mantenimientos</Button>
 
             <Stack
                 sx={{
@@ -45,13 +55,12 @@ export default function Vehicle() {
                             fullWidth
                             margin="normal"
                             required
-                            disabled
                             name="email"
                             autoComplete="email"
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            value={vehicle.type}
                         />
                     </Grid>
 
@@ -67,7 +76,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            value={vehicle.plate}
                         />
                     </Grid>
 
@@ -82,7 +91,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            value={vehicle.chasis}
                         />
                     </Grid>
 
@@ -97,7 +106,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            value={vehicle.brand}
                         />
                     </Grid>
 
@@ -113,7 +122,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            value={vehicle.model}
                         />
                     </Grid>
 
@@ -129,7 +138,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            value={vehicle.engine_type}
                         />
                     </Grid>
 
@@ -144,7 +153,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            value={vehicle.mileage}
                         />
                     </Grid>
 
@@ -160,7 +169,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            value={vehicle.engine_cc}
                         />
                     </Grid>
 
@@ -175,7 +184,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            value={vehicle.chargeCapacity}
                         />
                     </Grid>
 
@@ -190,7 +199,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            value={vehicle.occupants}
                         />
                     </Grid>
                 </Grid>
@@ -201,6 +210,5 @@ export default function Vehicle() {
                 </Box>
             </Stack>
         </Box>
-
     );
 }

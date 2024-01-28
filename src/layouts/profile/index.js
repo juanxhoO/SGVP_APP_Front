@@ -3,7 +3,20 @@ import ProfileInfoCard from './ProfileInformation';
 import VehicleInormation from './VehicleInormation';
 import DependencyInformation from './DependencyInformation';
 import MaintanneanceInfo from './MaintanneanceInfo';
+import useDataFetcher from '../../hooks/useDataFetcher';
+
 function Profile() {
+
+    //const userInfo = useDataFetcher()    
+
+
+
+    const userInfo = [{}]
+
+
+    
+
+
     return (
         <Container component="main" maxWidth="lg">
             <Box

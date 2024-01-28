@@ -2,7 +2,6 @@ import * as React from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import { Link } from 'react-router-dom';
 import { ListItem } from '@mui/material';
@@ -17,10 +16,9 @@ import EmailIcon from '@mui/icons-material/Email';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import SettingsInputCompositeIcon from '@mui/icons-material/SettingsInputComposite';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 export const mainListItems = (
     <React.Fragment>
-
-
         <ListItemButton component={Link} to="/admin/dashboard">
             <ListItemIcon>
                 <DashboardIcon />
@@ -31,7 +29,7 @@ export const mainListItems = (
         </ListItemButton>
         <ListItemButton component={Link} to="/profile">
             <ListItemIcon>
-                <ShoppingCartIcon />
+                <AccountBoxIcon />
             </ListItemIcon>
             <ListItem>
                 <ListItemText primary="Mi Perfil"></ListItemText>
