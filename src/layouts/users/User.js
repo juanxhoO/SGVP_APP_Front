@@ -17,9 +17,9 @@ export default function User() {
         "bloodType": "O+",
         "vehicle": [],
         "role": "USER",
+        "city": "Quito",
         "isEmailVerified": false
-      }
-       
+    }
 
     return (
         <Stack
@@ -29,8 +29,6 @@ export default function User() {
                 marginTop: 8,
             }} component="form">
             <Box>
-
-                <Typography variant='h2'>User 1</Typography>
                 <Card>
                     <CardMedia
                         component="img"
@@ -40,14 +38,13 @@ export default function User() {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h6" component="div">
-                            Lizard
+                            {user.name}
                         </Typography>
                     </CardContent>
                 </Card>
             </Box>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
-
                     <Typography sx={{ fontWeight: 'bold' }}>Nombres</Typography>
                     <TextField
                         fullWidth
@@ -58,10 +55,9 @@ export default function User() {
                         autoFocusrequired
                         id="outlined-required"
                         label="Required"
-                        defaultValue="Hello World"
+                        value={user.name}
                     />
                 </Grid>
-
 
                 <Grid item xs={12} sm={6}>
                     <Typography sx={{ fontWeight: 'bold' }}>Apellidos</Typography>
@@ -74,7 +70,7 @@ export default function User() {
                         autoFocusrequired
                         id="outlined-required"
                         label="Required"
-                        defaultValue="Hello World"
+                        value={user.lastname}
                     />
                 </Grid>
 
@@ -89,7 +85,7 @@ export default function User() {
                         autoFocusrequired
                         id="outlined-required"
                         label="Required"
-                        defaultValue="Hello World"
+                        value={user.id_card}
                     />
                 </Grid>
 
@@ -104,10 +100,9 @@ export default function User() {
                         autoFocusrequired
                         id="outlined-required"
                         label="Required"
-                        defaultValue="Hello World"
+                        value={user.email}
                     />
                 </Grid>
-
 
                 <Grid item xs={12} sm={6}>
                     <Typography sx={{ fontWeight: 'bold' }}>Telefono</Typography>
@@ -120,10 +115,9 @@ export default function User() {
                         autoFocusrequired
                         id="outlined-required"
                         label="Required"
-                        defaultValue="Hello World"
+                        value={user.phone}
                     />
                 </Grid>
-
 
                 <Grid item xs={12} sm={6}>
                     <Typography sx={{ fontWeight: 'bold' }}>Tipo de Sangre:</Typography>
@@ -136,7 +130,7 @@ export default function User() {
                         autoFocusrequired
                         id="outlined-required"
                         label="Required"
-                        defaultValue="Hello World"
+                        value={user.bloodType}
                     />
                 </Grid>
 
@@ -151,7 +145,7 @@ export default function User() {
                         autoFocusrequired
                         id="outlined-required"
                         label="Required"
-                        defaultValue="Hello World"
+                        value={user.birthday}
                     />
                 </Grid>
 
@@ -166,15 +160,15 @@ export default function User() {
                         autoFocusrequired
                         id="outlined-required"
                         label="Required"
-                        defaultValue="Hello World"
+                        value={user.city}
                     />
                 </Grid>
             </Grid>
-            <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
-            <Button sx={{ minWidth: '200px' }} color="error" type="submit" variant='contained'>Borrar</Button>
 
+            <Box>
+                <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
+                <Button sx={{ minWidth: '200px' }} color="error" type="submit" variant='contained'>Borrar</Button>
+            </Box>
         </Stack>
-
-
     );
 }

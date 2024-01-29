@@ -8,8 +8,6 @@ import AppLayout from './layouts/AppLayout';
 import Profile from './layouts/profile';
 import MainDashboard from './layouts/dashboard/Dashboard';
 
-
-
 import Users from './layouts/users';
 import User from './layouts/users/User';
 import CreateUser from './layouts/users/CreateUser';
@@ -46,9 +44,6 @@ function App() {
     <div className="App">
       <Routes>
         {/* Admin */}
-
-
-
         {/* Users */}
 
         <Route path='/' element={<AppLayout />}>

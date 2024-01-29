@@ -6,8 +6,19 @@ import { Grid, Box, Paper, Card, CardMedia, Typography, CardActions, CardContent
 
 export default function Stock() {
 
-    return (
+    const stock = {
+        "id": "d3a4c1e9-5a2b-4c8f-bb6d-92a3e8c7f1a1",
+        "name": "Juego de Pastillas de Freno",
+        "image": "imagen_pastillas_freno.jpg",
+        "sku": "BP-12345",
+        "stock": 50,
+        "price": 29.99,
+        "condition": "Nuevo",
+        "brand": "Piezas ABC",
+        "model": "XYZ-200"
+    }
 
+    return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
                 <Paper>
@@ -19,7 +30,7 @@ export default function Stock() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                Lizard
+                                {stock.name}
                             </Typography>
                         </CardContent>
                     </Card>
@@ -33,7 +44,7 @@ export default function Stock() {
                             padding: '30px',
                         }} component="form">
                         <Grid container spacing={2}>
-                            <Grid item xs={12}>
+                            <Grid item xs={12} md={6}>
                                 <Typography sx={{ fontWeight: 'bold' }}>SKU</Typography>
                                 <TextField
                                     fullWidth
@@ -44,11 +55,11 @@ export default function Stock() {
                                     autoFocusrequired
                                     id="outlined-required"
                                     label="Required"
-                                    defaultValue="Hello World"
+                                    value={stock.sku}
                                 />
                             </Grid>
 
-                            <Grid item xs={12}>
+                            <Grid item xs={12} md={6}>
                                 <Typography sx={{ fontWeight: 'bold' }}>Tipo de Repuesto:</Typography>
                                 <TextField
                                     fullWidth
@@ -59,12 +70,12 @@ export default function Stock() {
                                     autoFocusrequired
                                     id="outlined-required"
                                     label="Required"
-                                    defaultValue="Hello World"
+                                    value={stock.name}
                                 />
                             </Grid>
 
 
-                            <Grid item xs={12}>
+                            <Grid item xs={12} md={6}>
                                 <Typography sx={{ fontWeight: 'bold' }}>Cantidad en Stock:</Typography>
                                 <TextField
                                     fullWidth
@@ -75,11 +86,11 @@ export default function Stock() {
                                     autoFocusrequired
                                     id="outlined-required"
                                     label="Required"
-                                    defaultValue="Hello World"
+                                    value={stock.stock}
                                 />
                             </Grid>
 
-                            <Grid item xs={12} >
+                            <Grid item xs={12} md={6}>
                                 <Typography sx={{ fontWeight: 'bold' }}>Marca del Repuesto:</Typography>
                                 <TextField
                                     fullWidth
@@ -90,11 +101,11 @@ export default function Stock() {
                                     autoFocusrequired
                                     id="outlined-required"
                                     label="Required"
-                                    defaultValue="Hello World"
+                                    value={stock.brand}
                                 />
                             </Grid>
 
-                            <Grid item xs={12} >
+                            <Grid item xs={12} md={6} >
                                 <Typography sx={{ fontWeight: 'bold' }}>Modelo del Vehículo:</Typography>
                                 <TextField
                                     fullWidth
@@ -105,10 +116,10 @@ export default function Stock() {
                                     autoFocusrequired
                                     id="outlined-required"
                                     label="Required"
-                                    defaultValue="Hello World"
+                                    value={stock.model}
                                 />
                             </Grid>
-                            <Grid item xs={12} >
+                            <Grid item xs={12} md={6} >
                                 <Typography sx={{ fontWeight: 'bold' }}>Precio</Typography>
                                 <TextField
                                     fullWidth
@@ -119,10 +130,10 @@ export default function Stock() {
                                     autoFocusrequired
                                     id="outlined-required"
                                     label="Required"
-                                    defaultValue="Hello World"
+                                    value={stock.price}
                                 />
                             </Grid>
-                            <Grid item xs={12} >
+                            <Grid item xs={12} md={6}>
                                 <Typography sx={{ fontWeight: 'bold' }}>Condición del Repuesto:</Typography>
                                 <TextField
                                     fullWidth
@@ -133,14 +144,14 @@ export default function Stock() {
                                     autoFocusrequired
                                     id="outlined-required"
                                     label="Required"
-                                    defaultValue="Hello World"
+                                    value={stock.condition}
                                 />
                             </Grid>
                         </Grid>
-
-                        <Button variant="contained" size='large' >Editar</Button>
-                        <Button color="error" variant="contained" size='large' >Borrar</Button>
-
+                        <Stack direction="row" justifyContent="space-around" >
+                            <Button size="large" variant='contained'>Editar Repuesto</Button>
+                            <Button size="large" variant='contained' color="error">Borrar Repuesto</Button>
+                        </Stack>
                     </Stack>
                 </Paper>
             </Grid>

@@ -1,7 +1,5 @@
 import * as React from 'react';
-
-import Container from '@mui/material/Container';
-import { Paper, Grid, Typography, Stack, TextField, Button } from '@mui/material';
+import { Paper, Grid, Typography, Stack, TextField, Button, Card, CardContent } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useState } from 'react';
@@ -11,9 +9,6 @@ import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import DropFile from '../components/DropFile';
 
 
@@ -22,15 +17,23 @@ export default function CreateReport() {
     const [value, setValue] = useState('');
 
     return (
+
         <Grid container spacing={2}>
+
+
             <Grid item xs={12}
-            md={6}
+                md={6}
                 sx={{
                     mt: 4,
                     mb: 8
                 }}
             >
                 <Paper elevation={5} sx={{ p: 5 }}>
+
+                    <Typography variant='h4'>
+                        Crear Reporte
+                    </Typography>
+
                     <ReactQuill theme="snow" value={value} onChange={setValue} />
                     <Stack direction="column"
                         sx={{
@@ -100,25 +103,27 @@ export default function CreateReport() {
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DemoContainer
                             components={[
-                                'DatePicker',
-                                'MobileDatePicker',
-                                'DesktopDatePicker',
-                                'StaticDatePicker',
+                                'DatePicker'
                             ]}
                         >
-                            <DemoItem label="Responsive variant">
+                            <DemoItem label="Fecha de Incidencia">
                                 <DatePicker defaultValue={dayjs('2022-04-17')} />
                             </DemoItem>
                         </DemoContainer>
                     </LocalizationProvider>
-                    <DropFile />
-                    <Button variant="contained" size="large">Generar Reporte</Button>
 
+                    <Card>
+                        <CardContent>
+                            <Typography gutterBottom variant="h6" component="div">
+                                Adjuntar Archivos
+                            </Typography>
+                            <DropFile />
+
+                        </CardContent>
+                    </Card>
+                    <Button variant="contained" size="large">Generar Reporte</Button>
                 </Paper>
             </Grid>
-
-
         </Grid>
-
     );
 }

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Container from '@mui/material/Container';
 import { Stack, Grid, Typography, TextField, Button, Box, Card, CardMedia, CardContent } from '@mui/material';
 
 
@@ -8,7 +7,6 @@ import { Stack, Grid, Typography, TextField, Button, Box, Card, CardMedia, CardC
 export default function CreateMecanic() {
 
     return (
-
 
         <Box>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -21,10 +19,6 @@ export default function CreateMecanic() {
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             Imagen
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
                         </Typography>
                     </CardContent>
                 </Card>
@@ -39,16 +33,9 @@ export default function CreateMecanic() {
                         <Typography gutterBottom variant="h5" component="div">
                             Mapa
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
-                        </Typography>
                     </CardContent>
                 </Card>
-
             </Box>
-
-
 
             <Stack
                 sx={{
