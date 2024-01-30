@@ -16,26 +16,26 @@ const defaultTheme = createTheme();
 
 export default function MaintanneanceInfo() {
     return (
-  
-                <Box height="100%" mt={0.5} lineHeight={1}>
-                    <Box>
-                        <Card >
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    Mantenimientos
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                                    species, ranging across all continents except Antarctica
-                                </Typography>
-                            </CardContent>
-                            <CardActions sx={{ justifyContent: 'center' }}>
-                                <Button component={Link} to="/orders/create" variant="contained" size="large">Solicitar Mantenimiento</Button>
-                                <Button component={Link} to="/vehicles/1" variant="contained" size="large">historial de Mantenimientos</Button>
-                            </CardActions>
-                        </Card>
-                    </Box>
-                </Box>
-         
+
+        <Box  mt={0.5} lineHeight={1}>
+            <Box>
+                <Card >
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            Mantenimientos
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            Lizards are a widespread group of squamate reptiles, with over 6,000
+                            species, ranging across all continents except Antarctica
+                        </Typography>
+                    </CardContent>
+                    <CardActions sx={{ justifyContent: 'center' }}>
+                        <Button component={Link} to="/orders/create" variant="contained" size="large">Solicitar Mantenimiento</Button>
+                        <Button component={Link} to="/vehicles/1" variant="contained" size="large">historial de Mantenimientos</Button>
+                    </CardActions>
+                </Card>
+            </Box>
+        </Box>
+
     );
 }

@@ -1,21 +1,42 @@
 import * as React from 'react';
-import { Grid, Typography, TextField, Box, Stack, Button, Card, Paper, CardContent, CardActions, MenuItem, FormControl, Select, InputLabel } from '@mui/material';
+import { Grid, Typography, TextField, List, Box, Stack, Button, Card, Paper, CardContent, CardActions, MenuItem, FormControl, Select, InputLabel, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import dayjs from 'dayjs';
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function CreateOrder() {
+
+    const [value, setValue] = React.useState(dayjs('2022-04-17'));
+    const orderHours = [
+        { "hour": "07:00", "available": true },
+        { "hour": "08:00", "available": true },
+        { "hour": "09:00", "available": true },
+        { "hour": "10:00", "available": true },
+        { "hour": "11:00", "available": true },
+        { "hour": "12:00", "available": true },
+        { "hour": "13:00", "available": true },
+        { "hour": "14:00", "available": true },
+        { "hour": "15:00", "available": true },
+        { "hour": "16:00", "available": true },
+        { "hour": "17:00", "available": true }
+    ]
+
     return (
-        <Box
+        <Grid
+            container
             sx={{
-                padding: '30px',
+                p: 4,
                 alignItems: 'center',
-                marginTop: 8,
             }}>
 
-            <Typography variant='h2'>
+            <Typography variant='h4'>
                 Crear Orden de Mantenimiento
             </Typography>
-            <Box display="flex" direction="row">
+            <Box display="flex">
                 <Paper>
                     <Card sx={{ minWidth: 275 }}>
                         <CardContent>
@@ -83,8 +104,7 @@ export default function CreateOrder() {
             </Box>
 
             <Grid container spacing={2}>
-
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} md={6}>
                     <Typography sx={{ fontWeight: 'bold' }}>Seleccionar Vehiculo</Typography>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Vehiculo</InputLabel>
@@ -94,14 +114,13 @@ export default function CreateOrder() {
                             value="test"
                             label="Age"
                         >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+                            <MenuItem value={10}>Kia Sportage 2004</MenuItem>
+                            <MenuItem value={30}>Kia Rio 2018</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
 
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} md={6}>
                     <Typography sx={{ fontWeight: 'bold' }}>Seleccionar Usuario</Typography>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Usuario</InputLabel>
@@ -111,46 +130,37 @@ export default function CreateOrder() {
                             value="test"
                             label="Age"
                         >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+                            <MenuItem value={10}>Usuario1</MenuItem>
+                            <MenuItem value={20}>Usuario2</MenuItem>
+                            <MenuItem value={30}>Usuario3</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
 
-
-
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Input2:</Typography>
-                    <TextField
-                        fullWidth
-                        margin="normal"
-                        required
-                        name="email"
-                        autoComplete="email"
-                        autoFocusrequired
-                        id="outlined-required"
-                        label="Required"
-                        defaultValue="Hello World"
-                    />
+                <Grid item xs={12} md={6}>
+                    <List>
+                        {orderHours.map(({ hour, available }) => (
+                            <ListItem>
+                                <ListItemButton>
+                                    <ListItemText>          {hour}: {available ? 'Available' : 'Not Available'}
+                                    </ListItemText>
+                                </ListItemButton>
+                            </ListItem>
+                        ))}
+                    </List>
                 </Grid>
 
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Input2:</Typography>
-                    <TextField
-                        fullWidth
-                        margin="normal"
-                        required
-                        name="email"
-                        autoComplete="email"
-                        autoFocusrequired
-                        id="outlined-required"
-                        label="Required"
-                        defaultValue="Hello World"
-                    />
+                <Grid item xs={12} md={6}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={['DateCalendar', 'DateCalendar']}>
+                            <DemoItem label="Controlled calendar">
+                                <DateCalendar fullWidth value={value} onChange={(newValue) => setValue(newValue)} />
+                            </DemoItem>
+                        </DemoContainer>
+                    </LocalizationProvider>
                 </Grid>
+                <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Generar Orden de Mantenimiento</Button>
             </Grid>
-            <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Generar Orden de Mantenimiento</Button>
-        </Box>
+        </Grid>
     );
 }

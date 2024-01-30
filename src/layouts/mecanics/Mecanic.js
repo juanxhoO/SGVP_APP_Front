@@ -8,10 +8,8 @@ import { Stack, Grid, Typography, TextField, Button, Box, Card, CardMedia, CardC
 export default function Mecanic() {
 
     return (
-
-
         <Box>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Stack spacing={3} direction="row" useFlexGap flexWrap="wrap" justifyContent="space-around">
                 <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
                         sx={{ height: 140 }}
@@ -46,7 +44,7 @@ export default function Mecanic() {
                     </CardContent>
                 </Card>
 
-            </Box>
+            </Stack>
 
 
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardContent } from '@mui/material';
-
+import DropFile from '../components/DropFile';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -19,10 +19,7 @@ export default function CreateVehicle() {
                         <Typography gutterBottom variant="h5" component="div">
                             Lizard
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
-                        </Typography>
+                        <DropFile />
                     </CardContent>
                 </Card>
 

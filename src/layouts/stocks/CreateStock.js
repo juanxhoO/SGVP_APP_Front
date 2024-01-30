@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Grid, Box, Paper, Card, CardMedia, Typography, CardContent, Button, TextField, Stack } from '@mui/material';
+import DropFile from '../components/DropFile';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -8,7 +9,7 @@ export default function CreateStock() {
         <Grid container spacing={2}>
             <Grid item xs={12} >
                 <Paper>
-                    <Box>
+                    <Stack spacing={3} direction="row" useFlexGap flexWrap="wrap" justifyContent="space-around">
                         <Card sx={{ maxWidth: 345 }}>
                             <CardMedia
                                 sx={{ height: 140 }}
@@ -23,19 +24,20 @@ export default function CreateStock() {
                         </Card>
 
                         <Card sx={{ maxWidth: 345 }}>
-                            <CardMedia
-                                sx={{ height: 140 }}
-                                image="/static/images/cards/contemplative-reptile.jpg"
-                                title="green iguana"
-                            />
+
                             <CardContent>
+
+
+
                                 <Typography gutterBottom variant="h5" component="div">
                                     Subir Imagen
                                 </Typography>
 
+
+                                <DropFile />
                             </CardContent>
                         </Card>
-                    </Box>
+                    </Stack>
 
                     <Stack direction="column"
                         sx={{

@@ -204,7 +204,7 @@ export default function Vehicle() {
                     </Grid>
                 </Grid>
 
-                <Box direction="row" alignItems="center">
+                <Box sx={{marginTop:"2rem"}} direction="row" alignItems="center">
                     <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
                     <Button sx={{ minWidth: '200px' }} color="error" type="submit" variant='contained'>Borrar</Button>
                 </Box>

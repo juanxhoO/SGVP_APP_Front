@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { Stack, Grid, Typography, TextField, Button, Box, Card, CardMedia, CardContent } from '@mui/material';
-
-
-// TODO remove, this demo shouldn't need to reset the theme.
+import DropFile from '../components/DropFile';
 
 export default function CreateMecanic() {
 
     return (
 
         <Box>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Stack spacing={3} direction="row" useFlexGap flexWrap="wrap" justifyContent="space-around">
                 <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
                         sx={{ height: 140 }}
@@ -18,8 +16,10 @@ export default function CreateMecanic() {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Imagen
+                            Subir Imagen
                         </Typography>
+
+                    <DropFile/>
                     </CardContent>
                 </Card>
 
@@ -35,7 +35,7 @@ export default function CreateMecanic() {
                         </Typography>
                     </CardContent>
                 </Card>
-            </Box>
+            </Stack>
 
             <Stack
                 sx={{

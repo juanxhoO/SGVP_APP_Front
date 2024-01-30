@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import { Box, Typography, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 
 function ProfileInfoCard({ title, description, info, social, action, shadow }) {
@@ -58,7 +59,7 @@ function ProfileInfoCard({ title, description, info, social, action, shadow }) {
         <Box>
           {renderItems}
         </Box>
-        <Button variant="contained" size="large">Editar Perfil</Button>
+        <Button component={Link} to="/users/1" variant="contained" size="large">Editar Perfil</Button>
       </Box>
     </Card>
   );

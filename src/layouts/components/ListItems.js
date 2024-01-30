@@ -17,6 +17,9 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import SettingsInputCompositeIcon from '@mui/icons-material/SettingsInputComposite';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+
+
+
 export const mainListItems = (
     <React.Fragment>
         <ListItemButton component={Link} to="/admin/dashboard">
@@ -118,7 +121,7 @@ export const mainListItems = (
                 <ListItemText primary="Administradores" />
             </ListItem>
         </ListItemButton>
-        <ListItemButton component={Link}>
+        <ListItemButton   to="/authentication/sign-in" component={Link}>
             <ListItemIcon>
                 <LogoutIcon />
             </ListItemIcon>

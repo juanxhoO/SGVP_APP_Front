@@ -11,17 +11,18 @@ import { Box, AppBar } from '@mui/material';
 import Notification from './Notifcation';
 import useSidebarStore from '../../hooks/useSidebar';
 import useNotification from '../../hooks/useNotification';
-function Header() {
 
-const {toggleSidebar} = useSidebarStore();
+function Header() {
+    const logoutHandle = () => {
+        window.location = "/authentication/sign-in";
+    }
+    const { toggleSidebar } = useSidebarStore();
     const { open, toggleNotifications } = useNotification();
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    <Link to="/">
-                        <img src={process.env.PUBLIC_URL + '/logo.png'} />
-                    </Link>
+
                     <IconButton
                         size="large"
                         edge="start"
@@ -32,6 +33,9 @@ const {toggleSidebar} = useSidebarStore();
                     >
                         <MenuIcon />
                     </IconButton>
+                    <Link to="/">
+                        <img src={process.env.PUBLIC_URL + '/logo.png'} />
+                    </Link>
                     <Typography
                         variant="h6"
                         noWrap
@@ -55,7 +59,7 @@ const {toggleSidebar} = useSidebarStore();
                             </Badge>
                         </IconButton>
                         {/* <Notification /> */}
-                        <IconButton color="inherit">
+                        <IconButton onClick={logoutHandle} color="inherit">
                             <LogoutIcon />
                         </IconButton>
                         {open && <Notification />}

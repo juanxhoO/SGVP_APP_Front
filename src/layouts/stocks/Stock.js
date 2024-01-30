@@ -20,8 +20,7 @@ export default function Stock() {
 
     return (
         <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-                <Paper>
+            <Grid item sx={{alignItems:"center",justifyContent:"center", display:"flex"}} xs={12}>
                     <Card sx={{ maxWidth: 345 }}>
                         <CardMedia
                             sx={{ height: 140 }}
@@ -34,7 +33,7 @@ export default function Stock() {
                             </Typography>
                         </CardContent>
                     </Card>
-                </Paper>
+                
             </Grid>
 
             <Grid item xs={12} md={12}>

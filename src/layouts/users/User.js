@@ -165,7 +165,7 @@ export default function User() {
                 </Grid>
             </Grid>
 
-            <Box>
+            <Box sx={{marginTop:"2rem"}} >
                 <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
                 <Button sx={{ minWidth: '200px' }} color="error" type="submit" variant='contained'>Borrar</Button>
             </Box>
