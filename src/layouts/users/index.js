@@ -7,6 +7,8 @@ import { Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 export default function Users() {
     const headerCells = ['Nombre', 'Apellido', 'Correo', 'Telefono', 'Cedula', 'fecha_nacimiento', 'Rango', 'Sangre_Tipo', 'Editar'];
+   
+   
     const rowsData = [
         {
             "nombre": "Juan",
