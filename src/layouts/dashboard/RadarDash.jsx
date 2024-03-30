@@ -19,7 +19,7 @@ ChartJS.register(
   Legend
 );
 
-export const data = {
+const data = {
   labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
   datasets: [
     {

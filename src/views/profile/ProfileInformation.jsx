@@ -10,7 +10,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 
-function ProfileInfoCard({ title, description, info, social, action, shadow }) {
+function ProfileInfoCard({ title, description, info, shadow }) {
   const labels = [];
   const values = [];
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Box, Paper, List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Divider } from '@mui/material';
+import { Grid, Paper, List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Divider } from '@mui/material';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 export default function Messages() {

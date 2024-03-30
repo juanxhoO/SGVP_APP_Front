@@ -1,16 +1,8 @@
 import * as React from 'react';
 
-import { Box, Paper, Grid, Typography, CardMedia, CardContent, Button, CardActions, Card, TextField, Stack } from '@mui/material';
-import ReactQuill from 'react-quill';
-import { useState } from 'react';
-import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileCsv } from '@fortawesome/free-solid-svg-icons'
+import { Box, Paper, Grid, Typography, CardMedia, CardContent, Button, Card, TextField, Stack } from '@mui/material';
 import dayjs from 'dayjs';
-import { DatePicker } from '@mui/x-date-pickers';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import DropFile from '../../components/DropFile';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { DateCalendar } from '@mui/x-date-pickers';
@@ -18,7 +10,6 @@ import { DateCalendar } from '@mui/x-date-pickers';
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function Report() {
-    const [value, setValue] = useState('');
 
     const report = {
         "id": "a1b2c3d4-e5f6-4g7h-8i9j-0k1l2m3n4o5p",

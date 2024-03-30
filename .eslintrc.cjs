@@ -10,16 +10,17 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh','import'],
+  plugins: ['react-refresh','import','unused-imports'],
   rules: {
-    'react/jsx-no-target-blank': 'off',
-    "react/jsx-uses-react": "error",
-    'import/no-unused-modules': 'error', // Ensure imported modules are used   
-    "react/jsx-uses-vars": "error" ,
     'no-unused-vars': 'error',
+    'react/jsx-no-target-blank': 'error',
+    "react/jsx-uses-react": "error",   
+    "react/jsx-uses-vars": "error" ,
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
+    // Add the rule to remove unused imports
+    'import/no-unused-modules': 'error',
   },
-}
+};

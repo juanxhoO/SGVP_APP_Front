@@ -1,14 +1,11 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Card, CardActions, CardContent, CardMedia } from '@mui/material';
+import { CardActions, CardContent, CardMedia } from '@mui/material';
 import { Link } from 'react-router-dom';
 // TODO remove, this demo shouldn't need to reset the theme.
 
-const defaultTheme = createTheme();
 
 export default function DependencyInormation() {
     return (

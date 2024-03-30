@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Typography, TextField, List, Box, Stack, Button, Card, Paper, CardContent, CardActions, MenuItem, FormControl, Select, InputLabel, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { Grid, Typography, List, Box,  Button, Card, Paper, CardContent, CardActions, MenuItem, FormControl, Select, InputLabel, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -142,7 +142,7 @@ export default function CreateOrder() {
                         {orderHours.map(({ hour, available }) => (
                             <ListItem>
                                 <ListItemButton>
-                                    <ListItemText>          {hour}: {available ? 'Available' : 'Not Available'}
+                                    <ListItemText>{hour}: {available ? 'Available' : 'Not Available'}
                                     </ListItemText>
                                 </ListItemButton>
                             </ListItem>

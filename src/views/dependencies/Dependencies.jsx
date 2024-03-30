@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, Typography, Paper, MenuList, MenuItem, Card, CardContent, Stack, CardMedia } from '@mui/material';
+import { Grid, Typography, Paper, MenuList, MenuItem, Card, CardContent, Stack } from '@mui/material';
 // TODO remove, this demo shouldn't need to reset the theme.
-import { Button, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 export default function Dependencies() {
@@ -25,7 +24,7 @@ export default function Dependencies() {
                 <Grid item xs={12} md={4}>
                     <Paper>
                         <MenuList>
-                            {Parroquias.map((parroquia, index) => (
+                            {Parroquias.map((parroquia) => (
                                 <MenuItem sx={{ padding: '10px' }}>
                                     <Typography variant="body2" color="text.secondary">
                                         {parroquia}

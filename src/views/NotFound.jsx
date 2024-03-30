@@ -1,6 +1,6 @@
 // Footer.js
 import React from 'react';
-import { Container, Typography, Link } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 const NotFound = () => {
 
