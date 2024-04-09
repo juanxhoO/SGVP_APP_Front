@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -16,29 +16,28 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { OutlinedInput, InputAdornment, IconButton } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-
+import useAuthentication from '../../hooks/useLogin';
 
 // TODO remove, this demo shouldn't need to reset the theme.
-
 export default function SignIn() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
+  const { authenticated, loading, error, authenticate } = useAuthentication()
   const defaultTheme = createTheme();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const handleSignIn = async (e) => {
+    e.preventDefault()
+    const credentials = { email, password }
+    const endpoint = "http://localhost:3000/v1/auth/login"
+    authenticate(credentials, endpoint)
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -47,7 +46,9 @@ export default function SignIn() {
         <Box
           className="signContainer"
           sx={{
-
+            display:"flex",
+            flexDirection:"column",
+            alignItems:"center"
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -56,8 +57,10 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Ingresar
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSignIn} noValidate sx={{ mt: 1 }}>
             <TextField
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               margin="normal"
               required
               fullWidth
@@ -68,8 +71,10 @@ export default function SignIn() {
               autoFocus
             />
             <OutlinedInput
-            fullWidth
-              id="outlined-adornment-password"
+              fullWidth
+              required
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
               type={showPassword ? 'text' : 'password'}
               endAdornment={
                 <InputAdornment position="end">
