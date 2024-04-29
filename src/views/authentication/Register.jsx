@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem, Input } from '@mui/material';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -19,19 +19,15 @@ const defaultTheme = createTheme();
 
 export default function Register() {
 
-  const [rango, setRango] = useState('');
-
-  const handleChange = (event) => {
-    setRango(event.target.value);
-  };
+  // const [rango, setRango] = useState('');
+  const [names, setNames] = useState('')
+  const [lastnames, setLastNames] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [ci, setCi] = useState('')
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    console.log(names)
   };
 
   return (
@@ -54,16 +50,18 @@ export default function Register() {
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="Nombres"
-              label="Nombres"
-              type="text"
-              id="names"
-            />
-
+            <FormControl>
+              <Input
+                margin="normal"
+                required
+                fullWidth
+                name="Nombres"
+                label="Nombres"
+                type="text"
+                id="names"
+                onChange={(e) => setNames(e.target.value)}
+              />
+            </FormControl>
 
             <TextField
               margin="normal"
@@ -73,7 +71,7 @@ export default function Register() {
               label="Apellidos"
               type="text"
               id="lastname"
-              autoComplete="current-password"
+              onChange={(e) => setLastNames(e.target.value)}
             />
             <TextField
               margin="normal"
@@ -84,8 +82,9 @@ export default function Register() {
               name="correo"
               autoComplete="email"
               autoFocus
-            />
+              onChange={(e) => setEmail(e.target.value)}
 
+            />
             <TextField
               margin="normal"
               required
@@ -95,21 +94,21 @@ export default function Register() {
               type="number"
               id="phone"
               autoComplete="current-password"
+              onChange={(e) => setPhone(e.target.value)}
+
             />
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Rango</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={rango}
-                label="Age"
-                onChange={handleChange}
-              >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
+
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="ci"
+              label="Cedula de Ciudadania"
+              type="number"
+              id="phone"
+              onChange={(e) => setCi(e.target.value)}
+
+            />
             <Button
               type="submit"
               fullWidth
