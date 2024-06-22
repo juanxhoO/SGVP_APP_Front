@@ -1,9 +1,18 @@
 import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardContent } from '@mui/material';
 import DropFile from '../../components/DropFile';
+import { useForm } from 'react-hook-form'
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function CreateVehicle() {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+    const onSubmit = (data) => console.log(data)
+    console.log(watch("name")) // watch input value by passing the name of it
 
     return (
         <Box sx={{ p: 4 }}>
@@ -23,6 +32,7 @@ export default function CreateVehicle() {
                 </Card>
             </Box>
             <Stack
+                onSubmit={handleSubmit(onSubmit)}
                 sx={{
                     padding: '30px',
                     alignItems: 'center',
@@ -35,16 +45,18 @@ export default function CreateVehicle() {
                         <Typography sx={{ fontWeight: 'bold' }}>Tipo de Vehiculo</Typography>
                         <TextField
                             fullWidth
+                            {...register('vehicletype', { required: "Tipo de Vehiculo es Requerido" })}
                             margin="normal"
-                            required
-                            disabled
-                            name="email"
-                            autoComplete="email"
+
+                            name="vehicletype"
+                            autoComplete="vehicletype"
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            defaultValue="Hello World"
+                            defaultValue=""
                         />
+                        {errors.vehicletype && <p>{errors.vehicletype.message}</p>}
+
                     </Grid>
 
 
@@ -52,15 +64,18 @@ export default function CreateVehicle() {
                         <Typography sx={{ fontWeight: 'bold' }}>Placa</Typography>
                         <TextField
                             fullWidth
+                            {...register('plate', { required: "Placa es Requerida" })}
+
                             margin="normal"
-                            required
-                            name="email"
-                            autoComplete="email"
+                            name="plate"
+                            autoComplete="plate"
                             autoFocusrequired
-                            id="outlined-required"
+                            id="plate"
                             label="Required"
-                            defaultValue="Hello World"
+                            defaultValue=""
                         />
+                        {errors.plate && <p>{errors.plate.message}</p>}
+
                     </Grid>
 
                     <Grid item xs={12} md={6}>
@@ -68,14 +83,16 @@ export default function CreateVehicle() {
                         <TextField
                             fullWidth
                             margin="normal"
-                            required
-                            name="email"
-                            autoComplete="email"
+                            {...register('chasis', { required: "Chasis es Requerido" })}
+                            name="chasis"
+                            autoComplete="chasis"
                             autoFocusrequired
-                            id="outlined-required"
+                            id="chasis"
                             label="Required"
-                            defaultValue="Hello World"
+                            defaultValue=""
                         />
+                        {errors.chasis && <p>{errors.chasis.message}</p>}
+
                     </Grid>
 
                     <Grid item xs={12} md={6}>
@@ -83,14 +100,16 @@ export default function CreateVehicle() {
                         <TextField
                             fullWidth
                             margin="normal"
-                            required
-                            name="email"
-                            autoComplete="email"
+                            {...register('brand', { required: "Marca es Requerido" })}
+                            name="brand"
+                            autoComplete="brand"
                             autoFocusrequired
-                            id="outlined-required"
+                            id="brand"
                             label="Required"
-                            defaultValue="Hello World"
+                            defaultValue=""
                         />
+                        {errors.brand && <p>{errors.brand.message}</p>}
+
                     </Grid>
 
 
@@ -99,14 +118,17 @@ export default function CreateVehicle() {
                         <TextField
                             fullWidth
                             margin="normal"
-                            required
-                            name="email"
-                            autoComplete="email"
+                            {...register('model', { required: "Modelo es Requerido" })}
+
+                            name="model"
+                            autoComplete="model"
                             autoFocusrequired
-                            id="outlined-required"
+                            id="model"
                             label="Required"
-                            defaultValue="Hello World"
+                            defaultValue=""
                         />
+                        {errors.model && <p>{errors.model.message}</p>}
+
                     </Grid>
 
 
@@ -114,61 +136,71 @@ export default function CreateVehicle() {
                         <Typography sx={{ fontWeight: 'bold' }}>Motor</Typography>
                         <TextField
                             fullWidth
+                            {...register('engine', { required: "Motor es Requerido" })}
+
                             margin="normal"
-                            required
-                            name="email"
-                            autoComplete="email"
+                            name="engine"
+                            autoComplete="engine"
                             autoFocusrequired
-                            id="outlined-required"
+                            id="engine"
                             label="Required"
-                            defaultValue="Hello World"
+                            defaultValue=""
                         />
+                        {errors.engine && <p>{errors.engine.message}</p>}
+
                     </Grid>
 
                     <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Kilometraje</Typography>
                         <TextField
+                            {...register('mileage', { required: "Kilometraje es Requerido" })}
+
                             fullWidth
                             margin="normal"
-                            required
-                            name="email"
-                            autoComplete="email"
+                            name="mileage"
+                            autoComplete="mileage"
                             autoFocusrequired
-                            id="outlined-required"
+                            id="mileage"
                             label="Required"
-                            defaultValue="Hello World"
+                            defaultValue=""
                         />
+                        {errors.mileage && <p>{errors.mileage.message}</p>}
+
                     </Grid>
 
 
                     <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Cilindraje</Typography>
                         <TextField
+                            {...register('engine_cc', { required: "Cilindraje es Requerido" })}
                             fullWidth
                             margin="normal"
-                            required
-                            name="email"
-                            autoComplete="email"
+                            name="engine_cc"
+                            autoComplete="engine_cc"
                             autoFocusrequired
-                            id="outlined-required"
+                            id="engine_cc"
                             label="Required"
-                            defaultValue="Hello World"
+                            defaultValue=""
                         />
+                        {errors.engine_cc && <p>{errors.engine_cc.message}</p>}
+
                     </Grid>
 
                     <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Capacidad de Carga</Typography>
                         <TextField
                             fullWidth
+                            {...register('carrying', { required: "Capacidad de Carga es Requerido" })}
                             margin="normal"
-                            required
-                            name="email"
-                            autoComplete="email"
+                            name="carrying"
+                            autoComplete="carrying"
                             autoFocusrequired
-                            id="outlined-required"
+                            id="carrying"
                             label="Required"
-                            defaultValue="Hello World"
+                            defaultValue=""
                         />
+                        {errors.carrying && <p>{errors.carrying.message}</p>}
+
                     </Grid>
 
                     <Grid item xs={12} md={6}>
@@ -176,14 +208,16 @@ export default function CreateVehicle() {
                         <TextField
                             fullWidth
                             margin="normal"
-                            required
-                            name="email"
-                            autoComplete="email"
+                            {...register('passengers', { required: "Capacidad de Pasajeros es Requerido" })}
+                            name="passengers"
+                            autoComplete="passengers"
                             autoFocusrequired
-                            id="outlined-required"
+                            id="passengers"
                             label="Required"
-                            defaultValue="Hello World"
+                            defaultValue=""
                         />
+                        {errors.passengers && <p>{errors.passengers.message}</p>}
+
                     </Grid>
                 </Grid>
 

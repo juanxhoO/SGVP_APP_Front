@@ -3,12 +3,14 @@ import ProfileInfoCard from './ProfileInformation';
 import VehicleInormation from './VehicleInormation';
 import DependencyInformation from './DependencyInformation';
 import MaintanneanceInfo from './MaintanneanceInfo';
+import useDataFetcher from '../../hooks/useDataFetcher';
 
 function Profile() {
 
-    //const userInfo = useDataFetcher()    
+    const {data,loading,error} = useDataFetcher("http://localhost:3000/v1/users/e2f32b58-89ea-4411-9f26-06402186d273")  
 
-
+    const userInfo = data
+    console.log(userInfo)
     return (
         <Container component="main" maxWidth="lg">
             <Box
@@ -26,12 +28,8 @@ function Profile() {
                         </Grid>
                         <Grid item>
                             <Box height="100%" mt={0.5} lineHeight={1}>
-                                <Typography variant="h5" fontWeight="medium">
-                                    Richard Davis
-                                </Typography>
-                                <Typography variant="button" color="text" fontWeight="regular">
-                                    CEO / Co-Founder
-                                </Typography>
+                                <Typography variant="h5" fontWeight="medium">{userInfo?.name}</Typography>
+                                <Typography variant="button" color="text" fontWeight="regular">{userInfo?.Rank}</Typography>
                             </Box>
                         </Grid>
                     </Grid>
@@ -42,9 +40,8 @@ function Profile() {
                             description="Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
                             info={{
                                 fullName: "Alec M. Thompson",
-                                mobile: "(44) 123 1234 123",
-                                email: "alecthompson@mail.com",
-                                location: "USA",
+                                mobile: userInfo?.phone,
+                                email: userInfo?.email
                             }}
                             action={{ route: "", tooltip: "Edit Profile" }}
                             shadow={false}

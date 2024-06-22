@@ -2,23 +2,14 @@ import * as React from 'react';
 import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardContent } from '@mui/material';
 import { Link } from 'react-router-dom';
 // TODO remove, this demo shouldn't need to reset the theme.
+import useDataFetcher from '../../hooks/useDataFetcher';
+
+
 
 export default function Vehicle() {
-    const vehicle = {
-        "id": "1",
-        "image": "",
-        "name": "Car123",
-        "chasis": "ABC123XYZ456",
-        "model": "Sportage",
-        "plate": "ABC-123",
-        'brand': 'Kia',
-        "engine_cc": 2000,
-        "engine_type": "Gasolina",
-        "chargeCapacity": 50,
-        "occupants": 5,
-        "mileage": 50000,
-        "type": "Sedan"
-    }
+
+
+    const {data,isLoading, isError} = useDataFetcher("http://localhost:3000/v1/vehicles/64e2c545-7235-4386-b138-d10336251a00");
 
     return (
         <Box sx={{ p: 2 }}>
@@ -31,7 +22,7 @@ export default function Vehicle() {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            {vehicle.name}
+                            {data?.name}
                         </Typography>
                     </CardContent>
                 </Card>
@@ -60,7 +51,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            value={vehicle.type}
+                            value={data?.type}
                         />
                     </Grid>
 
@@ -76,7 +67,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            value={vehicle.plate}
+                            value={data?.plate}
                         />
                     </Grid>
 
@@ -91,7 +82,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            value={vehicle.chasis}
+                            value={data?.chasis}
                         />
                     </Grid>
 
@@ -106,7 +97,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            value={vehicle.brand}
+                            value={data?.brand}
                         />
                     </Grid>
 
@@ -122,7 +113,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            value={vehicle.model}
+                            value={data?.model}
                         />
                     </Grid>
 
@@ -138,7 +129,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            value={vehicle.engine_type}
+                            value={data?.engine_type}
                         />
                     </Grid>
 
@@ -153,7 +144,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            value={vehicle.mileage}
+                            value={data?.mileage}
                         />
                     </Grid>
 
@@ -169,7 +160,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            value={vehicle.engine_cc}
+                            value={data?.engine_cc}
                         />
                     </Grid>
 
@@ -184,7 +175,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            value={vehicle.chargeCapacity}
+                            value={data?.carringcapacity}
                         />
                     </Grid>
 
@@ -199,7 +190,7 @@ export default function Vehicle() {
                             autoFocusrequired
                             id="outlined-required"
                             label="Required"
-                            value={vehicle.occupants}
+                            value={data?.passengers}
                         />
                     </Grid>
                 </Grid>
