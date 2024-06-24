@@ -1,5 +1,5 @@
 import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardContent } from '@mui/material';
-import { useState } from 'react';
+import axios from 'axios';
 import { useForm } from 'react-hook-form'
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -11,8 +11,13 @@ export default function CreateUser() {
         watch,
         formState: { errors },
     } = useForm()
-    const onSubmit = (data) => console.log(data)
-    console.log(watch("name")) // watch input value by passing the name of it
+
+    
+    const onSubmit = async (data) => {
+        console.log(data)
+         const response =  await axios.post("http://localhost:3000/v1/users", data)
+        console.log(response)
+    }
 
     return (
         <Stack
@@ -128,14 +133,13 @@ export default function CreateUser() {
                     <TextField
                         fullWidth
                         margin="normal"
-                        {...register('bloodtype', { required: "Tipo de Sangre es Requerido" })}
-                        name="bloodtype"
-                        autoFocusrequired
-                        id="bloodtype"
+                        {...register('bloodType', { required: "Tipo de Sangre es Requerido" })}
+                        name="bloodType"
+                        id="bloodType"
                         label="Required"
                         defaultValue=""
                     />
-                    {errors.bloodtype && <p>{errors.bloodtype.message}</p>}
+                    {errors.bloodType && <p>{errors.bloodType.message}</p>}
 
                 </Grid>
 
@@ -159,18 +163,64 @@ export default function CreateUser() {
                     <Typography sx={{ fontWeight: 'bold' }}>Ciudad  de Nacimiento:</Typography>
                     <TextField
                         fullWidth
-                        {...register('city', { required: "Ciudad de Nacimiento Requerida" })}
+                        {...register('cityId', { required: "Ciudad de Nacimiento Requerida" })}
                         margin="normal"
-                        name="city"
-                        autoComplete="city"
+                        name="cityId"
                         autoFocusrequired
-                        id="city"
+                        id="cityId"
                         label="Required"
                         defaultValue=""
 
                     />
                     {errors.city && <p>{errors.city.message}</p>}
+                </Grid>
 
+                <Grid item xs={12} sm={6}>
+                    <Typography sx={{ fontWeight: 'bold' }}>Contrasenia:</Typography>
+                    <TextField
+                        fullWidth
+                        {...register('password', { required: "Contrasenia  Requerida" })}
+                        margin="normal"
+                        name="password"
+                        autoFocusrequired
+                        id="password"
+                        label="Required"
+                        defaultValue=""
+
+                    />
+                    {errors.city && <p>{errors.city.message}</p>}
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                    <Typography sx={{ fontWeight: 'bold' }}>Rol:</Typography>
+                    <TextField
+                        fullWidth
+                        {...register('role', { required: "Rol  Requerida" })}
+                        margin="normal"
+                        name="role"
+                        autoFocusrequired
+                        id="role"
+                        label="Required"
+                        defaultValue=""
+
+                    />
+                    {errors.city && <p>{errors.city.message}</p>}
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                    <Typography sx={{ fontWeight: 'bold' }}>Rank:</Typography>
+                    <TextField
+                        fullWidth
+                        {...register('rank', { required: "Rol  Requerida" })}
+                        margin="normal"
+                        name="rank"
+                        autoFocusrequired
+                        id="rank"
+                        label="Required"
+                        defaultValue=""
+
+                    />
+                    {errors.city && <p>{errors.city.message}</p>}
                 </Grid>
             </Grid>
             <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Crear</Button>

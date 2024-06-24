@@ -7,6 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { useNavigate, useLocation } from "react-router-dom";
+
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,6 +32,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function CustomizedTables({ rowsData = [], headerCells = [] }) {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleEdit = (id) => {
+    console.log(id);
+    navigate(location.pathname + "/" + id)
+  }
   return (
     <TableContainer component={Paper}>
       <Table aria-label="customized table">
@@ -44,9 +55,10 @@ export default function CustomizedTables({ rowsData = [], headerCells = [] }) {
             <StyledTableRow key={rowIndex}>
               {headerCells.map((header, cellIndex) => (
                 <StyledTableCell key={cellIndex} component="th" scope="row">
-                  {row[header.toLowerCase()]}
+                  {row[header]}
                 </StyledTableCell>
               ))}
+              <StyledTableCell onClick={() => handleEdit(row?.id)} key={headerCells.length - 1}>Editar</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

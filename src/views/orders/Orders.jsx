@@ -4,11 +4,15 @@ import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import CustomizedTables from '../../components/DataTable/Table';
+import useDataFetcher from '../../hooks/useDataFetcher';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function Orders() {
-
+    const { data, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/orders/");
+    console.log(data)
+    const headerCells = ['name', 'lastname', 'email', 'phone', 'id_card', 'fecha_nacimiento', 'rank', 'bloodType'];
+    const rowsData = data ?? [];
     return (
         <Container component="main" >
             <CustomizedTables></CustomizedTables>
