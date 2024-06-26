@@ -7,43 +7,45 @@ import useDataFetcher from '../../hooks/useDataFetcher';
 import { useNavigate, useParams } from 'react-router-dom';
 import useDeleteEntity from '../../hooks/useDeleteItem';
 import { useForm } from 'react-hook-form'
-
+import { useState, useEffect } from 'react';
 
 export default function Vehicle() {
     const { error, isDeleted, deleteEntity } = useDeleteEntity('http://localhost:3000/v1/vehicles');
     const navigate = useNavigate()
     const { id } = useParams()
-    const { data, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/vehicles/" + id);
+    const { data:vehicleInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/vehicles/" + id);
+
     const {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
     } = useForm({
         defaultValues: {
-          email: data?.email || '',
-          password: '',
-          name: data?.name || '',
-          lastname: data?.lastname || '',
-          phone: data?.phone || '',
-          id_card: data?.id_card || '',
-          bloodType: data?.bloodType || '',
-          role: data?.role || '',
-          rank: data?.rank || '',
-          engine_cc: data?.engine_cc || ''
+            brand: vehicleInfo?.brand || '',
+            password: '',
+            name: vehicleInfo?.name || '',
+            lastname: vehicleInfo?.lastname || '',
+            phone: vehicleInfo?.phone || '',
+            id_card: vehicleInfo?.id_card || '',
+            bloodType: vehicleInfo?.bloodType || '',
+            role: vehicleInfo?.role || '',
+            rank: vehicleInfo?.rank || '',
+            engine_cc: vehicleInfo?.engine_cc || ''
         }
-      })
+    })
+
     const handleDelete = () => {
         const confirmed = window.confirm('Are you sure you want to delete this user?');
         if (confirmed) {
             deleteEntity(id);
         }
     };
+    const [initialValues, setInitialValues] = useState({});
 
-    const onSubmit = async (data) => {
-        console.log(data)
-        const response = await axios.post("http://localhost:3000/v1/vehicles", data)
-        console.log(response)
+    const onSubmit = async (vehicleInfo) => {
+        const response = await axios.post("http://localhost:3000/v1/vehicles", vehicleInfo)
     }
     React.useEffect(() => {
         if (isDeleted) {
@@ -51,6 +53,13 @@ export default function Vehicle() {
         }
     }, [isDeleted, navigate]);
 
+
+    useEffect(() => {
+        if (vehicleInfo) {
+            setInitialValues(vehicleInfo);
+            reset(vehicleInfo);
+        }
+    }, [vehicleInfo, reset]);
     return (
         <Box sx={{ p: 2 }}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -62,7 +71,7 @@ export default function Vehicle() {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            {data?.name}
+                            {vehicleInfo?.name}
                         </Typography>
                     </CardContent>
                 </Card>
@@ -89,11 +98,9 @@ export default function Vehicle() {
 
                             fullWidth
                             margin="normal"
-                            required
                             name="name"
                             autoComplete="type"
                             id="outlined-required"
-                            label="Required"
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -102,11 +109,9 @@ export default function Vehicle() {
                             {...register('type', { required: "Nombres Requerido" })}
                             fullWidth
                             margin="normal"
-                            required
                             name="type"
                             autoComplete="type"
                             id="outlined-required"
-                            label="Required"
                         />
                     </Grid>
 
@@ -118,11 +123,9 @@ export default function Vehicle() {
 
                             fullWidth
                             margin="normal"
-                            required
                             name="plate"
                             autoComplete="plate"
                             id="outlined-required"
-                            label="Required"
                         />
                     </Grid>
 
@@ -133,10 +136,8 @@ export default function Vehicle() {
 
                             fullWidth
                             margin="normal"
-                            required
                             name="chasis"
                             autoComplete="chasis"
-                            label="Required"
                         />
                     </Grid>
 
@@ -147,11 +148,9 @@ export default function Vehicle() {
 
                             fullWidth
                             margin="normal"
-                            required
                             name="brand"
                             autoComplete="brand"
                             id="outlined-required"
-                            label="Required"
                         />
                     </Grid>
 
@@ -163,11 +162,9 @@ export default function Vehicle() {
 
                             fullWidth
                             margin="normal"
-                            required
                             name="model"
                             autoComplete="model"
                             id="outlined-required"
-                            label="Required"
                         />
                     </Grid>
 
@@ -179,11 +176,9 @@ export default function Vehicle() {
 
                             fullWidth
                             margin="normal"
-                            required
                             name="engine"
                             autoComplete="engine"
                             id="outlined-required"
-                            label="Required"
                         />
                     </Grid>
 
@@ -194,11 +189,9 @@ export default function Vehicle() {
 
                             fullWidth
                             margin="normal"
-                            required
                             name="mileage"
                             autoComplete="mileage"
                             id="outlined-required"
-                            label="Required"
                         />
                     </Grid>
 
@@ -210,11 +203,9 @@ export default function Vehicle() {
 
                             fullWidth
                             margin="normal"
-                            required
                             name="engine_cc"
                             autoComplete="engine_cc"
                             id="outlined-required"
-                            label="Required"
                         />
                     </Grid>
 
@@ -225,11 +216,9 @@ export default function Vehicle() {
 
                             fullWidth
                             margin="normal"
-                            required
                             name="carringcapacity"
                             autoComplete="carringcapacity"
                             id="outlined-required"
-                            label="Required"
                         />
                     </Grid>
 
@@ -240,11 +229,9 @@ export default function Vehicle() {
 
                             fullWidth
                             margin="normal"
-                            required
                             name="passengers"
                             autoComplete="passengers"
                             id="outlined-required"
-                            label="Required"
                         />
                     </Grid>
                 </Grid>

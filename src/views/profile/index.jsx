@@ -4,13 +4,13 @@ import VehicleInormation from './VehicleInormation';
 import DependencyInformation from './DependencyInformation';
 import MaintanneanceInfo from './MaintanneanceInfo';
 import useDataFetcher from '../../hooks/useDataFetcher';
+import useAuthStore from '../../store/useAuthStore';
+
 
 function Profile() {
-
-    const {data,loading,error} = useDataFetcher("http://localhost:3000/v1/users/e2f32b58-89ea-4411-9f26-06402186d273")  
-
+    const userId =  useAuthStore(state => state.userId)
+    const {data,loading,error} = useDataFetcher("http://localhost:3000/v1/users/" + userId)  
     const userInfo = data
-    console.log(userInfo)
     return (
         <Container component="main" maxWidth="lg">
             <Box
@@ -36,12 +36,14 @@ function Profile() {
 
                     <Grid>
                         <ProfileInfoCard
+                            id= {userId}
                             title="profile information"
                             description="Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
                             info={{
-                                fullName: "Alec M. Thompson",
+                                fullName: userInfo?.name + " " + userInfo?.lastname,
                                 mobile: userInfo?.phone,
-                                email: userInfo?.email
+                                email: userInfo?.email,
+                                rank: userInfo?.rank
                             }}
                             action={{ route: "", tooltip: "Edit Profile" }}
                             shadow={false}

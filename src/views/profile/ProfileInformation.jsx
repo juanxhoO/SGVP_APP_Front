@@ -9,8 +9,7 @@ import Divider from "@mui/material/Divider";
 import { Box, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-
-function ProfileInfoCard({ title, description, info, shadow }) {
+function ProfileInfoCard({ title, description, info, shadow, id }) {
   const labels = [];
   const values = [];
 
@@ -59,7 +58,7 @@ function ProfileInfoCard({ title, description, info, shadow }) {
         <Box>
           {renderItems}
         </Box>
-        <Button component={Link} to="/users/1" variant="contained" size="large">Editar Perfil</Button>
+        <Button component={Link} to={`/users/${id}`} variant="contained" size="large">Editar Perfil</Button>
       </Box>
     </Card>
   );
