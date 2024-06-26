@@ -46,9 +46,9 @@ export default function SignIn() {
         <Box
           className="signContainer"
           sx={{
-            display:"flex",
-            flexDirection:"column",
-            alignItems:"center"
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -104,12 +104,12 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="/authentication/forgot-password" variant="body2">
+                <Link to="/authentication/forgot-password" variant="body2">
                   Olvidaste Contrasenia?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/authentication/register" variant="body2">
+                <Link to="/authentication/register" variant="body2">
                   {"No tienes una Cuenta? Registrate"}
                 </Link>
               </Grid>

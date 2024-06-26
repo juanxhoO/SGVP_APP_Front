@@ -7,12 +7,11 @@ import useAuthStore from "../store/useAuthStore";
 function AppLayout() {
 
     const isAuthenticated = useAuthStore(state => state.isAuthenticated)
-    console.log(isAuthenticated)
     return (
         <>
             <Header />
             <div style={{ minHeight: '80vh', display: 'flex' }}>
-                {isAuthenticated ?  <Sidebar /> : null}
+                {isAuthenticated ? <Sidebar /> : null}
                 <Outlet />
             </div>
             <Footer />

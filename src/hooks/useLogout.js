@@ -1,24 +1,28 @@
-import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import useAuthStore from '../store/useAuthStore';
-
-const useLogout = (redirectPath = '/') => {
-  const history = useHistory();
-
-  const logout = () => {
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+const useLogout = () => {
+  const navigate = useNavigate()
+  const logout = async () => {
     // Perform any logout logic (e.g., clear authentication tokens, reset user state)
+    try {
 
-    // Redirect to the specified path after logout
-    history.push(redirectPath);
-    useAuthStore.getState().setAuthenticated(false);
-    useAuthStore.getState().clearTokens()
-  };
 
-  // Use useEffect to perform the logout when the component mounts
-  useEffect(() => {
-    logout();
-  }, [redirectPath]); // Include redirectPath as a dependency to re-run the effect if it changes
+      console.log(useAuthStore.getState())
+      // Redirect to the specified path after logout
+      const response = await axios.post("http://localhost:3000/v1/auth/logout", {refreshToken: useAuthStore.getState()?.refreshToken})
+      if (response.status === 204) {
 
+        useAuthStore.getState().setAuthenticated(false);
+        useAuthStore.getState().clearTokens()
+        navigate("/authentication/sign-in")
+      }
+    }
+    catch (error) {
+      console.log(error)
+    }
+
+  }
   return logout;
 };
 
