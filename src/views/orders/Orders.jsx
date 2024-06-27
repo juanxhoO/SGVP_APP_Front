@@ -9,13 +9,13 @@ import useDataFetcher from '../../hooks/useDataFetcher';
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function Orders() {
-    const { data, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/orders/");
-    console.log(data)
-    const headerCells = ['name', 'lastname', 'email', 'phone', 'id_card', 'fecha_nacimiento', 'rank', 'bloodType'];
-    const rowsData = data ?? [];
+    const { data: ordersInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/orders/");
+    console.log(ordersInfo)
+    const headerCells = ['id', 'status', ,'ssd'];
+    const rowsData = ordersInfo ?? [];
     return (
         <Container component="main" >
-            <CustomizedTables></CustomizedTables>
+            <CustomizedTables headerCells={headerCells} rowsData={rowsData} />
             <Box sx={{ justifyContent: "end", display: "flex" }}>
                 <Button component={Link} to="/orders/create" size="large" variant="contained">Crear Orden de Mantenimiento</Button>
             </Box>

@@ -64,7 +64,11 @@ function App() {
                 <Route path="/vehicles" element={<Vehicles />} />
                 <Route path=":id" element={<Vehicle />} />
               </Route>
-              <Route path="messages" element={<Messages />} />
+              <Route path="contracts">
+                <Route path="create" element={<CreateVehicle />} />
+                <Route path="/contracts" element={<Vehicles />} />
+                <Route path=":id" element={<Vehicle />} />
+              </Route>
             </Route>
 
             <Route path="authentication">

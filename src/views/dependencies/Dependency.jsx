@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {  Grid, Typography,Card, CardMedia, CardContent, Paper } from '@mui/material';
+import { Grid, Typography, Card, CardMedia, CardContent, Paper } from '@mui/material';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.

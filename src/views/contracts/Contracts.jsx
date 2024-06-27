@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default function Dependencies() {
+export default function Contracts() {
 
     const Parroquias = ["VILCABAMBA(VICTORIA)", "QUINARA", "MALACATOS(VALLADOLID)", "CHUQUIRIBAMBA", "TAQUIL(MIGUELRIOFRIO", "Loja", "EL TAMBO", "CATAMAYO (LATOMA)", "ZAMBI", "SANPEDRODE LABENDITA", "CHAGUARPAMBA"];
     const navigate = useNavigate();

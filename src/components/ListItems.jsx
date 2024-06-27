@@ -95,12 +95,12 @@ export const mainListItems = (
                 <ListItemText primary="Circuitos" />
             </ListItem>
         </ListItemButton>
-        <ListItemButton component={Link} to="/messages">
+        <ListItemButton component={Link} to="/contracts">
             <ListItemIcon>
                 <EmailIcon />
             </ListItemIcon>
             <ListItem >
-                <ListItemText primary="Messages" />
+                <ListItemText primary="Contratos" />
             </ListItem>
         </ListItemButton>
 

@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { Grid, Typography, TextField, Stack, Button } from '@mui/material';
-
+import useDataFetcher from '../../hooks/useDataFetcher';
+import { useParams } from 'react-router-dom';
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function Order() {
+    const {id} = useParams() 
+    const { data: orderInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/orders/" + id);
+    console.log(orderInfo)
+    const userInfo = orderInfo?.user 
+    const vehicleInfo = orderInfo?.vehicle
     return (
         <Stack
             sx={{
@@ -19,13 +25,10 @@ export default function Order() {
                     <TextField
                         fullWidth
                         margin="normal"
-                        required
                         name="email"
                         autoComplete="email"
                         autoFocusrequired
                         id="outlined-required"
-                        label="Required"
-                        defaultValue="Hello World"
                     />
                 </Grid>
 

@@ -10,17 +10,29 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import DropFile from '../../components/DropFile';
+import { useForm } from 'react-hook-form'
+import axios from 'axios';
 
 
 export default function CreateReport() {
 
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+
+
+    const onSubmit = async (data) => {
+        console.log(data)
+        const response = await axios.post("http://localhost:3000/v1/users", data)
+        console.log(response)
+    }
+
     const [value, setValue] = useState('');
-
     return (
-
         <Grid container spacing={2}>
-
-
             <Grid item xs={12}
                 md={6}
                 sx={{
