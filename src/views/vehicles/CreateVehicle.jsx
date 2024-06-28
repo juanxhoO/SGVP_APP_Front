@@ -1,7 +1,7 @@
-import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardContent } from '@mui/material';
+import { Grid, Typography, MenuItem, TextField, Box, Stack, Button, Card, CardMedia, CardContent, Select } from '@mui/material';
 import DropFile from '../../components/DropFile';
 import { useForm } from 'react-hook-form'
-
+import axios from 'axios';
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function CreateVehicle() {
@@ -11,11 +11,17 @@ export default function CreateVehicle() {
         watch,
         formState: { errors },
     } = useForm()
-    const onSubmit = (data) => console.log(data)
-    console.log(watch("name")) // watch input value by passing the name of it
-
+    const onSubmit = async (data) => {
+        console.log(data)
+        try {
+            const response = await axios.post("http://localhost:3000/v1/vehicles", data)
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
     return (
-        <Box sx={{ p: 4 }}>
+        <Box sx={{ p: 2 }}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
@@ -36,26 +42,41 @@ export default function CreateVehicle() {
                 sx={{
                     padding: '30px',
                     alignItems: 'center',
-                    marginTop: 8,
+                    marginTop: 2,
                     display: 'flex',
                 }} component="form">
 
                 <Grid container spacing={2}>
+
                     <Grid item xs={12} md={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Tipo de Vehiculo</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Nombre del Vehiculo</Typography>
                         <TextField
                             fullWidth
-                            {...register('vehicletype', { required: "Tipo de Vehiculo es Requerido" })}
+                            {...register('name', { required: "Placa es Requerida" })}
                             margin="normal"
-
-                            name="vehicletype"
-                            autoComplete="vehicletype"
+                            name="name"
+                            autoComplete="name"
                             autoFocusrequired
-                            id="outlined-required"
+                            id="name"
                             label="Required"
-                            defaultValue=""
                         />
-                        {errors.vehicletype && <p>{errors.vehicletype.message}</p>}
+                        {errors.type && <p>{errors.type.message}</p>}
+
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>Tipo de Vehiculo</Typography>
+                        <Select
+                            {...register('type', { required: "Subcircuito Requerido" })}
+                            labelId="subcircuit-select-label"
+                            id="subcircuit-select"
+                            fullWidth
+                            defaultValue=""
+                        >
+                            <MenuItem value="MOTORBIKE">Motocicleta</MenuItem>
+                            <MenuItem value="SEDAN">Automovil</MenuItem>
+                            <MenuItem value="SUV">Camioneta</MenuItem>
+                        </Select>
+                        {errors.type && <p>{errors.type.message}</p>}
 
                     </Grid>
 
@@ -154,15 +175,13 @@ export default function CreateVehicle() {
                         <Typography sx={{ fontWeight: 'bold' }}>Kilometraje</Typography>
                         <TextField
                             {...register('mileage', { required: "Kilometraje es Requerido" })}
-
+                            type="number"
                             fullWidth
                             margin="normal"
                             name="mileage"
                             autoComplete="mileage"
-                            autoFocusrequired
                             id="mileage"
                             label="Required"
-                            defaultValue=""
                         />
                         {errors.mileage && <p>{errors.mileage.message}</p>}
 
@@ -180,7 +199,7 @@ export default function CreateVehicle() {
                             autoFocusrequired
                             id="engine_cc"
                             label="Required"
-                            defaultValue=""
+                            type='number'
                         />
                         {errors.engine_cc && <p>{errors.engine_cc.message}</p>}
 
@@ -188,19 +207,17 @@ export default function CreateVehicle() {
 
                     <Grid item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Capacidad de Carga</Typography>
+
                         <TextField
                             fullWidth
-                            {...register('carrying', { required: "Capacidad de Carga es Requerido" })}
+                            {...register('carringcapacity', { required: "Capacidad de Carga es Requerido" })}
                             margin="normal"
-                            name="carrying"
-                            autoComplete="carrying"
-                            autoFocusrequired
-                            id="carrying"
+                            name="carringcapacity"
+                            type='number'
+                            id="carringcapacity"
                             label="Required"
-                            defaultValue=""
                         />
-                        {errors.carrying && <p>{errors.carrying.message}</p>}
-
+                        {errors.carringcapacity && <p>{errors.carringcapacity.message}</p>}
                     </Grid>
 
                     <Grid item xs={12} md={6}>
@@ -214,7 +231,7 @@ export default function CreateVehicle() {
                             autoFocusrequired
                             id="passengers"
                             label="Required"
-                            defaultValue=""
+                            type='number'
                         />
                         {errors.passengers && <p>{errors.passengers.message}</p>}
 
@@ -226,6 +243,5 @@ export default function CreateVehicle() {
                 </Box>
             </Stack>
         </Box>
-
     );
 }

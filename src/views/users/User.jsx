@@ -5,19 +5,16 @@ import { useForm } from 'react-hook-form'
 import { useParams, useNavigate } from 'react-router-dom';
 import useDataFetcher from '../../hooks/useDataFetcher';
 import useDeleteEntity from '../../hooks/useDeleteItem';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-
+import EntitiesAsignation from './components/EntitiesAsignation';
 export default function User() {
     const navigate = useNavigate();
     const { id } = useParams();
     const { data: userInfo } = useDataFetcher("http://localhost:3000/v1/users/" + id);
     const { data: subCircuits } = useDataFetcher("http://localhost:3000/v1/subcircuits/");
-
+    const { data: vehicles } = useDataFetcher("http://localhost:3000/v1/vehicles/");
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
         reset
     } = useForm({
@@ -32,6 +29,8 @@ export default function User() {
             email: '',
             birthdate: '',
             cityId: '',
+            vehicleId: '',
+            subcircuitId: ''
         }
     });
 
@@ -39,12 +38,12 @@ export default function User() {
 
     useEffect(() => {
         if (userInfo) {
-            setInitialValues(userInfo);
-            reset(userInfo);
+            const { name, lastname, phone, id_card, bloodType, role, rank, email, birthdate, cityId, vehicleId, subcircuitId } = userInfo;
+            const filteredData = { name, lastname, phone, id_card, bloodType, role, rank, email, birthdate, cityId, vehicleId, subcircuitId };
+            setInitialValues(filteredData);
+            reset(filteredData);
         }
     }, [userInfo, reset]);
-
-    const watchedFields = watch();
 
     const onSubmit = async (formData) => {
         console.log(formData)
@@ -75,150 +74,126 @@ export default function User() {
     }, [isDeleted, navigate]);
 
     return (
-        <Stack
-            onSubmit={handleSubmit(onSubmit)}
-            sx={{
-                padding: '30px',
-                alignItems: 'center',
-                marginTop: 8,
-                display: 'flex',
-            }} component="form">
-            <Box>
-                <Typography>Editar Usuario</Typography>
-                <Card>
-                    <CardMedia
-                        component="img"
-                        alt="User Image"
-                        height="140"
-                        image="/static/images/cards/contemplative-reptile.jpg"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h6" component="div">
-                            User Information
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </Box>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Nombres</Typography>
-                    <TextField
-                        {...register('name', { required: "Nombres Requerido" })}
-                        fullWidth
-                        margin="normal"
-                        autoComplete="name"
-                    />
-                    {errors.name && <p>{errors.name.message}</p>}
+        <Grid>
+            <Stack
+                onSubmit={handleSubmit(onSubmit)}
+                sx={{
+                    padding: '30px',
+                    alignItems: 'center',
+                    marginTop: 2,
+                    display: 'flex',
+                }} component="form">
+                <Box>
+                    <Typography variant="h1">Editar Usuario</Typography>
+                </Box>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>Nombres</Typography>
+                        <TextField
+                            {...register('name', { required: "Nombres Requerido" })}
+                            fullWidth
+                            margin="normal"
+                            autoComplete="name"
+                        />
+                        {errors.name && <p>{errors.name.message}</p>}
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>Apellidos</Typography>
+                        <TextField
+                            {...register('lastname', { required: "Apellidos es Requerido" })}
+                            fullWidth
+                            margin="normal"
+                            autoComplete="lastname"
+                        />
+                        {errors.lastname && <p>{errors.lastname.message}</p>}
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>CI</Typography>
+                        <TextField
+                            {...register('id_card', { required: "Cedula de Ciudadania Requerida" })}
+                            fullWidth
+                            margin="normal"
+                            autoComplete="id_card"
+                        />
+                        {errors.id_card && <p>{errors.id_card.message}</p>}
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>Correo</Typography>
+                        <TextField
+                            {...register('email', { required: "Correo Requerido" })}
+                            fullWidth
+                            margin="normal"
+                            autoComplete="email"
+                        />
+                        {errors.email && <p>{errors.email.message}</p>}
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>Telefono</Typography>
+                        <TextField
+                            {...register('phone', { required: "Telefono es Requerido" })}
+                            fullWidth
+                            margin="normal"
+                            autoComplete="phone"
+                        />
+                        {errors.phone && <p>{errors.phone.message}</p>}
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>Tipo de Sangre</Typography>
+                        <TextField
+                            {...register('bloodType', { required: "Tipo de Sangre es Requerido" })}
+                            fullWidth
+                            margin="normal"
+                            autoComplete="bloodType"
+                        />
+                        {errors.bloodType && <p>{errors.bloodType.message}</p>}
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>Fecha de Nacimiento</Typography>
+                        <TextField
+                            {...register('birthdate', { required: "Fecha de Nacimiento Requerida" })}
+                            fullWidth
+                            margin="normal"
+                            autoComplete="birthdate"
+                        />
+                        {errors.birthdate && <p>{errors.birthdate.message}</p>}
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>Ciudad de Nacimiento</Typography>
+                        <TextField
+                            {...register('cityId', { required: "Ciudad de Nacimiento Requerida" })}
+                            fullWidth
+                            margin="normal"
+                            autoComplete="cityId"
+                        />
+                        {errors.cityId && <p>{errors.cityId.message}</p>}
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>Rank</Typography>
+                        <TextField
+                            {...register('rank', { required: "Rank Requerido" })}
+                            fullWidth
+                            margin="normal"
+                            autoComplete="rank"
+                        />
+                        {errors.rank && <p>{errors.rank.message}</p>}
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Typography sx={{ fontWeight: 'bold' }}>Role</Typography>
+                        <TextField
+                            {...register('role', { required: "Role Requerido" })}
+                            fullWidth
+                            margin="normal"
+                            autoComplete="role"
+                        />
+                        {errors.role && <p>{errors.role.message}</p>}
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Apellidos</Typography>
-                    <TextField
-                        {...register('lastname', { required: "Apellidos es Requerido" })}
-                        fullWidth
-                        margin="normal"
-                        autoComplete="lastname"
-                    />
-                    {errors.lastname && <p>{errors.lastname.message}</p>}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>CI</Typography>
-                    <TextField
-                        {...register('id_card', { required: "Cedula de Ciudadania Requerida" })}
-                        fullWidth
-                        margin="normal"
-                        autoComplete="id_card"
-                    />
-                    {errors.id_card && <p>{errors.id_card.message}</p>}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Correo</Typography>
-                    <TextField
-                        {...register('email', { required: "Correo Requerido" })}
-                        fullWidth
-                        margin="normal"
-                        autoComplete="email"
-                    />
-                    {errors.email && <p>{errors.email.message}</p>}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Telefono</Typography>
-                    <TextField
-                        {...register('phone', { required: "Telefono es Requerido" })}
-                        fullWidth
-                        margin="normal"
-                        autoComplete="phone"
-                    />
-                    {errors.phone && <p>{errors.phone.message}</p>}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Tipo de Sangre</Typography>
-                    <TextField
-                        {...register('bloodType', { required: "Tipo de Sangre es Requerido" })}
-                        fullWidth
-                        margin="normal"
-                        autoComplete="bloodType"
-                    />
-                    {errors.bloodType && <p>{errors.bloodType.message}</p>}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Fecha de Nacimiento</Typography>
-                    <TextField
-                        {...register('birthdate', { required: "Fecha de Nacimiento Requerida" })}
-                        fullWidth
-                        margin="normal"
-                        autoComplete="birthdate"
-                    />
-                    {errors.birthdate && <p>{errors.birthdate.message}</p>}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Ciudad de Nacimiento</Typography>
-                    <TextField
-                        {...register('cityId', { required: "Ciudad de Nacimiento Requerida" })}
-                        fullWidth
-                        margin="normal"
-                        autoComplete="cityId"
-                    />
-                    {errors.cityId && <p>{errors.cityId.message}</p>}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Rank</Typography>
-                    <TextField
-                        {...register('rank', { required: "Rank Requerido" })}
-                        fullWidth
-                        margin="normal"
-                        autoComplete="rank"
-                    />
-                    {errors.rank && <p>{errors.rank.message}</p>}
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Role</Typography>
-                    <TextField
-                        {...register('role', { required: "Role Requerido" })}
-                        fullWidth
-                        margin="normal"
-                        autoComplete="role"
-                    />
-                    {errors.role && <p>{errors.role.message}</p>}
-                </Grid>
-
-                <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Asignar Subcircuito</Typography>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        label="Age"
-                    >
-                        {subCircuits?.map((subCircuit, index) => (
-                            <MenuItem value={10}>Ten</MenuItem>
-                        ))}
-                    </Select>
-                </Grid>
-
-            </Grid>
-            <Box>
-                <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Editar</Button>
-                <Button onClick={handleDelete} sx={{ minWidth: '200px' }} color="error" variant='contained'>Borrar</Button>
-            </Box>
-        </Stack>
+                <Box>
+                    <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Editar</Button>
+                    <Button onClick={handleDelete} sx={{ minWidth: '200px' }} color="error" variant='contained'>Borrar</Button>
+                </Box>
+            </Stack>
+            <EntitiesAsignation subCircuits={subCircuits} vehicles={vehicles}/>
+        </Grid>
     );
 }

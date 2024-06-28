@@ -15,6 +15,7 @@ import { Stocks, Stock, CreateStock } from './views/stocks';
 import { OrderType, OrderTypes, CreateMaintenance } from './views/orderType';
 import RequireAuth from './components/RequireAuth';
 import CreateSubdependency from './views/dependencies/CreateSubdependency';
+import { Contract, Contracts, CreateContract } from './views/contracts';
 function App() {
   return (
     <div className="App">
@@ -70,9 +71,9 @@ function App() {
                 <Route path=":id" element={<Vehicle />} />
               </Route>
               <Route path="contracts">
-                <Route path="create" element={<CreateVehicle />} />
-                <Route path="/contracts" element={<Vehicles />} />
-                <Route path=":id" element={<Vehicle />} />
+                <Route path="create" element={<CreateContract />} />
+                <Route path="/contracts" element={<Contracts />} />
+                <Route path=":id" element={<Contract />} />
               </Route>
             </Route>
 
