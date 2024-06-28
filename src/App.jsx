@@ -12,8 +12,7 @@ import { Vehicle, Vehicles, CreateVehicle } from './views/vehicles';
 import NotFound from './views/NotFound';
 import { Reports, Report, CreateReport } from './views/reports';
 import { Stocks, Stock, CreateStock } from './views/stocks';
-import Messages from './views/messages';
-import { OrderType, OrderTypes, CreateOrderType } from './views/orderType';
+import { OrderType, OrderTypes, CreateMaintenance } from './views/orderType';
 import RequireAuth from './components/RequireAuth';
 import CreateSubdependency from './views/dependencies/CreateSubdependency';
 function App() {
@@ -60,9 +59,9 @@ function App() {
                 <Route path="/subdependencies" element={<SubDependency />} />
                 <Route path=":id" element={<SubDependency />} />
               </Route>
-              <Route path="ordertypes">
-                <Route path="create" element={<CreateOrderType />} />
-                <Route path="/ordertypes" element={<OrderTypes />} />
+              <Route path="maintenances">
+                <Route path="create" element={<CreateMaintenance />} />
+                <Route path="/maintenances" element={<OrderTypes />} />
                 <Route path=":id" element={<OrderType />} />
               </Route>
               <Route path="vehicles">

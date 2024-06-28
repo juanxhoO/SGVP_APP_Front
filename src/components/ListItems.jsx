@@ -104,7 +104,7 @@ export const mainListItems = (
             </ListItem>
         </ListItemButton>
 
-        <ListItemButton component={Link} to="/ordertypes">
+        <ListItemButton component={Link} to="/maintenances">
             <ListItemIcon>
                 <SettingsInputCompositeIcon />
             </ListItemIcon>
