@@ -5,18 +5,21 @@ import { useForm } from 'react-hook-form'
 import { useParams, useNavigate } from 'react-router-dom';
 import useDataFetcher from '../../hooks/useDataFetcher';
 import useDeleteEntity from '../../hooks/useDeleteItem';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 export default function User() {
     const navigate = useNavigate();
     const { id } = useParams();
-    const { data } = useDataFetcher("http://localhost:3000/v1/users/" + id);
+    const { data: userInfo } = useDataFetcher("http://localhost:3000/v1/users/" + id);
+    const { data: subCircuits } = useDataFetcher("http://localhost:3000/v1/subcircuits/");
 
-    const { 
-        register, 
-        handleSubmit, 
-        watch, 
-        formState: { errors }, 
-        reset 
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+        reset
     } = useForm({
         defaultValues: {
             name: '',
@@ -35,11 +38,11 @@ export default function User() {
     const [initialValues, setInitialValues] = useState({});
 
     useEffect(() => {
-        if (data) {
-            setInitialValues(data);
-            reset(data);
+        if (userInfo) {
+            setInitialValues(userInfo);
+            reset(userInfo);
         }
-    }, [data, reset]);
+    }, [userInfo, reset]);
 
     const watchedFields = watch();
 
@@ -197,6 +200,20 @@ export default function User() {
                     />
                     {errors.role && <p>{errors.role.message}</p>}
                 </Grid>
+
+                <Grid item xs={12} sm={6}>
+                    <Typography sx={{ fontWeight: 'bold' }}>Asignar Subcircuito</Typography>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        label="Age"
+                    >
+                        {subCircuits?.map((subCircuit, index) => (
+                            <MenuItem value={10}>Ten</MenuItem>
+                        ))}
+                    </Select>
+                </Grid>
+
             </Grid>
             <Box>
                 <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Editar</Button>

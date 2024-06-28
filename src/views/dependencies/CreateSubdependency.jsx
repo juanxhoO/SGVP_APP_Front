@@ -1,21 +1,33 @@
 import * as React from 'react';
 import { MenuItem, Select, TextField, Grid, Typography, Card, CardMedia, CardContent, Paper, Button } from '@mui/material';
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form';
 import useDataFetcher from '../../hooks/useDataFetcher';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-export default function CreateDependency() {
-
+export default function CreateSubdependency() {
+    
     const navigate = useNavigate()
-    const { data: citiesInfo } = useDataFetcher("http://localhost:3000/v1/cities/");
-    const { data: circuitsInfo } = useDataFetcher("http://localhost:3000/v1/circuits/");
+    const { data: circuitInfo } = useDataFetcher("http://localhost:3000/v1/circuits/");
     const {
         register,
         handleSubmit,
         watch,
+        control,
         formState: { errors },
-        reset
+        reset,
+        setValue
     } = useForm();
+
+    const selectedCircuitId = watch('circuitId');
+    const selectedCircuit = circuitInfo?.find(circuit => circuit.id === selectedCircuitId);
+
+    React.useEffect(() => {
+        if (selectedCircuit) {
+            setValue('code', `${selectedCircuit.code}-`);
+        } else {
+            setValue('code', '');
+        }
+    }, [selectedCircuit, setValue]);
 
     const onSubmit = async (data) => {
         const postData = {
@@ -24,16 +36,15 @@ export default function CreateDependency() {
         };
 
         try {
-            const response = await axios.post("http://localhost:3000/v1/circuits", postData)
-            console.log(response)
-            if (response.status === 201) {
+            const response = await axios.post("http://localhost:3000/v1/subcircuits", postData);
+            console.log(response);
+            if(response.status === 201){    
                 navigate("/dependencies")
             }
+        } catch (error) {
+            console.log(error);
         }
-        catch (error) {
-            console.log(error)
-        }
-    }
+    };
 
     return (
         <Grid p={4} container spacing={2}>
@@ -42,7 +53,7 @@ export default function CreateDependency() {
                 component="form"
                 xs={12}>
                 <Paper>
-                    <Typography>Crear Dependencia</Typography>
+                    <Typography>Crear SubCircuito</Typography>
                     <Card sx={{ maxWidth: 345 }}>
                         <CardMedia
                             sx={{ height: 140 }}
@@ -58,20 +69,21 @@ export default function CreateDependency() {
                         </CardContent>
                     </Card>
                     <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Ciudad</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Circuito</Typography>
                         <Select
-                            {...register('cityId', { required: "Nombre es Requerido" })}
+                            {...register('circuitId', { required: "Circuito es Requerido" })}
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            label="Age"
+                            label="Circuito"
                         >
-                            {citiesInfo?.map((city, index) => (
-                                <MenuItem key={index} value={city?.id}>{city?.name}</MenuItem>
+                            {circuitInfo?.map((circuit, index) => (
+                                <MenuItem key={index} value={circuit?.id}>{circuit?.name}</MenuItem>
                             ))}
                         </Select>
+                        {errors.circuitId && <p>{errors.circuitId.message}</p>}
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Nombre del Circuito</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Nombre del Sub Circuito</Typography>
                         <TextField
                             {...register('name', { required: "Nombre es Requerido" })}
                             fullWidth
@@ -81,16 +93,16 @@ export default function CreateDependency() {
                         {errors.name && <p>{errors.name.message}</p>}
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Codigo de Circuito</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Codigo de Sub Circuito</Typography>
                         <TextField
                             {...register('code', { required: "Codigo Requerido" })}
                             fullWidth
                             margin="normal"
-                            autoComplete="role"
+                            autoComplete="code"
                         />
                         {errors.code && <p>{errors.code.message}</p>}
                     </Grid>
-                    <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Crear Circuito</Button>
+                    <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Crear Sub Circuito</Button>
                 </Paper>
             </Grid>
         </Grid>

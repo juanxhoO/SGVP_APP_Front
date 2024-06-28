@@ -12,10 +12,10 @@ export default function CreateUser() {
         formState: { errors },
     } = useForm()
 
-    
+
     const onSubmit = async (data) => {
         console.log(data)
-         const response =  await axios.post("http://localhost:3000/v1/users", data)
+        const response = await axios.post("http://localhost:3000/v1/users", data)
         console.log(response)
     }
 

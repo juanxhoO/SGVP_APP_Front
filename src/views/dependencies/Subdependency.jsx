@@ -1,20 +1,17 @@
 import * as React from 'react';
-import { Grid, Button, Typography, Card, CardMedia, CardContent, Paper } from '@mui/material';
+import { Button, Grid, Typography, Card, CardMedia, CardContent, Paper } from '@mui/material';
 import { useParams, useNavigate } from 'react-router-dom';
 import useDataFetcher from '../../hooks/useDataFetcher';
 import useDeleteEntity from '../../hooks/useDeleteItem';
 import { useEffect } from 'react';
 // TODO remove, this demo shouldn't need to reset the theme.
 
-export default function Dependency() {
+export default function SubDependency() {
 
+    const { isLoading, error, isDeleted, deleteEntity } = useDeleteEntity('http://localhost:3000/v1/subcircuits');
     const navigate = useNavigate()
-    const { id } = useParams()
-    const { data: circuitInfo } = useDataFetcher("http://localhost:3000/v1/circuits/" + id);
-    const { isLoading, error, isDeleted, deleteEntity } = useDeleteEntity('http://localhost:3000/v1/circuits');
-
     const handleDelete = () => {
-        const confirmed = window.confirm('Esta Seguro de Borrar la siguiente dependencia?');
+        const confirmed = window.confirm('Are you sure you want to delete this user?');
         if (confirmed) {
             deleteEntity(id);
         }
@@ -25,6 +22,9 @@ export default function Dependency() {
             navigate("/dependencies");
         }
     }, [isDeleted, navigate]);
+
+    const { id } = useParams()
+    const { data: subcircuitInfo } = useDataFetcher("http://localhost:3000/v1/subcircuits/" + id);
     return (
         <Grid p={4} container spacing={2}>
             <Grid sx={{ display: "flex", justifyContent: "center" }} item xs={12}>
@@ -41,20 +41,17 @@ export default function Dependency() {
                     </CardContent>
                 </Card>
             </Grid>
-
             <Grid item xs={12}>
                 <Paper>
                     <Typography>
-                        Nombre:{circuitInfo?.name}
+                        Nombre:{subcircuitInfo?.name}
                     </Typography>
                     <Typography>
-                        Codigo: {circuitInfo?.code}
+                        Codigo:{subcircuitInfo?.code}
                     </Typography>
                 </Paper>
             </Grid>
             <Button onClick={handleDelete} variant="contained" color="error" >Borrar SubCircuito</Button>
-
         </Grid>
-
     );
 }

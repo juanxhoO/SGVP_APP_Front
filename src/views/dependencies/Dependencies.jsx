@@ -1,49 +1,47 @@
 import * as React from 'react';
 import { Grid, Typography, Paper, Box, Button, MenuList, MenuItem, Card, CardContent, Stack } from '@mui/material';
-// TODO remove, this demo shouldn't need to reset the theme.
 import { useNavigate } from 'react-router-dom';
 import useDataFetcher from '../../hooks/useDataFetcher';
 import axios from 'axios';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 
 export default function Dependencies() {
 
-    const Parroquias = ["VILCABAMBA(VICTORIA)", "QUINARA", "MALACATOS(VALLADOLID)", "CHUQUIRIBAMBA", "TAQUIL(MIGUELRIOFRIO", "Loja", "EL TAMBO", "CATAMAYO (LATOMA)", "ZAMBI", "SANPEDRODE LABENDITA", "CHAGUARPAMBA"];
     const navigate = useNavigate();
     const { data } = useDataFetcher("http://localhost:3000/v1/cities");
-    const [circuit, setCircuit] = React.useState()
-    const [subcircuits, setSubCircuits] = React.useState([])
-    const handleDependencyNavigate = () => {
-        navigate('/dependencies/1');
-    }
-    const getCircuit = async (cityId) => {
-        const response = await axios.get("http://localhost:3000/v1/cities/" + cityId)
-        console.log(response.data.circuits[0])
-        setCircuit(response.data.circuits[0])
-    }
-    useEffect(() => {
-        const fetchSubCircuits = async () => {
-            try {
-                const response = await axios.get(`http://localhost:3000/v1/circuits/${circuit?.id}`);
-                setSubCircuits(response.data.subcircuits);
-                console.log(response.data.subcircuits)
-            } catch (error) {
-                console.error("Error fetching sub-circuits:", error);
-            }
-        };
-        fetchSubCircuits();
-    }, [circuit])
+    const [circuits, setCircuits] = React.useState([]);
+    const [subcircuits, setSubCircuits] = React.useState([]);
+
+    const handleDependencyNavigate = (subdependencyId) => {
+        navigate(`/subdependencies/${subdependencyId}`);
+    };
+
+    const getCircuits = async (cityId) => {
+        try {
+            const response = await axios.get(`http://localhost:3000/v1/cities/${cityId}`);
+            setCircuits(response.data.circuits);
+        } catch (error) {
+            console.error("Error fetching circuits:", error);
+        }
+    };
+
+    const fetchSubCircuits = async (circuitId) => {
+        try {
+            const response = await axios.get(`http://localhost:3000/v1/circuits/${circuitId}`);
+            setSubCircuits(response.data.subcircuits);
+        } catch (error) {
+            console.error("Error fetching sub-circuits:", error);
+        }
+    };
 
     return (
         <Grid p={4} container spacing={1}>
-            <Grid  xs={12} md={4}>
+            <Grid item xs={12} md={3}>
                 <Paper>
                     <MenuList>
                         {data?.map((city) => (
-                            <MenuItem onClick={() => getCircuit(city?.id)} key={city?.id} sx={{ padding: '10px' }}>
-                                <Typography variant="p" color="text.secondary">
+                            <MenuItem onClick={() => getCircuits(city?.id)} key={city?.id} sx={{ padding: '10px' }}>
+                                <Typography variant="body1" color="text.secondary">
                                     {city?.name}
                                 </Typography>
                             </MenuItem>
@@ -51,32 +49,40 @@ export default function Dependencies() {
                     </MenuList>
                 </Paper>
             </Grid>
-            <Grid item xs={12} md={8}>
+            <Grid item xs={12} md={9}>
                 <Paper>
-                    <Card sx={{ minWidth: 275 }}>
-                        <CardContent>
-                            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                {circuit?.name}                            </Typography>
-                            <Typography variant="h5" component="div">
-                            </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                                {circuit?.code}
-                                
-                            </Typography>
-                        </CardContent>
-                        <Button component={Link} size="large" to="/subdependencies/create" variant="contained">Crear Subcircuito</Button>
-                    </Card>
-                    <Typography>
-                        Subcircuitos
-                    </Typography>
-                    {subcircuits?.map((subcircuit) => (
-                        <Stack spacing={3} direction="row" useFlexGap flexWrap="wrap" justifyContent="space-around">
-                            <Card onClick={handleDependencyNavigate} sx={{ minWidth: 275 }}>
+                    <Stack display="flex" spacing={2}>
+                        <Typography variant="h3">
+                            Circuitos
+                        </Typography>
+                        {circuits?.map((circuit) => (
+                            <Card key={circuit.id} sx={{ minWidth: 150, mb: 2 }}>
+                                <CardContent onClick={() => fetchSubCircuits(circuit?.id)} sx={{ border: "1px solid #ccc" }}>
+                                    <Typography>Nombre:</Typography>
+                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                        {circuit?.name}
+                                    </Typography>
+                                    <Typography>Codigo:</Typography>
+                                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                                        {circuit?.code}
+                                    </Typography>
+                                    <Button component={Link} to={`/dependencies/${circuit.id}`}>Ver Circuito</Button>
+                                </CardContent>
+                            </Card>
+                        ))}
+                        <Box sx={{ marginTop: "2rem", justifyContent: "end", display: "flex" }}>
+                            <Button component={Link} size="large" to="/dependencies/create" variant="contained">Crear Circuito</Button>
+                        </Box>
+                    </Stack>
+                    <Stack spacing={2} mt={4}>
+                        <Typography variant="h3">
+                            Subcircuitos
+                        </Typography>
+                        {subcircuits?.map((subcircuit) => (
+                            <Card key={subcircuit.id} onClick={() => handleDependencyNavigate(subcircuit.id)} sx={{ minWidth: 150, mb: 2 }}>
                                 <CardContent>
                                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                         {subcircuit?.name}
-                                    </Typography>
-                                    <Typography variant="h5" component="div">
                                     </Typography>
                                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
                                         {subcircuit?.code}
@@ -88,14 +94,13 @@ export default function Dependencies() {
                                     </Typography>
                                 </CardContent>
                             </Card>
-                        </Stack>
-                    ))}
+                        ))}
+                        <Box sx={{ marginTop: "2rem", justifyContent: "end", display: "flex" }}>
+                            <Button component={Link} size="large" to="/subdependencies/create" variant="contained">Crear Subcircuito</Button>
+                        </Box>
+                    </Stack>
                 </Paper>
-                <Box sx={{ marginTop: "2rem", justifyContent: "end", display: "flex" }}>
-                        <Button component={Link} size="large" to="/dependencies/create" variant="contained">Crear Circuito</Button>
-                    </Box>
             </Grid>
         </Grid>
-      
     );
 }

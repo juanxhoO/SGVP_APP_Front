@@ -7,7 +7,7 @@ import MainDashboard from './layouts/dashboard/Dashboard';
 import { Users, User, CreateUser } from './views/users';
 import { Orders, Order, CreateOrder } from './views/orders';
 import { Mecanic, Mecanics, CreateMecanic } from './views/mecanics';
-import { Dependencies, Dependency, CreateDependency } from './views/dependencies';
+import { Dependencies, Dependency, CreateDependency, SubDependency } from './views/dependencies';
 import { Vehicle, Vehicles, CreateVehicle } from './views/vehicles';
 import NotFound from './views/NotFound';
 import { Reports, Report, CreateReport } from './views/reports';
@@ -15,6 +15,7 @@ import { Stocks, Stock, CreateStock } from './views/stocks';
 import Messages from './views/messages';
 import { OrderType, OrderTypes, CreateOrderType } from './views/orderType';
 import RequireAuth from './components/RequireAuth';
+import CreateSubdependency from './views/dependencies/CreateSubdependency';
 function App() {
   return (
     <div className="App">
@@ -53,6 +54,11 @@ function App() {
                 <Route path="create" element={<CreateDependency />} />
                 <Route path="/dependencies" element={<Dependencies />} />
                 <Route path=":id" element={<Dependency />} />
+              </Route>
+              <Route path="subdependencies">
+                <Route path="create" element={<CreateSubdependency />} />
+                <Route path="/subdependencies" element={<SubDependency />} />
+                <Route path=":id" element={<SubDependency />} />
               </Route>
               <Route path="ordertypes">
                 <Route path="create" element={<CreateOrderType />} />
