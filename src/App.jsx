@@ -16,6 +16,8 @@ import { OrderType, OrderTypes, CreateMaintenance } from './views/orderType';
 import RequireAuth from './components/RequireAuth';
 import CreateSubdependency from './views/dependencies/CreateSubdependency';
 import { Contract, Contracts, CreateContract } from './views/contracts';
+import RolesAdmin from './views/roles/RolesAdmin';
+import OrderHistory from './views/orders/OrderHistory';
 function App() {
   return (
     <div className="App">
@@ -32,6 +34,7 @@ function App() {
               </Route>
               <Route path="orders">
                 <Route path="create" element={<CreateOrder />} />
+                <Route path="receipt" element={<OrderHistory />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path=":id" element={<Order />} />
               </Route>
@@ -75,8 +78,10 @@ function App() {
                 <Route path="/contracts" element={<Contracts />} />
                 <Route path=":id" element={<Contract />} />
               </Route>
+              <Route path="admin">
+                <Route path="/admin/roles" element={<RolesAdmin />} />
+              </Route>
             </Route>
-
             <Route path="authentication">
               <Route path="sign-in" element={<SignIn />} />
               <Route path="register" element={<Register />} />

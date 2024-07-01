@@ -51,18 +51,18 @@ export default function Dependencies() {
             </Grid>
             <Grid item xs={12} md={9}>
                 <Paper>
-                    <Stack display="flex" spacing={2}>
-                        <Typography variant="h3">
-                            Circuitos
-                        </Typography>
+                    <Typography variant="h3" sx={{ fontWeight: "bold" }}>
+                        Circuitos
+                    </Typography>
+                    <Stack sx={{ flexWrap: "wrap"}} p={3} display="flex">
                         {circuits?.map((circuit) => (
-                            <Card key={circuit.id} sx={{ minWidth: 150, mb: 2 }}>
+                            <Card key={circuit.id} sx={{ px:2,flex:"33%", mb: 2 }}>
                                 <CardContent onClick={() => fetchSubCircuits(circuit?.id)} sx={{ border: "1px solid #ccc" }}>
-                                    <Typography>Nombre:</Typography>
+                                    <Typography sx={{ fontWeight: "bold" }}>Nombre:</Typography>
                                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                         {circuit?.name}
                                     </Typography>
-                                    <Typography>Codigo:</Typography>
+                                    <Typography sx={{ fontWeight: "bold" }}>Codigo:</Typography>
                                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
                                         {circuit?.code}
                                     </Typography>
@@ -70,27 +70,28 @@ export default function Dependencies() {
                                 </CardContent>
                             </Card>
                         ))}
-                        <Box sx={{ marginTop: "2rem", justifyContent: "end", display: "flex" }}>
+                    </Stack>
+                    <Box sx={{ marginTop: "1rem", justifyContent: "end", display: "flex" }}>
                             <Button component={Link} size="large" to="/dependencies/create" variant="contained">Crear Circuito</Button>
                         </Box>
-                    </Stack>
-                    <Stack spacing={2} mt={4}>
-                        <Typography variant="h3">
+                    <Stack p={3} spacing={2} mt={4}>
+                        <Typography sx={{ fontWeight: "bold" }} variant="h3">
                             Subcircuitos
                         </Typography>
                         {subcircuits?.map((subcircuit) => (
-                            <Card key={subcircuit.id} onClick={() => handleDependencyNavigate(subcircuit.id)} sx={{ minWidth: 150, mb: 2 }}>
+                            <Card key={subcircuit.id} onClick={() => handleDependencyNavigate(subcircuit.id)} sx={{ flex:"50%",width: "50%", mb: 2 }}>
                                 <CardContent>
+                                    <Typography sx={{ fontWeight: "bold" }}>
+                                        Nombre Subcircuito:
+                                    </Typography>
                                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                         {subcircuit?.name}
                                     </Typography>
+                                    <Typography sx={{ fontWeight: "bold" }}>
+                                        Codigo Subcircuito:
+                                    </Typography>
                                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
                                         {subcircuit?.code}
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        well meaning and kindly.
-                                        <br />
-                                        {'"a benevolent smile"'}
                                     </Typography>
                                 </CardContent>
                             </Card>

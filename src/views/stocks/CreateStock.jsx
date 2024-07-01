@@ -4,6 +4,7 @@ import DropFile from '../../components/DropFile';
 import { useForm } from 'react-hook-form'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { width } from '@fortawesome/free-solid-svg-icons/fa0';
 export default function CreateStock() {
     const {
         register,
@@ -23,9 +24,9 @@ export default function CreateStock() {
     }
 
     return (
-        <Grid onSubmit={handleSubmit(onSubmit)}
+        <Grid container onSubmit={handleSubmit(onSubmit)}
             component="form" item xs={12} >
-            <Stack spacing={3} direction="row" useFlexGap flexWrap="wrap" justifyContent="space-around">
+            <Stack sx={{width:"100%", alignItems:"center" }} spacing={3} direction="column">
                 <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
                         sx={{ height: 140 }}
@@ -65,9 +66,9 @@ export default function CreateStock() {
                     </Grid>
 
                     <Grid item xs={12} md={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Tipo de Repuesto:</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Nombre del Repuesto:</Typography>
                         <TextField
-                            {...register('name', { required: "Apellidos es Requerido" })}
+                            {...register('name', { required: "Nombre del Repuesto es Requerido" })}
                             fullWidth
                             margin="normal"
                             name="name"
@@ -83,7 +84,7 @@ export default function CreateStock() {
                     <Grid item md={6} xs={12} >
                         <Typography sx={{ fontWeight: 'bold' }}>Marca del Repuesto:</Typography>
                         <TextField
-                            {...register('brand', { required: "Apellidos es Requerido" })}
+                            {...register('brand', { required: "Marca del Repuesto es Requerido" })}
                             fullWidth
                             margin="normal"
                             name="brand"
@@ -98,10 +99,11 @@ export default function CreateStock() {
                     <Grid item md={6} xs={12} >
                         <Typography sx={{ fontWeight: 'bold' }}>Stock:</Typography>
                         <TextField
-                            {...register('stock', { required: "Apellidos es Requerido" })}
+                            {...register('stock', { required: "Stock de Reserva es Requerido" })}
                             fullWidth
                             margin="normal"
-                            name="stock"
+                            name="stock"stock
+                            type="number"
                             autoComplete="stock"
                             autoFocusrequired
                             id="stock"
@@ -113,7 +115,7 @@ export default function CreateStock() {
                     <Grid item md={6} xs={12} >
                         <Typography sx={{ fontWeight: 'bold' }}>Modelo del Vehículo:</Typography>
                         <TextField
-                            {...register('model', { required: "Apellidos es Requerido" })}
+                            {...register('model', { required: "Modelo del Vehículo es Requerido" })}
                             fullWidth
                             margin="normal"
                             name="model"
@@ -130,6 +132,7 @@ export default function CreateStock() {
                         <TextField
                             {...register('price', { required: "Apellidos es Requerido" })}
                             fullWidth
+                            type="number"
                             margin="normal"
                             name="price"
                             autoComplete="price"

@@ -12,11 +12,11 @@ export default function Vehicles() {
 
     const rowsData = data ?? [];
     return (
-        <Container>
-            <CustomizedTables headerCells={headerCells} rowsData={rowsData} />
+        <Box p={3}>
+            <CustomizedTables sx={{ mt: 2 }} headerCells={headerCells} rowsData={rowsData} />
             <Box sx={{ justifyContent: "end", display: "flex" }}>
                 <Button component={Link} to="/vehicles/create" size="large" variant="contained">Crear Vehiculo</Button>
             </Box>
-        </Container>
+        </Box>
     );
 }

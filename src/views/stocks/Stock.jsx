@@ -3,6 +3,8 @@ import { Grid, Paper, Card, CardMedia, Typography, CardContent, Button, TextFiel
 import useDataFetcher from '../../hooks/useDataFetcher';
 import { useParams, useNavigate } from 'react-router-dom';
 import useDeleteEntity from '../../hooks/useDeleteItem';
+import DropFile from '../../components/DropFile';
+
 import { useForm } from 'react-hook-form'
 import { useEffect, useState } from 'react';
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -66,118 +68,133 @@ export default function Stock() {
         }
     };
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={12} md={12}>
-                <Paper>
-                    <Stack direction="column"
-                        onSubmit={handleSubmit(onSubmit)}
+        <Grid container xs={12} md={12}>
+            <Paper>
+                <Stack sx={{ width: "100%", alignItems: "center" }} spacing={3} direction="column">
+                    <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image="/static/images/cards/contemplative-reptile.jpg"
+                            title="green iguana"
+                        />
+                    </Card>
+                    <Card sx={{ maxWidth: 345 }}>
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                Subir Imagen
+                            </Typography>
+                            <DropFile />
+                        </CardContent>
+                    </Card>
+                </Stack>
+                <Stack direction="column"
+                    onSubmit={handleSubmit(onSubmit)}
 
-                        sx={{
-                            padding: '30px',
-                        }} component="form">
-                        <Grid container spacing={2}>
+                    sx={{
+                        padding: '30px',
+                    }} component="form">
+                    <Grid container spacing={2}>
 
-                            <Grid item xs={12} md={6}>
-                                <Typography sx={{ fontWeight: 'bold' }}>Nombre del Repuesto</Typography>
-                                <TextField
-                                    {...register('name', { required: "Nombres Requerido" })}
+                        <Grid item xs={12} md={6}>
+                            <Typography sx={{ fontWeight: 'bold' }}>Nombre del Repuesto</Typography>
+                            <TextField
+                                {...register('name', { required: "Nombres Requerido" })}
 
-                                    fullWidth
-                                    margin="normal"
-                                    name="name"
-                                    autoComplete="name"
-                                    autoFocusrequired
-                                    id="outlined-required"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} md={6}>
-                                <Typography sx={{ fontWeight: 'bold' }}>SKU</Typography>
-                                <TextField
-                                    {...register('sku', { required: "Nombres Requerido" })}
-
-                                    fullWidth
-                                    margin="normal"
-                                    name="sku"
-                                    autoComplete="sku"
-                                    autoFocusrequired
-                                    id="outlined-required"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} md={6}>
-                                <Typography sx={{ fontWeight: 'bold' }}>Cantidad en Stock:</Typography>
-                                <TextField
-                                    fullWidth
-                                    margin="normal"
-                                    {...register('stock', { required: "Nombres Requerido" })}
-
-                                    name="stock"
-                                    autoComplete="stock"
-                                    autoFocusrequired
-                                    id="outlined-required"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} md={6}>
-                                <Typography sx={{ fontWeight: 'bold' }}>Marca del Repuesto:</Typography>
-                                <TextField
-                                    fullWidth
-                                    margin="normal"
-                                    {...register('brand', { required: "Marca es Requerido" })}
-                                    name="brand"
-                                    autoComplete="brand"
-                                    autoFocusrequired
-                                    id="outlined-required"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} md={6} >
-                                <Typography sx={{ fontWeight: 'bold' }}>Modelo del Vehículo:</Typography>
-                                <TextField
-                                    fullWidth
-                                    margin="normal"
-                                    {...register('model', { required: "Nombres Requerido" })}
-                                    name="model"
-                                    autoComplete="model"
-                                    autoFocusrequired
-                                    id="outlined-required"
-                                />
-                            </Grid>
-                            <Grid item xs={12} md={6} >
-                                <Typography sx={{ fontWeight: 'bold' }}>Precio</Typography>
-                                <TextField
-                                    fullWidth
-                                    margin="normal"
-                                    {...register('price', { required: "Nombres Requerido" })}
-                                    defaultValue={spareInfo?.price}
-                                    name="price"
-                                    autoComplete="price"
-                                    autoFocusrequired
-                                    id="outlined-required"
-                                />
-                            </Grid>
-                            <Grid item xs={12} md={6}>
-                                <Typography sx={{ fontWeight: 'bold' }}>Condición del Repuesto:</Typography>
-                                <TextField
-                                    fullWidth
-                                    margin="normal"
-                                    {...register('condition', { required: "Nombres Requerido" })}
-
-                                    name="condition"
-                                    autoComplete="condition"
-                                    autoFocusrequired
-                                    id="outlined-required"
-                                />
-                            </Grid>
+                                fullWidth
+                                margin="normal"
+                                name="name"
+                                autoComplete="name"
+                                autoFocusrequired
+                                id="outlined-required"
+                            />
                         </Grid>
-                        <Stack direction="row" justifyContent="space-around" >
-                            <Button size="large" type="submit" variant='contained'>Editar Repuesto</Button>
-                            <Button size="large" variant='contained' onClick={handleDelete} color="error">Borrar Repuesto</Button>
-                        </Stack>
+
+                        <Grid item xs={12} md={6}>
+                            <Typography sx={{ fontWeight: 'bold' }}>SKU</Typography>
+                            <TextField
+                                {...register('sku', { required: "Nombres Requerido" })}
+
+                                fullWidth
+                                margin="normal"
+                                name="sku"
+                                autoComplete="sku"
+                                autoFocusrequired
+                                id="outlined-required"
+                            />
+                        </Grid>
+
+                        <Grid item xs={12} md={6}>
+                            <Typography sx={{ fontWeight: 'bold' }}>Cantidad en Stock:</Typography>
+                            <TextField
+                                fullWidth
+                                margin="normal"
+                                {...register('stock', { required: "Nombres Requerido" })}
+
+                                name="stock"
+                                autoComplete="stock"
+                                autoFocusrequired
+                                id="outlined-required"
+                            />
+                        </Grid>
+
+                        <Grid item xs={12} md={6}>
+                            <Typography sx={{ fontWeight: 'bold' }}>Marca del Repuesto:</Typography>
+                            <TextField
+                                fullWidth
+                                margin="normal"
+                                {...register('brand', { required: "Marca es Requerido" })}
+                                name="brand"
+                                autoComplete="brand"
+                                autoFocusrequired
+                                id="outlined-required"
+                            />
+                        </Grid>
+
+                        <Grid item xs={12} md={6} >
+                            <Typography sx={{ fontWeight: 'bold' }}>Modelo del Vehículo:</Typography>
+                            <TextField
+                                fullWidth
+                                margin="normal"
+                                {...register('model', { required: "Nombres Requerido" })}
+                                name="model"
+                                autoComplete="model"
+                                autoFocusrequired
+                                id="outlined-required"
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={6} >
+                            <Typography sx={{ fontWeight: 'bold' }}>Precio</Typography>
+                            <TextField
+                                fullWidth
+                                margin="normal"
+                                {...register('price', { required: "Nombres Requerido" })}
+                                defaultValue={spareInfo?.price}
+                                name="price"
+                                autoComplete="price"
+                                autoFocusrequired
+                                id="outlined-required"
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                            <Typography sx={{ fontWeight: 'bold' }}>Condición del Repuesto:</Typography>
+                            <TextField
+                                fullWidth
+                                margin="normal"
+                                {...register('condition', { required: "Nombres Requerido" })}
+
+                                name="condition"
+                                autoComplete="condition"
+                                autoFocusrequired
+                                id="outlined-required"
+                            />
+                        </Grid>
+                    </Grid>
+                    <Stack direction="row" justifyContent="space-around" >
+                        <Button size="large" type="submit" variant='contained'>Editar Repuesto</Button>
+                        <Button size="large" variant='contained' onClick={handleDelete} color="error">Borrar Repuesto</Button>
                     </Stack>
-                </Paper>
-            </Grid>
+                </Stack>
+            </Paper>
         </Grid>
     );
 }

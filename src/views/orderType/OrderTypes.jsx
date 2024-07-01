@@ -33,7 +33,7 @@ export default function OrderTypes() {
         <Container>
             <Box display="flex" flexWrap="wrap">
                 {maintenances?.map((maintenance, index) => (
-                    <Box key={index} flex="1 1 100%" p={1} gap={2} sx={{ margin: "20px", border: "1px solid red" }}>
+                    <Box key={index} flex="1 1 100%" p={2} gap={2} sx={{ margin: "20px", border: "1px solid #ccc" }}>
                         <Typography sx={{ fontWeight: 'bold' }}>
                             {maintenance?.name}
                         </Typography>
@@ -49,12 +49,14 @@ export default function OrderTypes() {
                         <Typography>
                             ${maintenance?.price}
                         </Typography>
-                        <Button variant='contained'>
-                            Editar Tipo Mantenimiento
-                        </Button>
-                        <Button onClick={() => handleDelete(maintenance.id)} color="error" variant='contained'>
-                            Borrar Tipo Mantenimiento
-                        </Button>
+                        <Box  sx={{gap: "2rem",rowGap: "2rem",display: "flex",marginTop: "20px"}}>
+                            <Button variant='contained'>
+                                Editar Tipo Mantenimiento
+                            </Button>
+                            <Button onClick={() => handleDelete(maintenance.id)} color="error" variant='contained'>
+                                Borrar Tipo Mantenimiento
+                            </Button>
+                        </Box>
                     </Box>
                 ))}
                 <Button component={Link} to="/maintenances/create" variant="contained">

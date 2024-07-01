@@ -26,35 +26,28 @@ export default function Dependency() {
         }
     }, [isDeleted, navigate]);
     return (
-        <Grid p={4} container spacing={2}>
-            <Grid sx={{ display: "flex", justifyContent: "center" }} item xs={12}>
-                <Card sx={{ maxWidth: 345 }}>
-                    <CardMedia
-                        sx={{ height: 140 }}
-                        image="/static/images/cards/contemplative-reptile.jpg"
-                        title="green iguana"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Vilcabamba
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </Grid>
+        <Grid container p={4} spacing={2}>
+            <Grid p={2} sx={{ justifyContent: "center" }} item xs={12}>
 
-            <Grid item xs={12}>
-                <Paper>
-                    <Typography>
-                        Nombre:{circuitInfo?.name}
-                    </Typography>
+                <Paper display="flex" sx={{ flexDirection:"column",alignItems:"center", display:"flex", gap:2,p:2}}>
+                    <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image="/static/images/cards/contemplative-reptile.jpg"
+                            title="green iguana"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                Nombre:{circuitInfo?.name}
+                            </Typography>
+                        </CardContent>
+                    </Card>
                     <Typography>
                         Codigo: {circuitInfo?.code}
                     </Typography>
+                    <Button onClick={handleDelete} variant="contained" color="error" >Borrar SubCircuito</Button>
                 </Paper>
             </Grid>
-            <Button onClick={handleDelete} variant="contained" color="error" >Borrar SubCircuito</Button>
-
         </Grid>
-
     );
 }

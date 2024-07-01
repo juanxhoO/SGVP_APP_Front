@@ -47,11 +47,6 @@ function ProfileInfoCard({ title, description, info, shadow, id }) {
         </Typography>
       </Box>
       <Box p={2}>
-        <Box mb={2} lineHeight={1}>
-          <Typography variant="button" color="text" fontWeight="light">
-            {description}
-          </Typography>
-        </Box>
         <Box opacity={0.3}>
           <Divider />
         </Box>
@@ -74,7 +69,6 @@ ProfileInfoCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   info: PropTypes.objectOf(PropTypes.string).isRequired,
-  social: PropTypes.arrayOf(PropTypes.object).isRequired,
   action: PropTypes.shape({
     route: PropTypes.string.isRequired,
     tooltip: PropTypes.string.isRequired,

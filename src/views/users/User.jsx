@@ -1,7 +1,7 @@
-import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardContent } from '@mui/material';
+import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardContent, Select, MenuItem } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { useParams, useNavigate } from 'react-router-dom';
 import useDataFetcher from '../../hooks/useDataFetcher';
 import useDeleteEntity from '../../hooks/useDeleteItem';
@@ -12,8 +12,10 @@ export default function User() {
     const { data: userInfo } = useDataFetcher("http://localhost:3000/v1/users/" + id);
     const { data: subCircuits } = useDataFetcher("http://localhost:3000/v1/subcircuits/");
     const { data: vehicles } = useDataFetcher("http://localhost:3000/v1/vehicles/");
+    const OfficeRank = ["TENIENTE_CORONEL", "SARGENTO_PRIMERO", "SARGENTO_SEGUNDO", "CABO_PRIMERO", "CABO_SEGUNDO", "TENIENTE", "MAYOR", "CAPITAN", "POLICIA", "SUBTENIENTE"];
     const {
         register,
+        control,
         handleSubmit,
         formState: { errors },
         reset
@@ -28,18 +30,17 @@ export default function User() {
             rank: '',
             email: '',
             birthdate: '',
-            cityId: '',
+            city: '',
             vehicleId: '',
             subcircuitId: ''
         }
     });
-
+    
     const [initialValues, setInitialValues] = useState({});
-
     useEffect(() => {
         if (userInfo) {
-            const { name, lastname, phone, id_card, bloodType, role, rank, email, birthdate, cityId, vehicleId, subcircuitId } = userInfo;
-            const filteredData = { name, lastname, phone, id_card, bloodType, role, rank, email, birthdate, cityId, vehicleId, subcircuitId };
+            const { name, lastname, phone, id_card, bloodType, role, rank, email, birthdate, city, vehicleId, subcircuitId } = userInfo;
+            const filteredData = { name, lastname, phone, id_card, bloodType, role, rank, email, birthdate, city, vehicleId, subcircuitId };
             setInitialValues(filteredData);
             reset(filteredData);
         }
@@ -74,7 +75,7 @@ export default function User() {
     }, [isDeleted, navigate]);
 
     return (
-        <Grid>
+        <Grid container>
             <Stack
                 onSubmit={handleSubmit(onSubmit)}
                 sx={{
@@ -112,6 +113,7 @@ export default function User() {
                         <TextField
                             {...register('id_card', { required: "Cedula de Ciudadania Requerida" })}
                             fullWidth
+                            type="number"
                             margin="normal"
                             autoComplete="id_card"
                         />
@@ -132,6 +134,7 @@ export default function User() {
                         <TextField
                             {...register('phone', { required: "Telefono es Requerido" })}
                             fullWidth
+                            type='number'
                             margin="normal"
                             autoComplete="phone"
                         />
@@ -160,40 +163,54 @@ export default function User() {
                     <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Ciudad de Nacimiento</Typography>
                         <TextField
-                            {...register('cityId', { required: "Ciudad de Nacimiento Requerida" })}
+                            {...register('city', { required: "Ciudad de Nacimiento Requerida" })}
                             fullWidth
                             margin="normal"
-                            autoComplete="cityId"
+                            autoComplete="city"
                         />
-                        {errors.cityId && <p>{errors.cityId.message}</p>}
+                        {errors.city && <p>{errors.city.message}</p>}
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Rank</Typography>
-                        <TextField
-                            {...register('rank', { required: "Rank Requerido" })}
-                            fullWidth
-                            margin="normal"
-                            autoComplete="rank"
+                        <Typography sx={{ fontWeight: 'bold' }}>Rango</Typography>
+                        <Controller
+                            control={control}
+                            name="rank"
+                            render={({ field }) => (
+                                <Select
+                                    fullWidth
+                                    {...field}
+                                    defaultValue={userInfo?.rank}
+                                >
+                                    {OfficeRank?.map((rank, index) => (
+                                        <MenuItem key={index} value={rank}>{rank}</MenuItem>
+                                    ))}
+                                </Select>
+                            )}
                         />
-                        {errors.rank && <p>{errors.rank.message}</p>}
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Role</Typography>
-                        <TextField
-                            {...register('role', { required: "Role Requerido" })}
-                            fullWidth
-                            margin="normal"
-                            autoComplete="role"
-                        />
-                        {errors.role && <p>{errors.role.message}</p>}
-                    </Grid>
+
+                        <Controller
+                            control={control}
+                            name="role"
+                            render={({ field }) => (
+                                <Select
+                                    fullWidth
+                                    {...field}
+                                    defaultValue={userInfo?.role}
+                                >  <MenuItem value="USER">Usuario</MenuItem>
+                                    <MenuItem value="ADMIN">Administrador</MenuItem>
+                                </Select>
+                            )}
+                        />                    </Grid>
                 </Grid>
-                <Box>
+                <Box display="flex" sx={{gap:"2rem"}} mt={4}>
                     <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Editar</Button>
                     <Button onClick={handleDelete} sx={{ minWidth: '200px' }} color="error" variant='contained'>Borrar</Button>
                 </Box>
             </Stack>
-            <EntitiesAsignation subCircuits={subCircuits} vehicles={vehicles}/>
+            <EntitiesAsignation subCircuits={subCircuits} vehicles={vehicles} />
         </Grid>
     );
 }

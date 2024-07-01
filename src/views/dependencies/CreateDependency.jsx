@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MenuItem, Select, TextField, Grid, Typography, Card, CardMedia, CardContent, Paper, Button } from '@mui/material';
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import useDataFetcher from '../../hooks/useDataFetcher';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ export default function CreateDependency() {
     const { data: circuitsInfo } = useDataFetcher("http://localhost:3000/v1/circuits/");
     const {
         register,
+        control,
         handleSubmit,
         watch,
         formState: { errors },
@@ -36,13 +37,13 @@ export default function CreateDependency() {
     }
 
     return (
-        <Grid p={4} container spacing={2}>
+        <Grid p={4} m={2} container spacing={2}>
             <Grid
                 onSubmit={handleSubmit(onSubmit)}
                 component="form"
                 xs={12}>
-                <Paper>
-                    <Typography>Crear Dependencia</Typography>
+                <Paper sx={{ p: 3 }}>
+                    <Typography variant="h2">Crear Dependencia</Typography>
                     <Card sx={{ maxWidth: 345 }}>
                         <CardMedia
                             sx={{ height: 140 }}
@@ -57,18 +58,28 @@ export default function CreateDependency() {
                             </Typography>
                         </CardContent>
                     </Card>
-                    <Grid item xs={12} sm={6}>
+                    <Grid mt={4} item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Ciudad</Typography>
-                        <Select
-                            {...register('cityId', { required: "Nombre es Requerido" })}
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            label="Age"
-                        >
-                            {citiesInfo?.map((city, index) => (
-                                <MenuItem key={index} value={city?.id}>{city?.name}</MenuItem>
-                            ))}
-                        </Select>
+                        <Controller
+                            name="cityId"
+                            control={control}
+                            render={({ field }) => (
+                                <Select
+                                name="cityId"
+                                {...field}
+                                defaultValue=''
+                                    fullWidth
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    label="Age"
+                                >
+                                    {citiesInfo?.map((city, index) => (
+                                        <MenuItem key={index} value={city?.id}>{city?.name}</MenuItem>
+                                    ))}
+                                </Select>
+                            )}
+                        />
+
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Nombre del Circuito</Typography>

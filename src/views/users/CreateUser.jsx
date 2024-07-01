@@ -1,22 +1,28 @@
-import { Grid, Typography, TextField, Box, Stack, Button, Card, CardMedia, CardContent } from '@mui/material';
+import { Grid, Typography, Select, MenuItem, TextField, Box, Stack, Button, Card, CardMedia, CardContent } from '@mui/material';
 import axios from 'axios';
 import { useForm } from 'react-hook-form'
-// TODO remove, this demo shouldn't need to reset the theme.
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateUser() {
-
+    const OfficeRank = ["TENIENTE_CORONEL", "SARGENTO_PRIMERO", "SARGENTO_SEGUNDO", "CABO_PRIMERO", "CABO_SEGUNDO", "TENIENTE", "MAYOR", "CAPITAN", "POLICIA", "SUBTENIENTE"];
+    const ROLES = ["ADMIN", "USER"]
+    const navigate = useNavigate()
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm()
 
-
     const onSubmit = async (data) => {
-        console.log(data)
-        const response = await axios.post("http://localhost:3000/v1/users", data)
-        console.log(response)
+        try {
+            const response = await axios.post("http://localhost:3000/v1/users", data)
+            if(response.status === 201){
+                navigate("/users")
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -29,8 +35,8 @@ export default function CreateUser() {
                 display: 'flex',
             }} component="form">
             <Box>
-                <Typography>Crear Usuario</Typography>
-                <Card>
+                <Typography variant="h1">Crear Usuario</Typography>
+                <Card  sx={{    alignItems: "center",justifyContent: "center",display:"flex",flexDirection: "column"}}>
                     <CardMedia
                         component="img"
                         alt="green iguana"
@@ -44,7 +50,7 @@ export default function CreateUser() {
                     </CardContent>
                 </Card>
             </Box>
-            <Grid container spacing={2}>
+            <Grid mt={4} container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <Typography sx={{ fontWeight: 'bold' }}>Nombres</Typography>
                     <TextField
@@ -84,6 +90,7 @@ export default function CreateUser() {
                         fullWidth
                         margin="normal"
                         name="id_card"
+                        type="number"
                         autoComplete="id_card"
                         autoFocusrequired
                         id="id_card"
@@ -118,6 +125,7 @@ export default function CreateUser() {
                         {...register('phone', { required: "Telefono es  Requerido" })}
                         margin="normal"
                         name="phone"
+                        type="phone"
                         autoComplete="email"
                         autoFocusrequired
                         id="outlined-required"
@@ -125,7 +133,6 @@ export default function CreateUser() {
                         defaultValue=""
                     />
                     {errors.phone && <p>{errors.phone.message}</p>}
-
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
@@ -181,8 +188,8 @@ export default function CreateUser() {
                         fullWidth
                         {...register('password', { required: "Contrasenia  Requerida" })}
                         margin="normal"
+                        type="password"
                         name="password"
-                        autoFocusrequired
                         id="password"
                         label="Required"
                         defaultValue=""
@@ -208,22 +215,22 @@ export default function CreateUser() {
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
-                    <Typography sx={{ fontWeight: 'bold' }}>Rank:</Typography>
-                    <TextField
-                        fullWidth
+                    <Typography sx={{ fontWeight: 'bold' }}>Rango:</Typography>
+                    <Select
                         {...register('rank', { required: "Rol  Requerida" })}
-                        margin="normal"
-                        name="rank"
-                        autoFocusrequired
                         id="rank"
-                        label="Required"
-                        defaultValue=""
+                        name="rank"
 
-                    />
-                    {errors.city && <p>{errors.city.message}</p>}
+                        fullWidth
+                    >
+                        {OfficeRank.map((rank, index) => (
+                            <MenuItem value={rank}>{rank}</MenuItem>
+                        ))}
+                    </Select>
                 </Grid>
             </Grid>
-            <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Crear</Button>
+
+            <Button  sx={{mt:4, minWidth: '200px' }} type="submit" variant='contained'>Crear</Button>
         </Stack>
     );
 }

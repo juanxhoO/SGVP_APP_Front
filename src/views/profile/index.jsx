@@ -9,8 +9,7 @@ import useAuthStore from '../../store/useAuthStore';
 
 function Profile() {
     const userId =  useAuthStore(state => state.userId)
-    const {data,loading,error} = useDataFetcher("http://localhost:3000/v1/users/" + userId)  
-    const userInfo = data
+    const {data:userInfo,loading,error} = useDataFetcher("http://localhost:3000/v1/users/" + userId)  
     return (
         <Container component="main" maxWidth="lg">
             <Box
@@ -21,7 +20,7 @@ function Profile() {
                     alignItems: 'center',
                 }}
             >
-                <Paper elevation={5} sx={{ p: 5 }}>
+                <Paper elevation={5} sx={{ width:"100%", p: 5 }}>
                     <Grid container spacing={3} alignItems="center">
                         <Grid item >
                             <Avatar alt="Remy Sharp" />
@@ -38,7 +37,6 @@ function Profile() {
                         <ProfileInfoCard
                             id= {userId}
                             title="profile information"
-                            description="Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
                             info={{
                                 fullName: userInfo?.name + " " + userInfo?.lastname,
                                 mobile: userInfo?.phone,
@@ -55,6 +53,7 @@ function Profile() {
                     <Grid item xs={12} md={6}>
                         <Paper elevation={5} sx={{
                             mt: 8,
+                            px:2,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',

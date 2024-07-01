@@ -13,28 +13,32 @@ export default function DependencyInormation() {
     const { data: userInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/users/" + userId)
     const subCircuit = userInfo?.subcircuit
     return (
-        <Box height="100%" mt={0.5} lineHeight={1}>
-            <Typography variant="h5" fontWeight="medium">
+        <Box sx={{minHeight:"28rem"}} mt={0.5} lineHeight={1}>
+            <Typography variant="h4" fontWeight="bold">
                 Dependencia
             </Typography>
-            <Box>
-                <CardMedia
-                    sx={{ height: 140 }}
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    title="green iguana"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {subCircuit?.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        {subCircuit?.code}
-                    </Typography>
-                </CardContent>
-                <CardActions sx={{ justifyContent: 'center' }}>
-                    <Button component={Link} to={`/subdependencies/${subCircuit?.id}`} variant="contained" size="large">Ver Dependecia</Button>
-                </CardActions>
-            </Box>
+            <CardMedia
+                sx={{ height: 140 }}
+                image="/static/images/cards/contemplative-reptile.jpg"
+                title="green iguana"
+            />
+            <CardContent>
+                <Typography fontWeight="bold">
+                    Nombre:
+                </Typography>
+                <Typography gutterBottom variant="h5" component="div">
+                    {subCircuit?.name}
+                </Typography>
+                <Typography fontWeight="bold">
+                    Codigo:
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {subCircuit?.code}
+                </Typography>
+            </CardContent>
+            <CardActions sx={{ justifyContent: 'center' }}>
+                <Button component={Link} to={`/subdependencies/${subCircuit?.id}`} variant="contained" size="large">Ver Dependecia</Button>
+            </CardActions>
         </Box>
     );
 }

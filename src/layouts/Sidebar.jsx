@@ -6,14 +6,12 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import { mainListItems } from '../components/ListItems';
 import useSidebarStore from '../hooks/useSidebar';
-const drawerWidth = 240;
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     '& .MuiDrawer-paper': {
       position: 'relative',
       whiteSpace: 'nowrap',
-      width: drawerWidth,
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
@@ -46,7 +44,7 @@ export default function Sidebar() {
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <Drawer variant="permanent" open={isOpen}>
-          <List component="nav">
+          <List sx={{height:"100%",background:"#1976d2", color:"#ffffff"}}component="nav">
             {mainListItems}
           </List>
         </Drawer>

@@ -5,7 +5,7 @@ import useDataFetcher from '../../hooks/useDataFetcher';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 export default function CreateSubdependency() {
-    
+
     const navigate = useNavigate()
     const { data: circuitInfo } = useDataFetcher("http://localhost:3000/v1/circuits/");
     const {
@@ -38,7 +38,7 @@ export default function CreateSubdependency() {
         try {
             const response = await axios.post("http://localhost:3000/v1/subcircuits", postData);
             console.log(response);
-            if(response.status === 201){    
+            if (response.status === 201) {
                 navigate("/dependencies")
             }
         } catch (error) {
@@ -52,8 +52,8 @@ export default function CreateSubdependency() {
                 onSubmit={handleSubmit(onSubmit)}
                 component="form"
                 xs={12}>
-                <Paper>
-                    <Typography>Crear SubCircuito</Typography>
+                <Paper sx={{display:"flex", flexDirection:"column",gap:"2rem", p: 4 }}>
+                    <Typography variant="h1">Crear SubCircuito</Typography>
                     <Card sx={{ maxWidth: 345 }}>
                         <CardMedia
                             sx={{ height: 140 }}
@@ -71,6 +71,8 @@ export default function CreateSubdependency() {
                     <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Circuito</Typography>
                         <Select
+                            fullWidth
+                            defaultValue=""
                             {...register('circuitId', { required: "Circuito es Requerido" })}
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"

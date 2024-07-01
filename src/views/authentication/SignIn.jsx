@@ -41,15 +41,10 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <Container sx={{display:"flex", alignItems:"center"}} component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           className="signContainer"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-          }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />

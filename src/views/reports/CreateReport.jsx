@@ -13,16 +13,13 @@ import DropFile from '../../components/DropFile';
 import { useForm } from 'react-hook-form'
 import axios from 'axios';
 
-
 export default function CreateReport() {
-
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
     } = useForm()
-
 
     const onSubmit = async (data) => {
         console.log(data)
@@ -54,7 +51,7 @@ export default function CreateReport() {
                         }} component="form">
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
-                                <Typography sx={{ fontWeight: 'bold' }}>Apellidos</Typography>
+                                <Typography sx={{ fontWeight: 'bold' }}>Usuario</Typography>
                                 <TextField
                                     fullWidth
                                     margin="normal"
@@ -98,6 +95,24 @@ export default function CreateReport() {
                                     defaultValue="Hello World"
                                 />
                             </Grid>
+
+
+                            <Grid item xs={12}>
+                                <Typography sx={{ fontWeight: 'bold' }}>Seleccionar Vehiculo</Typography>
+                                <TextField
+                                    fullWidth
+                                    margin="normal"
+                                    required
+                                    name="email"
+                                    autoComplete="email"
+                                    autoFocusrequired
+                                    id="outlined-required"
+                                    label="Required"
+                                    defaultValue="Hello World"
+                                />
+                            </Grid>
+                            
+
                         </Grid>
                     </Stack>
 

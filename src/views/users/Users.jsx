@@ -1,4 +1,4 @@
-import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 import CustomizedTables from '../../components/DataTable/Table';
 import { Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -10,11 +10,11 @@ export default function Users() {
     const rowsData = data ?? [];
 
     return (
-        <Container component="main">
-            <CustomizedTables headerCells={headerCells} rowsData={rowsData} />
-            <Box sx={{ justifyContent: "end", display: "flex" }}>
+        <Box p={3}>
+            <CustomizedTables sx={{ mt: 2 }} headerCells={headerCells} rowsData={rowsData} />
+            <Box sx={{ justifyContent: "start", display: "flex", mt: 4 }}>
                 <Button component={Link} to="/users/create" size="large" variant="contained">Crear Usuario</Button>
             </Box>
-        </Container>
+        </Box>
     );
 }

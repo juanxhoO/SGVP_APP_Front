@@ -18,11 +18,8 @@ const useAuthentication = () => {
                 const accessToken = response?.data?.tokens?.access?.token
                 const refreshToken = response?.data?.tokens?.refresh?.token
                 const userId = response?.data?.user?.id
-
                 useAuthStore.getState().setTokens(accessToken, refreshToken, userId);
                 useAuthStore.getState().setAuthenticated(true);
-                console.log(useAuthStore.getState())
-
                 navigate("/")
             }
         }

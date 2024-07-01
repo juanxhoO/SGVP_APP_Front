@@ -23,7 +23,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 export const mainListItems = (
     <React.Fragment>
         <ListItemButton component={Link} to="/admin/dashboard">
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <DashboardIcon />
             </ListItemIcon>
             <ListItem>
@@ -31,7 +31,7 @@ export const mainListItems = (
             </ListItem>
         </ListItemButton>
         <ListItemButton component={Link} to="/profile">
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <AccountBoxIcon />
             </ListItemIcon>
             <ListItem>
@@ -40,15 +40,13 @@ export const mainListItems = (
         </ListItemButton>
 
         <ListItemButton component={Link} to="/orders">
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <RoomPreferencesIcon />
             </ListItemIcon>
-            <ListItem component={Link} to="/orders">
                 <ListItemText primary="Mantenimientos" />
-            </ListItem>
         </ListItemButton>
         <ListItemButton component={Link} to="/users">
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <PeopleIcon />
             </ListItemIcon>
             <ListItem >
@@ -56,7 +54,7 @@ export const mainListItems = (
             </ListItem>
         </ListItemButton>
         <ListItemButton component={Link} to="/reports">
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <ContentPasteIcon />
             </ListItemIcon>
             <ListItem >
@@ -64,23 +62,23 @@ export const mainListItems = (
             </ListItem>
         </ListItemButton>
         <ListItemButton component={Link} to="/stocks">
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <InventoryIcon />
             </ListItemIcon>
             <ListItem >
                 <ListItemText primary="Repuestos" />
             </ListItem>
         </ListItemButton>
-        <ListItemButton component={Link} to="/mecanics">
-            <ListItemIcon>
+        {/* <ListItemButton component={Link} to="/mecanics">
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <BuildIcon />
             </ListItemIcon>
             <ListItem >
                 <ListItemText primary="Mecanicos" />
             </ListItem>
-        </ListItemButton>
+        </ListItemButton> */}
         <ListItemButton component={Link} to="/vehicles">
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <DirectionsCarIcon />
             </ListItemIcon>
             <ListItem >
@@ -88,7 +86,7 @@ export const mainListItems = (
             </ListItem>
         </ListItemButton>
         <ListItemButton component={Link} to="/dependencies">
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <AddRoadIcon />
             </ListItemIcon>
             <ListItem >
@@ -96,7 +94,7 @@ export const mainListItems = (
             </ListItem>
         </ListItemButton>
         <ListItemButton component={Link} to="/contracts">
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <EmailIcon />
             </ListItemIcon>
             <ListItem >
@@ -105,7 +103,7 @@ export const mainListItems = (
         </ListItemButton>
 
         <ListItemButton component={Link} to="/maintenances">
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <SettingsInputCompositeIcon />
             </ListItemIcon>
             <ListItem >
@@ -113,8 +111,8 @@ export const mainListItems = (
             </ListItem>
         </ListItemButton>
 
-        <ListItemButton component={Link} to="/admins">
-            <ListItemIcon>
+        <ListItemButton component={Link} to="/admin/roles">
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <AdminPanelSettingsIcon />
             </ListItemIcon>
             <ListItem >
@@ -122,7 +120,7 @@ export const mainListItems = (
             </ListItem>
         </ListItemButton>
         <ListItemButton   to="/authentication/sign-in" component={Link}>
-            <ListItemIcon>
+            <ListItemIcon sx={{color:"#ffffff"}}>
                 <LogoutIcon />
             </ListItemIcon>
             <ListItem >

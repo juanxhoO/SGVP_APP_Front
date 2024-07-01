@@ -11,11 +11,11 @@ export default function Stocks() {
     const headerCells = ['name', 'condition', 'model', 'brand', 'price', 'sku', 'stock'];
     const rowsData = stocksInfo ?? [];
     return (
-        <Container component="main" >
+        <Box p={3}>
             <CustomizedTables headerCells={headerCells} rowsData={rowsData} />
             <Box sx={{ justifyContent: "end", display: "flex" }}>
                 <Button component={Link} to="/stocks/create" size="large" variant="contained">Crear Repuesto</Button>
             </Box>
-        </Container>
+        </Box>
     );
 }
