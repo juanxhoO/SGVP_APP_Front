@@ -110,7 +110,7 @@ export default function CreateOrder() {
                 </Box>
 
                 <Grid container spacing={2}>
-                    <Grid sx={{display:"flex", rowGap:"2rem", flexDirection:"column"}}item xs={12} md={6}>
+                    <Grid sx={{ display: "flex", rowGap: "2rem", flexDirection: "column" }} item xs={12} md={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Seleccionar Vehiculo</Typography>
                         <FormControl fullWidth>
                             <InputLabel id="vehicle-select-label">Vehiculo</InputLabel>

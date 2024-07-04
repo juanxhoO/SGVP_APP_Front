@@ -5,16 +5,13 @@ import axios from 'axios';
 // TODO remove, this demo shouldn't need to reset the theme.
 import useDataFetcher from '../../hooks/useDataFetcher';
 import { useNavigate, useParams } from 'react-router-dom';
-import useDeleteEntity from '../../hooks/useDeleteItem';
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react';
 
 export default function Contract() {
-    const { error, isDeleted, deleteEntity } = useDeleteEntity('http://localhost:3000/v1/vehicles');
-    const navigate = useNavigate()
     const { id } = useParams()
-    const { data:vehicleInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/vehicles/" + id);
-
+    const { data: vehicleInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/contracts/" + id);
+    console.log(vehicleInfo)
     const {
         register,
         handleSubmit,
@@ -24,35 +21,17 @@ export default function Contract() {
     } = useForm({
         defaultValues: {
             brand: vehicleInfo?.brand || '',
-            password: '',
             name: vehicleInfo?.name || '',
             lastname: vehicleInfo?.lastname || '',
             phone: vehicleInfo?.phone || '',
-            id_card: vehicleInfo?.id_card || '',
-            bloodType: vehicleInfo?.bloodType || '',
-            role: vehicleInfo?.role || '',
-            rank: vehicleInfo?.rank || '',
-            engine_cc: vehicleInfo?.engine_cc || ''
         }
     })
 
-    const handleDelete = () => {
-        const confirmed = window.confirm('Are you sure you want to delete this user?');
-        if (confirmed) {
-            deleteEntity(id);
-        }
-    };
     const [initialValues, setInitialValues] = useState({});
 
     const onSubmit = async (vehicleInfo) => {
         const response = await axios.post("http://localhost:3000/v1/vehicles", vehicleInfo)
     }
-    React.useEffect(() => {
-        if (isDeleted) {
-            navigate("/vehicles");
-        }
-    }, [isDeleted, navigate]);
-
 
     useEffect(() => {
         if (vehicleInfo) {
@@ -92,10 +71,10 @@ export default function Contract() {
 
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>NOmbre de Vehiculo</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Nombre del Contrato</Typography>
                         <TextField
                             {...register('name', { required: "Nombres Requerido" })}
-
+                            defaultValue={vehicleInfo?.name}
                             fullWidth
                             margin="normal"
                             name="name"
@@ -103,24 +82,13 @@ export default function Contract() {
                             id="outlined-required"
                         />
                     </Grid>
+                
+
                     <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Tipo de Vehiculo</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Tipo de Contrato</Typography>
                         <TextField
                             {...register('type', { required: "Nombres Requerido" })}
-                            fullWidth
-                            margin="normal"
-                            name="type"
-                            autoComplete="type"
-                            id="outlined-required"
-                        />
-                    </Grid>
-
-
-                    <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Placa</Typography>
-                        <TextField
-                            {...register('plate', { required: "Nombres Requerido" })}
-
+                            defaultValue={vehicleInfo?.type}
                             fullWidth
                             margin="normal"
                             name="plate"
@@ -130,10 +98,10 @@ export default function Contract() {
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Chasis</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Detalles del Contrato</Typography>
                         <TextField
-                            {...register('chasis', { required: "Nombres Requerido" })}
-
+                            {...register('details', { required: "Nombres Requerido" })}
+                            
                             fullWidth
                             margin="normal"
                             name="chasis"
@@ -238,7 +206,6 @@ export default function Contract() {
 
                 <Box sx={{ marginTop: "2rem" }} direction="row" alignItems="center">
                     <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Edit</Button>
-                    <Button onClick={handleDelete} sx={{ minWidth: '200px' }} color="error" variant='contained'>Borrar</Button>
                 </Box>
             </Stack>
         </Box>

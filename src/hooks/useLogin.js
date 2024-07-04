@@ -20,7 +20,7 @@ const useAuthentication = () => {
                 const userId = response?.data?.user?.id
                 useAuthStore.getState().setTokens(accessToken, refreshToken, userId);
                 useAuthStore.getState().setAuthenticated(true);
-                navigate("/")
+                navigate("/admin/dashboard")
             }
         }
         catch (error) {

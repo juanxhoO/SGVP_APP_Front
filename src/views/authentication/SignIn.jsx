@@ -99,13 +99,13 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to="/authentication/forgot-password" variant="body2">
+                <Link href="/authentication/forgot-password" variant="body2">
                   Olvidaste Contrasenia?
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/authentication/register" variant="body2">
-                  {"No tienes una Cuenta? Registrate"}
+                <Link href="/authentication/register" variant="body2">
+                  "No tienes una Cuenta? Registrate"
                 </Link>
               </Grid>
             </Grid>

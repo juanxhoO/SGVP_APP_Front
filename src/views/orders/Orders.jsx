@@ -11,7 +11,7 @@ import useDataFetcher from '../../hooks/useDataFetcher';
 export default function Orders() {
     const { data: ordersInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/orders/");
     console.log(ordersInfo)
-    const headerCells = ['id', 'status', ,'ssd'];
+    const headerCells = ['id', 'status', ,'maintenanceDay','selectedTime'];
     const rowsData = ordersInfo ?? [];
     return (
         <Container component="main" >

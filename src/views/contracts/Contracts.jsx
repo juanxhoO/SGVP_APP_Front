@@ -6,7 +6,8 @@ import useDataFetcher from '../../hooks/useDataFetcher';
 
 export default function Users() {
     const { data: contractsInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/contracts/");
-    const headerCells = ['name', 'lastname', 'email', 'phone', 'id_card', 'fecha_nacimiento', 'rank', 'bloodType'];
+    console.log(contractsInfo)
+    const headerCells = ['name', 'details', 'type'];
     const rowsData = contractsInfo ?? [];
 
     return (

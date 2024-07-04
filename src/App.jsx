@@ -82,6 +82,7 @@ function App() {
                 <Route path="/admin/roles" element={<RolesAdmin />} />
               </Route>
             </Route>
+            
             <Route path="authentication">
               <Route path="sign-in" element={<SignIn />} />
               <Route path="register" element={<Register />} />
