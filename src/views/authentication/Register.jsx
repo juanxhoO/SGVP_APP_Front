@@ -27,7 +27,7 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post("http://localhost:3000/v1/users", data)
+      const response = await axios.post("http://localhost:3000/v1/auth/register", data)
       if (response.status === 201) {
         navigate("/users")
       }
@@ -70,7 +70,6 @@ export default function Register() {
                 label="Nombres"
                 type="text"
                 id="names"
-                onChange={(e) => setNames(e.target.value)}
               />
             </FormControl>
 
@@ -84,7 +83,6 @@ export default function Register() {
               label="Apellidos"
               type="text"
               id="lastname"
-              onChange={(e) => setLastNames(e.target.value)}
             />
             <TextField
               {...register('phone', { required: "Telefono es  Requerido" })}
@@ -97,7 +95,6 @@ export default function Register() {
               name="correo"
               autoComplete="email"
               autoFocus
-              onChange={(e) => setEmail(e.target.value)}
 
             />
             <TextField
@@ -111,7 +108,6 @@ export default function Register() {
               type="number"
               id="phone"
               autoComplete="current-password"
-              onChange={(e) => setPhone(e.target.value)}
 
             />
 
@@ -125,7 +121,6 @@ export default function Register() {
               label="Cedula de Ciudadania"
               type="number"
               id="phone"
-              onChange={(e) => setCi(e.target.value)}
 
             />
             <TextField
@@ -138,7 +133,6 @@ export default function Register() {
               label="Cedula de Ciudadania"
               type="number"
               id="phone"
-              onChange={(e) => setCi(e.target.value)}
 
             />
             <Button
