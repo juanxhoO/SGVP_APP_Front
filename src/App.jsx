@@ -18,6 +18,8 @@ import CreateSubdependency from './views/dependencies/CreateSubdependency';
 import { Contract, Contracts, CreateContract } from './views/contracts';
 import RolesAdmin from './views/roles/RolesAdmin';
 import OrderHistory from './views/orders/OrderHistory';
+import { Bonus, Bonuses, CreateBonus } from './views/bonos';
+import { CreateParticularVehicle, ParticularVehicle } from './views/particularvehicles';
 function App() {
   return (
     <div className="App">
@@ -78,11 +80,20 @@ function App() {
                 <Route path="/contracts" element={<Contracts />} />
                 <Route path=":id" element={<Contract />} />
               </Route>
+              <Route path="bonos">
+                <Route path="create" element={<CreateBonus />} />
+                <Route path="/bonos" element={<Bonuses />} />
+                <Route path=":id" element={<Bonus />} />
+              </Route>
+              <Route path="privatevehicles">
+                <Route path="create" element={<  CreateParticularVehicle/>} />
+                <Route path=":id" element={<ParticularVehicle />} />
+              </Route>
               <Route path="admin">
                 <Route path="/admin/roles" element={<RolesAdmin />} />
               </Route>
             </Route>
-            
+
             <Route path="authentication">
               <Route path="sign-in" element={<SignIn />} />
               <Route path="register" element={<Register />} />

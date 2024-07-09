@@ -2,9 +2,10 @@
   "name": "react",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
+    "sonar": "node sonnar-scanner.cjs",
     "build": "vite build",
     "lint": "eslint . --fix --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"

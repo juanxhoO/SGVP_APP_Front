@@ -9,11 +9,11 @@ import useDeleteEntity from '../../hooks/useDeleteItem';
 import { useForm, Controller } from 'react-hook-form'
 import { useState, useEffect } from 'react';
 
-export default function Vehicle() {
-    const { error, isDeleted, deleteEntity } = useDeleteEntity('http://localhost:3000/v1/vehicles');
+export default function ParticularVehicle() {
+    const { error, isDeleted, deleteEntity } = useDeleteEntity('http://localhost:3000/v1/privatevehicles');
     const navigate = useNavigate()
     const { id } = useParams()
-    const { data: vehicleInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/vehicles/" + id);
+    const { data: vehicleInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/privatevehicles/" + id);
     const {
         control,
         register,
@@ -70,6 +70,11 @@ export default function Vehicle() {
     }, [isDeleted, navigate]);
     const [vehicleType, setVehicleType] = useState('');
 
+    const handleChange = (event) => {
+        console.log("change")
+        console.log(event.target.value)
+        setVehicleType(event.target.value);
+    };
 
     useEffect(() => {
         if (vehicleInfo) {
