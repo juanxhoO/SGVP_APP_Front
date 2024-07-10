@@ -13,6 +13,9 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -27,6 +30,7 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     try {
+      console.log(data)
       const response = await axios.post("http://localhost:3000/v1/users", data)
       if (response.status === 201) {
         navigate("/users")
@@ -36,7 +40,6 @@ export default function Register() {
       console.log(error)
     }
   }
-
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -58,46 +61,40 @@ export default function Register() {
           </Typography>
           <Box onSubmit={handleSubmit(onSubmit)}
             component="form" noValidate sx={{ mt: 1 }}>
-
-            <FormControl>
-              <Input
-                {...register('phone', { required: "Telefono es  Requerido" })}
-
-                margin="normal"
-                required
-                fullWidth
-                name="Nombres"
-                label="Nombres"
-                type="text"
-                id="names"
-                onChange={(e) => setNames(e.target.value)}
-              />
-            </FormControl>
-
             <TextField
-              {...register('phone', { required: "Telefono es  Requerido" })}
+              {...register('name', { required: "Telefono es  Requerido" })}
 
               margin="normal"
               required
               fullWidth
-              name="Apellidos"
+              name="name"
+              label="Nombres"
+              type="text"
+              id="name"
+            />
+
+            <TextField
+              {...register('lastname', { required: "Telefono es  Requerido" })}
+
+              margin="normal"
+              required
+              fullWidth
+              name="lastname"
               label="Apellidos"
               type="text"
               id="lastname"
-              onChange={(e) => setLastNames(e.target.value)}
             />
             <TextField
-              {...register('phone', { required: "Telefono es  Requerido" })}
+              {...register('email', { required: "Telefono es  Requerido" })}
 
               margin="normal"
               required
               fullWidth
               id="email"
               label="Correo"
-              name="correo"
+              name="email"
               autoComplete="email"
               autoFocus
-              onChange={(e) => setEmail(e.target.value)}
 
             />
             <TextField
@@ -106,26 +103,22 @@ export default function Register() {
               margin="normal"
               required
               fullWidth
-              name="Telefono"
+              name="phone"
               label="Telefono"
               type="number"
               id="phone"
-              autoComplete="current-password"
-              onChange={(e) => setPhone(e.target.value)}
-
             />
 
             <TextField
-              {...register('phone', { required: "Telefono es  Requerido" })}
+              {...register('id_card', { required: "Telefono es  Requerido" })}
 
               margin="normal"
               required
               fullWidth
-              name="ci"
+              name="id_card"
               label="Cedula de Ciudadania"
               type="number"
-              id="phone"
-              onChange={(e) => setCi(e.target.value)}
+              id="id_card"
 
             />
             <TextField
@@ -134,11 +127,10 @@ export default function Register() {
               margin="normal"
               required
               fullWidth
-              name="ci"
-              label="Cedula de Ciudadania"
-              type="number"
-              id="phone"
-              onChange={(e) => setCi(e.target.value)}
+              name="password"
+              label="Contrasenia"
+              type="password"
+              id="password"
 
             />
             <Button
