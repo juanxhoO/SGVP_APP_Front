@@ -57,7 +57,7 @@ export default function Sidebar() {
           <ChevronLeftIcon />
         </IconButton>
       </Toolbar>
-      <List sx={{ height: "100%", background: "#1976d2", color: "#ffffff" }} component="nav">
+      <List sx={{ height: "100%", background: "#004291", color: "#ffffff" }} component="nav">
         {mainListItems}
       </List>
     </Drawer>

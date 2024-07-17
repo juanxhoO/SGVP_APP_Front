@@ -9,7 +9,6 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import RoomPreferencesIcon from '@mui/icons-material/RoomPreferences';
 import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 import AddRoadIcon from '@mui/icons-material/AddRoad';
-import BuildIcon from '@mui/icons-material/Build';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import LogoutIcon from '@mui/icons-material/Logout';
 import EmailIcon from '@mui/icons-material/Email';
@@ -17,10 +16,12 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import SettingsInputCompositeIcon from '@mui/icons-material/SettingsInputComposite';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import useLogout from '../hooks/useLogout';
 
 
 
 export const mainListItems = (
+    
     <React.Fragment>
         <ListItemButton component={Link} to="/admin/dashboard">
             <ListItemIcon sx={{color:"#ffffff"}}>
@@ -119,7 +120,7 @@ export const mainListItems = (
                 <ListItemText primary="Administradores" />
             </ListItem>
         </ListItemButton>
-        <ListItemButton   to="/authentication/sign-in" component={Link}>
+        <ListItemButton    component={Link}>
             <ListItemIcon sx={{color:"#ffffff"}}>
                 <LogoutIcon />
             </ListItemIcon>

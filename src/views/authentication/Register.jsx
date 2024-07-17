@@ -13,12 +13,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useForm } from 'react-hook-form'
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
 export default function Register() {
   const [error, setError] = useState('');
-
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -35,8 +36,7 @@ export default function Register() {
     }
     catch (error) {
       console.log("dsd")
-      console.log(error.response.data.message)
-      setError(response.data.message)
+    
     }
   }
 

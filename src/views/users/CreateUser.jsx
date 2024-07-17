@@ -220,7 +220,6 @@ export default function CreateUser() {
                         {...register('rank', { required: "Rol  Requerida" })}
                         id="rank"
                         name="rank"
-
                         fullWidth
                     >
                         {OfficeRank.map((rank, index) => (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Paper, Grid, Typography, Stack, TextField, Button, Card, CardContent } from '@mui/material';
+import { Paper, Select, MenuItem, Grid, Typography, Box, Stack, TextField, Button, Card, CardContent } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useState } from 'react';
@@ -12,7 +12,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import DropFile from '../../components/DropFile';
 import { useForm } from 'react-hook-form'
 import axios from 'axios';
-
 export default function CreateReport() {
     const {
         register,
@@ -22,14 +21,15 @@ export default function CreateReport() {
     } = useForm()
 
     const onSubmit = async (data) => {
-        console.log(data)
-        const response = await axios.post("http://localhost:3000/v1/users", data)
-        console.log(response)
+        console.log("sdsd")
+        const response = await axios.post("http://localhost:3000/v1/reports", data)
     }
 
     const [value, setValue] = useState('');
     return (
-        <Grid container spacing={2}>
+        <Grid
+            onSubmit={handleSubmit(onSubmit)}
+            component="form" sx={{ p: 2 }} container spacing={2}>
             <Grid item xs={12}
                 md={6}
                 sx={{
@@ -43,76 +43,56 @@ export default function CreateReport() {
                         Crear Reporte
                     </Typography>
 
-                    <ReactQuill theme="snow" value={value} onChange={setValue} />
+                    <ReactQuill style={{height:"250px"}} theme="snow" value={value} onChange={setValue} />
                     <Stack direction="column"
+
                         sx={{
                             padding: '30px',
                             marginTop: 8,
-                        }} component="form">
+                        }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <Typography sx={{ fontWeight: 'bold' }}>Usuario</Typography>
                                 <TextField
+                                    {...register('name', { required: "Nombres Requerido" })}
                                     fullWidth
                                     margin="normal"
-                                    required
-                                    name="email"
+                                    name="name"
                                     autoComplete="email"
                                     autoFocusrequired
-                                    id="outlined-required"
+                                    id="name"
                                     label="Required"
-                                    defaultValue="Hello World"
+
                                 />
                             </Grid>
 
                             <Grid item xs={12}>
                                 <Typography sx={{ fontWeight: 'bold' }}>correo</Typography>
                                 <TextField
+                                    {...register('email', { required: "Nombres Requerido" })}
                                     fullWidth
                                     margin="normal"
                                     required
                                     name="email"
                                     autoComplete="email"
                                     autoFocusrequired
-                                    id="outlined-required"
+                                    id="email"
                                     label="Required"
-                                    defaultValue="Hello World"
+
                                 />
                             </Grid>
-
-
-                            <Grid item xs={12} md={6}>
-                                <Typography sx={{ fontWeight: 'bold' }}>Telefono</Typography>
-                                <TextField
-                                    fullWidth
-                                    margin="normal"
-                                    required
-                                    name="email"
-                                    autoComplete="email"
-                                    autoFocusrequired
-                                    id="outlined-required"
-                                    label="Required"
-                                    defaultValue="Hello World"
-                                />
-                            </Grid>
-
 
                             <Grid item xs={12}>
                                 <Typography sx={{ fontWeight: 'bold' }}>Seleccionar Vehiculo</Typography>
-                                <TextField
+                                <Select
+                                    {...register('rank', { required: "Rol  Requerida" })}
+                                    id="rank"
+                                    name="rank"
                                     fullWidth
-                                    margin="normal"
-                                    required
-                                    name="email"
-                                    autoComplete="email"
-                                    autoFocusrequired
-                                    id="outlined-required"
-                                    label="Required"
-                                    defaultValue="Hello World"
-                                />
+                                >
+                                        <MenuItem value="dssd">dsd</MenuItem>
+                                </Select>   
                             </Grid>
-                            
-
                         </Grid>
                     </Stack>
 
@@ -148,7 +128,9 @@ export default function CreateReport() {
 
                         </CardContent>
                     </Card>
-                    <Button variant="contained" size="large">Generar Reporte</Button>
+                    <Box>
+                        <Button type="submit" variant="contained" size="large">Generar Reporte</Button>
+                    </Box>
                 </Paper>
             </Grid>
         </Grid>

@@ -41,8 +41,6 @@ const AppBar = styled(MuiAppBar, {
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
-            backgroundColor: '#1976d2',
-
             position: 'relative',
             whiteSpace: 'nowrap',
             width: drawerWidth,
@@ -106,6 +104,7 @@ export default function Header() {
                     >
                         <MenuIcon />
                     </IconButton>
+                    
                     <Typography
                         component="h1"
                         variant="h6"
@@ -115,6 +114,8 @@ export default function Header() {
                     >
                         SGVP
                     </Typography>
+
+
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
                             <NotificationsIcon />
@@ -126,10 +127,10 @@ export default function Header() {
                 </Toolbar>
             </AppBar>
 
-            {isAuthenticated ? <Drawer sx={{ backgroundColor: '#1976d2', color: '#ffffff', overflow: 'hidden' }} variant="permanent" open={open}>
+            {isAuthenticated ? <Drawer sx={{ backgroundColor: '#004291', color: '#ffffff', overflow: 'hidden' }} variant="permanent" open={open}>
                 <Toolbar
                     sx={{
-                        backgroundColor: '#1976d2',
+                        backgroundColor: '#004291',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'flex-end',
@@ -141,7 +142,7 @@ export default function Header() {
                     </IconButton>
                 </Toolbar>
                 <Divider />
-                <List sx={{ backgroundColor: '#1976d2', color: '#ffffff', overflow: 'hidden' }}>
+                <List sx={{ backgroundColor: '#004291', color: '#ffffff', overflow: 'hidden' }}>
                     {mainListItems}
                 </List>
             </Drawer>

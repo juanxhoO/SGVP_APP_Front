@@ -14,12 +14,12 @@ const Footer = () => {
   const ecu911Url = "https://twitter.com/ecu911quito";
 
   return (
-    <Container className='Footer' style={{display:'flex', backgroundColor: '#1976d2', justifyContent: "space-around", alignItems: "center", minHeight: "120px" }} maxWidth="full" >
+    <Container className='Footer' style={{display:'flex', backgroundColor: '#004291', justifyContent: "space-around", alignItems: "center", minHeight: "120px" }} maxWidth="full" >
       <Box sx={{ display: "block" }} alignItems="center">
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+        <Typography variant="subtitle1" align="center" color="#ffffff" component="p">
           Policia Nacional del Ecuador
         </Typography>
-        <Typography variant="body2" color="textSecondary" align="center">
+        <Typography variant="body2" color="#ffffff" align="center">
           {'© '}
           <Link color="inherit" href="#">
             SGVP - Loja
@@ -32,7 +32,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram">
-          <InstagramIcon />
+          <InstagramIcon color="#ffffff"/>
         </IconButton>
         <IconButton
           component="a"
@@ -41,7 +41,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           aria-label="Facebook"
         >
-          <FacebookIcon />
+          <FacebookIcon sx={{color:"#ffffff"}} />
         </IconButton>
         <IconButton
           component="a"
@@ -49,15 +49,18 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Twitter">
-          <XIcon />
-        </IconButton>
+          <XIcon sx={{color:"#ffffff"}} />
+        </IconButton >
         <IconButton
+        color="#ffffff"
           component="a"
           href={youtubeUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Youtube">
-          <YouTubeIcon />
+          <YouTubeIcon 
+          sx={{color:"#ffffff"}} 
+          color="#ffffff"/>
         </IconButton>
       </Box>
     </Container>
