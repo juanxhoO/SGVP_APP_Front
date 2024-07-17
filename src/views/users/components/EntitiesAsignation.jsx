@@ -21,6 +21,17 @@ export default function EntitiesAsignation({ subCircuits, vehicles }) {
         }
     });
 
+    // Vehicle form
+    const {
+        register: registerVehicle,
+        handleSubmit: handleSubmitVehicle,
+        formState: { errors: errorsVehicle },
+    } = useForm({
+        defaultValues: {
+            vehicleId: ''
+        }
+    });
+
     const onSubmitSubcircuit = async (formData) => {
         const modifiedData = {
             subcircuitId: formData.subcircuitId
@@ -33,7 +44,6 @@ export default function EntitiesAsignation({ subCircuits, vehicles }) {
     };
 
     const onSubmitVehicle = async (e) => {
-        e.preventDefault()
         const data = {
             userId: id
         };
@@ -53,7 +63,7 @@ export default function EntitiesAsignation({ subCircuits, vehicles }) {
             <Typography sx={{ fontWeight: 'bold' }}>Asignar Subcircuito</Typography>
             <Box component="form" onSubmit={handleSubmitSubcircuit(onSubmitSubcircuit)}>
                 <Select
-                    {...registerSubcircuit('subcircuitId', { required: "Subcircuito Requerido" })}
+                    {...registerSubcircuit('subcircuitId')}
                     labelId="subcircuit-select-label"
                     id="subcircuit-select"
                     fullWidth
@@ -63,13 +73,13 @@ export default function EntitiesAsignation({ subCircuits, vehicles }) {
                         <MenuItem key={subCircuit?.id} value={subCircuit?.id}>{subCircuit?.name}</MenuItem>
                     ))}
                 </Select>
-                {errorsSubcircuit.subcircuitId && <p>{errorsSubcircuit.subcircuitId.message}</p>}
                 <Button sx={{ minWidth: '200px', marginTop: 2 }} type="submit" variant='contained'>Asignar Subcircuito</Button>
             </Box>
 
             <Typography sx={{ fontWeight: 'bold' }}>Asignar Vehiculo</Typography>
-            <form onSubmit={onSubmitVehicle}>
+            <Box component="form" onSubmit={handleSubmitVehicle(onSubmitVehicle)}>
                 <Select
+                    {...registerVehicle('vehicleId')}
                     onChange={(e) => setVehicleId(e.target.value)}
                     labelId="vehicle-select-label"
                     id="vehicle-select"
@@ -81,7 +91,7 @@ export default function EntitiesAsignation({ subCircuits, vehicles }) {
                     ))}
                 </Select>
                 <Button sx={{ minWidth: '200px', marginTop: 2 }} type="submit" variant='contained'>Asignar Vehiculo</Button>
-            </form>
+            </Box>
         </Stack>
     );
 }

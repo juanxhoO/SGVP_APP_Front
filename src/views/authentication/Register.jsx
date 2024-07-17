@@ -8,20 +8,17 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { FormControl, InputLabel, Select, MenuItem, Input } from '@mui/material';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-
-
-// TODO remove, this demo shouldn't need to reset the theme.
+import { useState } from 'react';
 
 const defaultTheme = createTheme();
 
 export default function Register() {
+  const [error, setError] = useState('');
+
   const {
     register,
     handleSubmit,
@@ -37,7 +34,9 @@ export default function Register() {
       }
     }
     catch (error) {
-      console.log(error)
+      console.log("dsd")
+      console.log(error.response.data.message)
+      setError(response.data.message)
     }
   }
 
@@ -61,9 +60,10 @@ export default function Register() {
           </Typography>
           <Box onSubmit={handleSubmit(onSubmit)}
             component="form" noValidate sx={{ mt: 1 }}>
+            {error && <p>{error}</p>}
+
             <TextField
               {...register('name', { required: "Telefono es  Requerido" })}
-
               margin="normal"
               required
               fullWidth
@@ -72,6 +72,7 @@ export default function Register() {
               type="text"
               id="name"
             />
+            {errors.name && <p>{errors.name.message}</p>}
 
             <TextField
               {...register('lastname', { required: "Telefono es  Requerido" })}
@@ -84,6 +85,8 @@ export default function Register() {
               type="text"
               id="lastname"
             />
+            {errors.lastname && <p>{errors.lastname.message}</p>}
+
             <TextField
               {...register('email', { required: "Telefono es  Requerido" })}
 
@@ -97,6 +100,8 @@ export default function Register() {
               autoFocus
 
             />
+            {errors.email && <p>{errors.email.message}</p>}
+
             <TextField
               {...register('phone', { required: "Telefono es  Requerido" })}
 
@@ -108,6 +113,7 @@ export default function Register() {
               type="number"
               id="phone"
             />
+            {errors.phone && <p>{errors.phone.message}</p>}
 
             <TextField
               {...register('id_card', { required: "Telefono es  Requerido" })}
@@ -121,6 +127,8 @@ export default function Register() {
               id="id_card"
 
             />
+            {errors.id_card && <p>{errors.id_card.message}</p>}
+
             <TextField
               {...register('password', { required: "Telefono es  Requerido" })}
 
@@ -133,6 +141,8 @@ export default function Register() {
               id="password"
 
             />
+            {errors.password && <p>{errors.password.message}</p>}
+
             <Button
               type="submit"
               fullWidth

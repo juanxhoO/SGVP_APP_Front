@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
-import Sidebar from "./Sidebar";
 import useAuthStore from "../store/useAuthStore";
 
 function AppLayout() {
@@ -9,10 +8,11 @@ function AppLayout() {
     const isAuthenticated = useAuthStore(state => state.isAuthenticated)
     return (
         <>
-            <Header />
-            <div style={{ minHeight: '80vh', display: 'flex' }}>
-                {isAuthenticated ? <Sidebar /> : null}
-                <Outlet />
+            <div style={{ display: 'flex', minHeight:'88vh' }}>
+                <Header />
+                <div style={{ marginTop: '4rem', flexGrow: 1, overflow: 'hidden' }}>
+                    <Outlet />
+                </div>
             </div>
             <Footer />
         </>

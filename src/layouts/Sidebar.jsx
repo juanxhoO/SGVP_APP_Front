@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import { mainListItems } from '../components/ListItems';
 import useSidebarStore from '../hooks/useSidebar';
+import Toolbar from '@mui/material/Toolbar';
+import { IconButton } from '@mui/material';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -36,19 +37,31 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const defaultTheme = createTheme();
 
 export default function Sidebar() {
+  const toggleDrawer = () => {
+    setOpen(!open);
+  };
 
   const isOpen = useSidebarStore((state) => state.isOpen);
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <Drawer variant="permanent" open={isOpen}>
-          <List sx={{height:"100%",background:"#1976d2", color:"#ffffff"}}component="nav">
-            {mainListItems}
-          </List>
-        </Drawer>
-      </Box>
-    </ThemeProvider>
+    <Drawer variant="permanent" open={open}>
+      <Toolbar
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          px: [1],
+        }}
+      >
+        <IconButton onClick={toggleDrawer}>
+          <ChevronLeftIcon />
+        </IconButton>
+      </Toolbar>
+      <List sx={{ height: "100%", background: "#1976d2", color: "#ffffff" }} component="nav">
+        {mainListItems}
+      </List>
+    </Drawer>
+
+
   );
 }

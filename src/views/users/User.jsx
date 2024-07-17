@@ -6,6 +6,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useDataFetcher from '../../hooks/useDataFetcher';
 import useDeleteEntity from '../../hooks/useDeleteItem';
 import EntitiesAsignation from './components/EntitiesAsignation';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import dayjs from 'dayjs';
+
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 export default function User() {
     const navigate = useNavigate();
     const { id } = useParams();
@@ -13,6 +18,7 @@ export default function User() {
     const { data: subCircuits } = useDataFetcher("http://localhost:3000/v1/subcircuits/");
     const { data: vehicles } = useDataFetcher("http://localhost:3000/v1/vehicles/");
     const OfficeRank = ["TENIENTE_CORONEL", "SARGENTO_PRIMERO", "SARGENTO_SEGUNDO", "CABO_PRIMERO", "CABO_SEGUNDO", "TENIENTE", "MAYOR", "CAPITAN", "POLICIA", "SUBTENIENTE"];
+    console.log(userInfo?.birthdate)
     const {
         register,
         control,
@@ -25,17 +31,15 @@ export default function User() {
             lastname: '',
             phone: '',
             id_card: '',
-            bloodType: '',
             role: '',
             rank: '',
             email: '',
-            birthdate: '',
-            city: '',
+            birthdate: userInfo?.birthdate ? dayjs(userInfo.birthdate) : null,
             vehicleId: '',
             subcircuitId: ''
         }
     });
-    
+
     const [initialValues, setInitialValues] = useState({});
     useEffect(() => {
         if (userInfo) {
@@ -75,21 +79,21 @@ export default function User() {
     }, [isDeleted, navigate]);
 
     return (
-        <Grid container>
+
+        <>
             <Stack
                 onSubmit={handleSubmit(onSubmit)}
                 sx={{
                     padding: '30px',
                     alignItems: 'center',
                     marginTop: 2,
-                    display: 'flex',
                 }} component="form">
                 <Box>
                     <Typography variant="h1">Editar Usuario</Typography>
                 </Box>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Nombres</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Nombres*</Typography>
                         <TextField
                             {...register('name', { required: "Nombres Requerido" })}
                             fullWidth
@@ -99,7 +103,7 @@ export default function User() {
                         {errors.name && <p>{errors.name.message}</p>}
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Apellidos</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Apellidos*</Typography>
                         <TextField
                             {...register('lastname', { required: "Apellidos es Requerido" })}
                             fullWidth
@@ -120,7 +124,7 @@ export default function User() {
                         {errors.id_card && <p>{errors.id_card.message}</p>}
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: 'bold' }}>Correo</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Correo*</Typography>
                         <TextField
                             {...register('email', { required: "Correo Requerido" })}
                             fullWidth
@@ -143,32 +147,37 @@ export default function User() {
                     <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Tipo de Sangre</Typography>
                         <TextField
-                            {...register('bloodType', { required: "Tipo de Sangre es Requerido" })}
+                            {...register('bloodType')}
                             fullWidth
                             margin="normal"
                             autoComplete="bloodType"
                         />
-                        {errors.bloodType && <p>{errors.bloodType.message}</p>}
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Fecha de Nacimiento</Typography>
-                        <TextField
-                            {...register('birthdate', { required: "Fecha de Nacimiento Requerida" })}
-                            fullWidth
-                            margin="normal"
-                            autoComplete="birthdate"
-                        />
-                        {errors.birthdate && <p>{errors.birthdate.message}</p>}
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <Controller
+                                name="birthdate"
+                                control={control}
+                                render={({ field: { onChange, value } }) => (
+                                    <DatePicker
+                                        fullWidth
+                                        value={value ? dayjs(value) : null} // Ensure value is only passed as dayjs object if not null   
+                                        onChange={(newValue) => onChange(newValue ? dayjs(newValue) : null)} 
+                                        renderInput={(params) => <TextField {...params} />}
+                                    />
+                                )}
+                            />
+                        </LocalizationProvider>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Ciudad de Nacimiento</Typography>
                         <TextField
-                            {...register('city', { required: "Ciudad de Nacimiento Requerida" })}
+                            {...register('city')}
                             fullWidth
                             margin="normal"
                             autoComplete="city"
                         />
-                        {errors.city && <p>{errors.city.message}</p>}
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Typography sx={{ fontWeight: 'bold' }}>Rango</Typography>
@@ -205,12 +214,15 @@ export default function User() {
                             )}
                         />                    </Grid>
                 </Grid>
-                <Box display="flex" sx={{gap:"2rem"}} mt={4}>
+                <Box display="flex" sx={{ gap: "2rem" }} mt={4}>
                     <Button sx={{ minWidth: '200px' }} type="submit" variant='contained'>Editar</Button>
                     <Button onClick={handleDelete} sx={{ minWidth: '200px' }} color="error" variant='contained'>Borrar</Button>
                 </Box>
+
             </Stack>
+
             <EntitiesAsignation subCircuits={subCircuits} vehicles={vehicles} />
-        </Grid>
+
+        </>
     );
 }

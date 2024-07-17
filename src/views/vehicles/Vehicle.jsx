@@ -55,7 +55,6 @@ export default function Vehicle() {
             return acc;
         }, {});
 
-        console.log(editedFields)
         if (Object.keys(editedFields).length > 0) {
             const response = await axios.patch("http://localhost:3000/v1/vehicles/" + id, editedFields);
             if (response.status === 201) {
@@ -71,7 +70,6 @@ export default function Vehicle() {
     const [vehicleType, setVehicleType] = useState('');
 
     const handleChange = (event) => {
-        console.log("change")
         console.log(event.target.value)
         setVehicleType(event.target.value);
     };
@@ -99,9 +97,8 @@ export default function Vehicle() {
                         </Typography>
                     </CardContent>
                 </Card>
-
                 <Box>
-                    <Button sx={{ minWidth: '200px' }} type="submit" component={Link} to='/vehicles/1/history/' variant='contained'>Ver historial de Mantenimientos</Button>
+                    <Button sx={{ minWidth: '200px' }} type="submit" component={Link} to={`/vehicles/${id}/history/`} variant='contained'>Ver historial de Mantenimientos</Button>
                 </Box>
             </Box>
             <Stack

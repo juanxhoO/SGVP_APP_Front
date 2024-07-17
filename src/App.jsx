@@ -8,7 +8,7 @@ import { Users, User, CreateUser } from './views/users';
 import { Orders, Order, CreateOrder } from './views/orders';
 import { Mecanic, Mecanics, CreateMecanic } from './views/mecanics';
 import { Dependencies, Dependency, CreateDependency, SubDependency } from './views/dependencies';
-import { Vehicle, Vehicles, CreateVehicle } from './views/vehicles';
+import { Vehicle, Vehicles, CreateVehicle, VehicleHistory} from './views/vehicles';
 import NotFound from './views/NotFound';
 import { Reports, Report, CreateReport } from './views/reports';
 import { Stocks, Stock, CreateStock } from './views/stocks';
@@ -23,8 +23,9 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<AppLayout />}>
+          <Route element={<AppLayout />}>
             <Route element={<RequireAuth />}>
+              <Route path="/"></Route>
               <Route path="admin/dashboard" element={<MainDashboard />} />
               <Route path="profile" element={<Profile />} />
               <Route path="users">
@@ -70,6 +71,7 @@ function App() {
               </Route>
               <Route path="vehicles">
                 <Route path="create" element={<CreateVehicle />} />
+                <Route path="/vehicles/:id/history" element={<VehicleHistory />} />
                 <Route path="/vehicles" element={<Vehicles />} />
                 <Route path=":id" element={<Vehicle />} />
               </Route>

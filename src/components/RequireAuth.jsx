@@ -2,11 +2,9 @@ import { useLocation, Navigate, Outlet } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 
  
-const RequireAuth = () => {
+const RequireAuth = ({children}) => {
     const isAuthenticated = useAuthStore(state => state.isAuthenticated)
-
     const location = useLocation();
-
     return (
         isAuthenticated
             ? <Outlet />

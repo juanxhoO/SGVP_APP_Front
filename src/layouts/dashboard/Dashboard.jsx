@@ -11,25 +11,25 @@ export default function MainDashboard() {
     <Box>
       <Grid container sx={{ display: 'flex', alignItems: 'center', p: 4 }}>
 
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Paper>
             <VehicleDash />
           </Paper>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Paper>
             <AreaDash />
 
           </Paper>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
 
           <Paper>
             <LineDash />
 
           </Paper>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Paper>
             <DonutDash />
 
