@@ -8,7 +8,7 @@ import { Users, User, CreateUser } from './views/users';
 import { Orders, Order, CreateOrder } from './views/orders';
 import { Mecanic, Mecanics, CreateMecanic } from './views/mecanics';
 import { Dependencies, Dependency, CreateDependency, SubDependency } from './views/dependencies';
-import { Vehicle, Vehicles, CreateVehicle, VehicleHistory} from './views/vehicles';
+import { Vehicle, Vehicles, CreateVehicle, VehicleHistory } from './views/vehicles';
 import NotFound from './views/NotFound';
 import { Reports, Report, CreateReport } from './views/reports';
 import { Stocks, Stock, CreateStock } from './views/stocks';
@@ -18,6 +18,12 @@ import CreateSubdependency from './views/dependencies/CreateSubdependency';
 import { Contract, Contracts, CreateContract } from './views/contracts';
 import RolesAdmin from './views/roles/RolesAdmin';
 import OrderHistory from './views/orders/OrderHistory';
+import Lubricants from './views/lubricants/Lubricants';
+import CreateLubricant from './views/lubricants/CreateLubricant';
+import CreateSpareOrder from './views/sparesOrders/CreateSpareOrder';
+import SpareOrder from './views/sparesOrders/SpareOrder';
+import SpareOrders from './views/sparesOrders/SpareOrders';
+import Lubricant from './views/lubricants/Lubricant';
 function App() {
   return (
     <div className="App">
@@ -80,11 +86,24 @@ function App() {
                 <Route path="/contracts" element={<Contracts />} />
                 <Route path=":id" element={<Contract />} />
               </Route>
+
+              <Route path="sparesorders">
+                <Route path="create" element={<CreateSpareOrder />} />
+                <Route path="/sparesorders" element={<SpareOrders />} />
+                <Route path=":id" element={<SpareOrder />} />
+              </Route>
+              
+              <Route path="lubricants">
+                <Route path="create" element={<CreateLubricant />} />
+                <Route path="/lubricants" element={<Lubricants />} />
+                <Route path=":id" element={<Lubricant />} />
+              </Route>
+
               <Route path="admin">
                 <Route path="/admin/roles" element={<RolesAdmin />} />
               </Route>
             </Route>
-            
+
             <Route path="authentication">
               <Route path="sign-in" element={<SignIn />} />
               <Route path="register" element={<Register />} />

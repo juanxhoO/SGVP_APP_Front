@@ -16,12 +16,11 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import SettingsInputCompositeIcon from '@mui/icons-material/SettingsInputComposite';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import useLogout from '../hooks/useLogout';
-
+import OilBarrelIcon from '@mui/icons-material/OilBarrel';
+import BusAlertIcon from '@mui/icons-material/BusAlert';
 
 
 export const mainListItems = (
-    
     <React.Fragment>
         <ListItemButton component={Link} to="/admin/dashboard">
             <ListItemIcon sx={{color:"#ffffff"}}>
@@ -70,14 +69,22 @@ export const mainListItems = (
                 <ListItemText primary="Repuestos" />
             </ListItem>
         </ListItemButton>
-        {/* <ListItemButton component={Link} to="/mecanics">
+        <ListItemButton component={Link} to="/lubricants">
             <ListItemIcon sx={{color:"#ffffff"}}>
-                <BuildIcon />
+                <OilBarrelIcon />
             </ListItemIcon>
             <ListItem >
-                <ListItemText primary="Mecanicos" />
+                <ListItemText primary="Lubricantes" />
             </ListItem>
-        </ListItemButton> */}
+        </ListItemButton>
+        <ListItemButton component={Link} to="/sparesorders/">
+            <ListItemIcon sx={{color:"#ffffff"}}>
+                <BusAlertIcon />
+            </ListItemIcon>
+            <ListItem >
+                <ListItemText primary="Ordenes de Repuestos" />
+            </ListItem>
+        </ListItemButton>
         <ListItemButton component={Link} to="/vehicles">
             <ListItemIcon sx={{color:"#ffffff"}}>
                 <DirectionsCarIcon />
