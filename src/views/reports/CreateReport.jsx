@@ -2,34 +2,38 @@ import * as React from 'react';
 import { Paper, Select, MenuItem, Grid, Typography, Box, Stack, TextField, Button, Card, CardContent } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useState } from 'react';
 // TODO remove, this demo shouldn't need to reset the theme.
 import dayjs from 'dayjs';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import DropFile from '../../components/DropFile';
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import axios from 'axios';
+import useAuthStore from '../../store/useAuthStore';
+import useDataFetcher from '../../hooks/useDataFetcher';
+
 export default function CreateReport() {
+    const userId = useAuthStore(state => state.userId)
+    const { data: userInfo, isLoading, isError } = useDataFetcher("http://localhost:3000/v1/users/" + userId);
+    console.log(userInfo)
     const {
         register,
         handleSubmit,
-        watch,
+        control,
         formState: { errors },
     } = useForm()
 
     const onSubmit = async (data) => {
-        console.log("sdsd")
+        console.log("dsds")
         const response = await axios.post("http://localhost:3000/v1/reports", data)
     }
 
-    const [value, setValue] = useState('');
     return (
         <Grid
             onSubmit={handleSubmit(onSubmit)}
-            component="form" sx={{ p: 2 }} container spacing={2}>
+            component="form"
+            sx={{ p: 2 }} container spacing={2}>
             <Grid item xs={12}
                 md={6}
                 sx={{
@@ -43,7 +47,18 @@ export default function CreateReport() {
                         Crear Reporte
                     </Typography>
 
-                    <ReactQuill style={{height:"250px"}} theme="snow" value={value} onChange={setValue} />
+                    <Controller
+                        name="content"
+                        control={control}
+                        render={({ field }) => (
+                            <ReactQuill
+                                {...field}
+                                style={{ height: "250px" }}
+                                theme="snow"
+                            />
+                        )}
+                    />
+
                     <Stack direction="column"
 
                         sx={{
@@ -53,30 +68,20 @@ export default function CreateReport() {
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <Typography sx={{ fontWeight: 'bold' }}>Usuario</Typography>
+                               
                                 <TextField
-                                    {...register('name', { required: "Nombres Requerido" })}
+                                Disabled
+                                value={userInfo?.name}
+                                >
+                                </TextField>
+                                <TextField
+                                    {...register('userId', { required: "Nombres Requerido" })}
                                     fullWidth
                                     margin="normal"
-                                    name="name"
+                                    name="userId"
                                     autoComplete="email"
                                     autoFocusrequired
-                                    id="name"
-                                    label="Required"
-
-                                />
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                <Typography sx={{ fontWeight: 'bold' }}>correo</Typography>
-                                <TextField
-                                    {...register('email', { required: "Nombres Requerido" })}
-                                    fullWidth
-                                    margin="normal"
-                                    required
-                                    name="email"
-                                    autoComplete="email"
-                                    autoFocusrequired
-                                    id="email"
+                                    id="userId"
                                     label="Required"
 
                                 />
@@ -85,13 +90,13 @@ export default function CreateReport() {
                             <Grid item xs={12}>
                                 <Typography sx={{ fontWeight: 'bold' }}>Seleccionar Vehiculo</Typography>
                                 <Select
-                                    {...register('rank', { required: "Rol  Requerida" })}
-                                    id="rank"
-                                    name="rank"
+                                    {...register('vehicleId', { required: "Rol  Requerida" })}
+                                    id="vehicleId"
+                                    name="vehicleId"
                                     fullWidth
                                 >
-                                        <MenuItem value="dssd">dsd</MenuItem>
-                                </Select>   
+                                    <MenuItem value="dssd">dsd</MenuItem>
+                                </Select>
                             </Grid>
                         </Grid>
                     </Stack>
@@ -108,15 +113,19 @@ export default function CreateReport() {
             >
                 <Paper elevation={5} sx={{ p: 5 }}>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DemoContainer
-                            components={[
-                                'DatePicker'
-                            ]}
-                        >
-                            <DemoItem label="Fecha de Incidencia">
-                                <DatePicker defaultValue={dayjs('2022-04-17')} />
-                            </DemoItem>
-                        </DemoContainer>
+
+                        <Controller
+                            name="date"
+                            control={control}
+                            render={({ field: { onChange, value } }) => (
+                                <DatePicker
+                                    fullWidth
+                                    value={value ? dayjs(value) : null} // Ensure value is only passed as dayjs object if not null   
+                                    onChange={(newValue) => onChange(newValue ? dayjs(newValue) : null)}
+                                    renderInput={(params) => <TextField {...params} />}
+                                />
+                            )}
+                        />
                     </LocalizationProvider>
 
                     <Card>
