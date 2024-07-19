@@ -88,7 +88,7 @@ export default function Vehicle() {
                 <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
                         sx={{ height: 140 }}
-                        image="/static/images/cards/contemplative-reptile.jpg"
+                        image="/vehicle.jpg"
                         title="green iguana"
                     />
                     <CardContent>

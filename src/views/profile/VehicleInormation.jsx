@@ -19,8 +19,8 @@ export default function VehicleInormation() {
             {vehicles?.map((vehicle, index) => (
                 <Card key={index} display="flex" sx={{ p: 3, textAlign: "center" }}>
                     <CardMedia
-                        sx={{ height: 100 }}
-                        image="/static/images/cards/contemplative-reptile.jpg"
+                        sx={{ height: 200, width:"auto" }}
+                        image="/vehicle.jpg"
                         title="green iguana"
                     />
                     <CardContent>

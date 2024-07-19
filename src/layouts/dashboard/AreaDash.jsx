@@ -24,7 +24,7 @@ ChartJS.register(
   Legend
 );
 
- const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {
@@ -32,20 +32,38 @@ ChartJS.register(
     },
     title: {
       display: true,
-      text: 'Chart.js Line Chart',
+      text: 'Mantenimientos por Mes',
     },
   },
 };
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
+// Generate mock data for individual vehicles
+const generateVehicleData = (vehicleCount, months) => {
+  return Array.from({ length: vehicleCount }, () => 
+    months.map(() => faker.datatype.number({ min: 0, max: 100 }))
+  );
+};
+
+// Aggregate data for all vehicles
+const aggregateData = (vehicleData) => {
+  return vehicleData[0].map((_, monthIndex) =>
+    vehicleData.reduce((total, vehicle) => total + vehicle[monthIndex], 0)
+  );
+};
+
+const vehicleCount = 5;
+const vehicleData = generateVehicleData(vehicleCount, labels);
+const aggregatedData = aggregateData(vehicleData);
+
 const data = {
   labels,
   datasets: [
     {
       fill: true,
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      label: 'Total Maintenance',
+      data: aggregatedData,
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },

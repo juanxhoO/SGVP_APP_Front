@@ -30,11 +30,11 @@ export default function Dependency() {
             <Grid p={2} sx={{ justifyContent: "center" }} item xs={12}>
 
                 <Paper display="flex" sx={{ flexDirection:"column",alignItems:"center", display:"flex", gap:2,p:2}}>
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ width: "auto" }}>
                         <CardMedia
-                            sx={{ height: 140 }}
-                            image="/static/images/cards/contemplative-reptile.jpg"
-                            title="green iguana"
+                            sx={{ height: 450 }}
+                            image="/google-maps.jpg"
+                            title="Circuit Map"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">

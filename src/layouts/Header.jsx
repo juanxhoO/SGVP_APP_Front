@@ -41,7 +41,7 @@ const AppBar = styled(MuiAppBar, {
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
-            backgroundColor:"#004291",
+            backgroundColor: "#004291",
             position: 'relative',
             whiteSpace: 'nowrap',
             width: drawerWidth,
@@ -73,16 +73,16 @@ export default function Header() {
 
     const logout = useLogout()
     const [open, setOpen] = React.useState(true);
-  
+
     const toggleDrawer = () => {
         setOpen(!open);
     };
 
-    React.useEffect(()=>{
-        if(!isAuthenticated){
+    React.useEffect(() => {
+        if (!isAuthenticated) {
             setOpen(false)
         }
-    },[])
+    }, [])
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -105,7 +105,7 @@ export default function Header() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    
+                    <img style={{ maxWidth: "60px" }} src="/logoOfi.png" alt="home-icon" />
                     <Typography
                         component="h1"
                         variant="h6"

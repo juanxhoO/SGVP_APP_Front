@@ -11,7 +11,6 @@ const Footer = () => {
   const instagramUrl = "https://www.instagram.com/policiaecuadoroficial/";
   const youtubeUrl = "https://www.youtube.com/c/PoliciaNacionalDelEcuador";
   const twitterUrl = "https://twitter.com/policiaecuador";
-  const ecu911Url = "https://twitter.com/ecu911quito";
 
   return (
     <Container className='Footer' style={{display:'flex', backgroundColor: '#004291', justifyContent: "space-around", alignItems: "center", minHeight: "120px" }} maxWidth="full" >
@@ -32,7 +31,9 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram">
-          <InstagramIcon color="#ffffff"/>
+          <InstagramIcon
+                    sx={{color:"#ffffff"}} 
+                    color="#ffffff"/>
         </IconButton>
         <IconButton
           component="a"

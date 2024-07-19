@@ -51,10 +51,11 @@ export default function Dependencies() {
             </Grid>
             <Grid item xs={12} md={9}>
                 <Paper>
-                    <Typography variant="h3" sx={{ fontWeight: "bold" }}>
+                    
+                    <Stack sx={{ flexWrap: "wrap"}} p={3} display="flex">
+                    <Typography variant="h4" sx={{ fontWeight: "bold" }}>
                         Circuitos
                     </Typography>
-                    <Stack sx={{ flexWrap: "wrap"}} p={3} display="flex">
                         {circuits?.map((circuit) => (
                             <Card key={circuit.id} sx={{ px:2,flex:"33%", mb: 2 }}>
                                 <CardContent onClick={() => fetchSubCircuits(circuit?.id)} sx={{ border: "1px solid #ccc" }}>
@@ -75,7 +76,7 @@ export default function Dependencies() {
                             <Button component={Link} size="large" to="/dependencies/create" variant="contained">Crear Circuito</Button>
                         </Box>
                     <Stack p={3} spacing={2} mt={4}>
-                        <Typography sx={{ fontWeight: "bold" }} variant="h3">
+                        <Typography sx={{ fontWeight: "bold" }} variant="h4">
                             Subcircuitos
                         </Typography>
                         {subcircuits?.map((subcircuit) => (

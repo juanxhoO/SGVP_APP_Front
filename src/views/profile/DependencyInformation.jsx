@@ -18,8 +18,8 @@ export default function DependencyInormation() {
                 Dependencia
             </Typography>
             <CardMedia
-                sx={{ height: 140 }}
-                image="/static/images/cards/contemplative-reptile.jpg"
+                sx={{ height: 250, width:"auto" }}
+                image="/google-maps.jpg"
                 title="green iguana"
             />
             <CardContent>
